@@ -3,7 +3,7 @@ import { Link, Navigate } from 'react-router-dom'
 import { useProfileStore } from '../store/useProfileStore'
 import { useGameStore } from '../store/useGameStore'
 import { motion } from 'framer-motion'
-import { Headphones, Grid3X3, Ear, PenTool, Layers, Star } from 'lucide-react'
+import { Headphones, Grid3X3, Ear, PenTool, Layers, Star, MessageCircle } from 'lucide-react'
 
 const EXERCICES = [
   { id: 'ecoute', path: '/ecoute', nom: 'استمع وتعرّف', nomAr: 'اِسْتَمِعْ', emoji: '🎧', icon: Headphones, desc: 'استمع إلى الحرف ثم اختر الإجابة الصحيحة', color: 'from-blue-400 to-blue-600', bg: 'bg-blue-50', pts: 25, statKey: 'ecoute' },
@@ -11,6 +11,7 @@ const EXERCICES = [
   { id: 'phonemes', path: '/phonemes', nom: 'ميّز الأصوات', nomAr: 'أَيُّ صَوْت؟', emoji: '👂', icon: Ear, desc: 'ميّز بين الأصوات العربية المتقاربة', color: 'from-emerald-400 to-emerald-600', bg: 'bg-emerald-50', pts: 30, statKey: 'phonemes' },
   { id: 'tracage', path: '/tracage', nom: 'تتبع الحرف', nomAr: 'اُكْتُبْ', emoji: '✏️', icon: PenTool, desc: 'اكتب الحروف بإصبعك على اللوحة', color: 'from-amber-400 to-amber-600', bg: 'bg-amber-50', pts: 20, statKey: 'tracage' },
   { id: 'flashcards', path: '/flashcards', nom: 'بطاقات الكلمات', nomAr: 'كَلِمَات', emoji: '📷', icon: Layers, desc: 'اكتشف كلمات عربية مع بطاقات تفاعلية', color: 'from-rose-400 to-rose-600', bg: 'bg-rose-50', pts: 5, statKey: 'flashcards' },
+  { id: 'conversation', path: '/conversation', nom: 'المحادثة', nomAr: 'تَحَدَّثْ', emoji: '💬', icon: MessageCircle, desc: 'تدرّب على الحوار والردّ على الأسئلة', color: 'from-sky-400 to-sky-600', bg: 'bg-sky-50', pts: 15, statKey: 'conversation' },
 ]
 
 export default function Modules() {

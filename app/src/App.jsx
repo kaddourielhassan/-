@@ -11,6 +11,7 @@ import FlashcardsVocabulaire from './pages/FlashcardsVocabulaire'
 import DashboardEnfant from './pages/DashboardEnfant'
 import BadgesPage from './pages/BadgesPage'
 import DashboardMaitresse from './pages/DashboardMaitresse'
+import Conversation from './pages/Conversation'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="phonemes" element={<DistinctionPhonemes />} />
           <Route path="tracage" element={<TracageLettres />} />
           <Route path="flashcards" element={<FlashcardsVocabulaire />} />
+          <Route path="conversation" element={<Conversation />} />
           <Route path="dashboard-enfant" element={<DashboardEnfant />} />
           <Route path="badges" element={<BadgesPage />} />
           <Route path="maitresse" element={<DashboardMaitresse />} />

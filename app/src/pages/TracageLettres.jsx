@@ -69,6 +69,23 @@ export default function TracageLettres() {
   }
 
   const validate = () => {
+    // Simple heuristic: check if the user has drawn enough points/pixels
+    // We can check if the canvas is mostly empty or not.
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext('2d')
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+    const data = imageData.data
+    let filledPixels = 0
+    for (let i = 3; i < data.length; i += 4) {
+      if (data[i] > 0) filledPixels++
+    }
+
+    // Heuristic: At least 1000 pixels should be drawn for a valid trace
+    if (filledPixels < 800) {
+      alert('حاول مجدداً! ارسم الحرف جيداً (Plus de détails s'il vous plaît)')
+      return
+    }
+
     setValidated(true)
     setShowConfetti(true)
     setCompletedCount(c => c + 1)
