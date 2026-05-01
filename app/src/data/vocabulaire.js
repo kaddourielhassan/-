@@ -17,11 +17,16 @@ const rawCategories = [
   {
     id: 'nombres', nom: 'Les nombres', nomAr: 'الأَرْقَام', emoji: '🔢',
     mots: [
-      { fr: '1', ar: 'وَاحِد', translit: 'Wāḥid' }, { fr: '2', ar: 'اِثْنَان', translit: 'Ithnān' },
-      { fr: '3', ar: 'ثَلَاثَة', translit: 'Thalātha' }, { fr: '4', ar: 'أَرْبَعَة', translit: "Arba'a" },
-      { fr: '5', ar: 'خَمْسَة', translit: 'Khamsa' }, { fr: '6', ar: 'سِتَّة', translit: 'Sitta' },
-      { fr: '7', ar: 'سَبْعَة', translit: "Sab'a" }, { fr: '8', ar: 'ثَمَانِيَة', translit: 'Thamāniya' },
-      { fr: '9', ar: 'تِسْعَة', translit: "Tis'a" }, { fr: '10', ar: 'عَشَرَة', translit: "'Ashara" },
+      { fr: '1', ar: '١ - وَاحِد', translit: 'Wāḥid' }, 
+      { fr: '2', ar: '٢ - اِثْنَان', translit: 'Ithnān' },
+      { fr: '3', ar: '٣ - ثَلَاثَة', translit: 'Thalātha' }, 
+      { fr: '4', ar: '٤ - أَرْبَعَة', translit: "Arba'a" },
+      { fr: '5', ar: '٥ - خَمْسَة', translit: 'Khamsa' }, 
+      { fr: '6', ar: '٦ - سِتَّة', translit: 'Sitta' },
+      { fr: '7', ar: '٧ - سَبْعَة', translit: "Sab'a" }, 
+      { fr: '8', ar: '٨ - ثَمَانِيَة', translit: 'Thamāniya' },
+      { fr: '9', ar: '٩ - تِسْعَة', translit: "Tis'a" }, 
+      { fr: '10', ar: '١٠ - عَشَرَة', translit: "'Ashara" },
     ]
   },
   {
