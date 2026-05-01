@@ -12,6 +12,35 @@ import { conversations } from '../data/conversations'
 const DEFAULT_PIN = '2026'
 const PIN_STORAGE_KEY = 'hurufi-teacher-pin'
 
+// Composant pour vrifier si un fichier existe (simplifi)
+function ResourceStatus({ url, type }) {
+  const [status, setStatus] = React.useState('checking')
+
+  React.useEffect(() => {
+    if (!url) {
+      setStatus('missing')
+      return
+    }
+
+    if (type === 'audio') {
+      const a = new Audio(url)
+      a.oncanplaythrough = () => setStatus('ok')
+      a.onerror = () => setStatus('error')
+      // Forcer le check
+      a.load()
+    } else {
+      const img = new Image()
+      img.onload = () => setStatus('ok')
+      img.onerror = () => setStatus('error')
+      img.src = url
+    }
+  }, [url, type])
+
+  if (status === 'checking') return <span className="text-[10px] text-slate-300 animate-pulse">Checking...</span>
+  if (status === 'ok') return <span className="bg-emerald-100 text-emerald-600 px-2 py-0.5 rounded text-[10px] font-bold">OK</span>
+  return <span className="bg-rose-100 text-rose-600 px-2 py-0.5 rounded text-[10px] font-bold">MISSING</span>
+}
+
 export default function DashboardMaitresse() {
   const profiles = useProfileStore(s => s.profiles)
   const deleteAllProfiles = useProfileStore(s => s.deleteAllProfiles)
@@ -106,6 +135,12 @@ export default function DashboardMaitresse() {
           className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${activeTab === 'audio' ? 'bg-white text-brand-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
         >
           مراجعة الملفات الصوتية
+        </button>
+        <button 
+          onClick={() => setActiveTab('assets')}
+          className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${activeTab === 'assets' ? 'bg-white text-brand-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+        >
+          بيان الوسائط
         </button>
       </div>
 
@@ -263,6 +298,70 @@ export default function DashboardMaitresse() {
               </div>
             </div>
           ))}
+        </div>
+      ) : (
+        <div className="space-y-6">
+          <div className="bg-brand-50 border border-brand-200 p-6 rounded-3xl">
+            <h3 className="font-bold text-brand-800 mb-2 flex items-center gap-2 text-xl">
+              📊 بيان حالة الوسائط (Images & Sons)
+            </h3>
+            <p className="text-brand-700">تأكدي من توفر جميع الصور والأصوات لضمان جودة التطبيق.</p>
+          </div>
+
+          <div className="bg-white rounded-3xl card-shadow overflow-hidden">
+            <table className="w-full text-right border-collapse" dir="rtl">
+              <thead className="bg-slate-50 border-b border-slate-100">
+                <tr>
+                  <th className="p-4 text-slate-500 font-bold text-sm">المحتوى</th>
+                  <th className="p-4 text-slate-500 font-bold text-sm text-center">الصوت (.mp3)</th>
+                  <th className="p-4 text-slate-500 font-bold text-sm text-center">الصورة (.png/.webp)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-50">
+                {/* Alphabet */}
+                <tr className="bg-slate-50/50"><td colSpan="3" className="p-3 font-black text-brand-600 text-sm">الأبجدية (28)</td></tr>
+                {alphabet.map(l => (
+                  <tr key={l.id} className="hover:bg-slate-50/30">
+                    <td className="p-4">
+                      <span className="font-arabic text-xl mr-2">{l.lettre}</span>
+                      <span className="text-xs text-slate-400">({l.translit})</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <ResourceStatus url={l.audio} type="audio" />
+                    </td>
+                    <td className="p-4 text-center">
+                      <ResourceStatus url={`resources/images/lettres/lettre_${l.translit.toLowerCase()}.png`} type="image" />
+                    </td>
+                  </tr>
+                ))}
+                
+                {/* Vocab Categories */}
+                {categories.map(cat => (
+                  <React.Fragment key={cat.id}>
+                    <tr className="bg-slate-50/50">
+                      <td colSpan="3" className="p-3 font-black text-brand-600 text-sm">
+                        {cat.emoji} {cat.nomAr} ({cat.nom})
+                      </td>
+                    </tr>
+                    {cat.mots.map((m, idx) => (
+                      <tr key={idx} className="hover:bg-slate-50/30">
+                        <td className="p-4">
+                          <span className="font-arabic font-bold text-slate-700">{m.ar}</span>
+                          <span className="text-xs text-slate-400 mr-2">({m.fr})</span>
+                        </td>
+                        <td className="p-4 text-center">
+                          <ResourceStatus url={m.audio} type="audio" />
+                        </td>
+                        <td className="p-4 text-center">
+                          <ResourceStatus url={m.image} type="image" />
+                        </td>
+                      </tr>
+                    ))}
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
