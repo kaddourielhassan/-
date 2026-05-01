@@ -6,15 +6,93 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ArrowLeft, Lock, Download, Trash2, Star, BarChart3, 
   Volume2, Play, Users, CheckCircle2, AlertCircle, 
-  Settings, ChevronRight, Search, FileText, Menu, X, Loader2
+  Settings, ChevronRight, Search, FileText, Menu, X, Loader2, Trophy
 } from 'lucide-react'
-import { categories } from '../data/vocabulaire'
 import { alphabet } from '../data/alphabet'
 import { phonemes } from '../data/phonemes'
 import { conversations } from '../data/conversations'
+import { jsPDF } from 'jspdf'
+import 'jspdf-autotable'
 
 const DEFAULT_PIN = '2026'
 const PIN_STORAGE_KEY = 'hurufi-teacher-pin'
+
+// --- PDF GENERATION HELPERS ---
+
+const generateDiploma = (student, stats) => {
+  const doc = new jsPDF({ orientation: 'landscape' })
+  const width = doc.internal.pageSize.getWidth()
+  const height = doc.internal.pageSize.getHeight()
+
+  // Background
+  doc.setFillColor(252, 247, 237)
+  doc.rect(0, 0, width, height, 'F')
+  
+  // Border
+  doc.setDrawColor(13, 148, 136)
+  doc.setLineWidth(2)
+  doc.rect(10, 10, width - 20, height - 20)
+  doc.setLineWidth(0.5)
+  doc.rect(12, 12, width - 24, height - 24)
+
+  // Content
+  doc.setTextColor(13, 148, 136)
+  doc.setFont('helvetica', 'bold')
+  doc.setFontSize(40)
+  doc.text('CERTIFICAT DE RÉUSSITE', width / 2, 50, { align: 'center' })
+  
+  doc.setFontSize(20)
+  doc.setTextColor(100, 116, 139)
+  doc.text('Ce diplôme est fièrement décerné à', width / 2, 80, { align: 'center' })
+  
+  doc.setFontSize(45)
+  doc.setTextColor(30, 41, 59)
+  doc.text(student.prenom.toUpperCase(), width / 2, 105, { align: 'center' })
+  
+  doc.setFontSize(18)
+  doc.setTextColor(100, 116, 139)
+  doc.text(`Pour avoir brillamment complété le niveau ${student.niveau}`, width / 2, 130, { align: 'center' })
+  doc.text(`du programme d'apprentissage de la langue arabe Hurûfî`, width / 2, 140, { align: 'center' })
+
+  // Stats Summary
+  doc.setFontSize(12)
+  doc.text(`Points obtenus : ${student.pointsTotal} ⭐  |  Sessions : ${stats.totalSessions}`, width / 2, 160, { align: 'center' })
+
+  // Footer
+  doc.setFontSize(10)
+  const date = new Date().toLocaleDateString('fr-FR')
+  doc.text(`Fait le ${date}`, 30, height - 30)
+  doc.text('La Maîtresse', width - 60, height - 30)
+  
+  doc.save(`Diplome_Hurufi_${student.prenom}.pdf`)
+}
+
+const generateClassReport = (profiles, getStats) => {
+  const doc = new jsPDF()
+  doc.setFontSize(20)
+  doc.text('Rapport de Progrès Hurûfî', 14, 22)
+  
+  const tableData = profiles.map(p => {
+    const s = getStats(p.id)
+    return [
+      p.prenom,
+      p.niveau,
+      p.pointsTotal,
+      s.totalSessions,
+      `${Math.round(((s.ecoute?.correct || 0) / 20) * 100)}%`,
+      `${Math.round(((s.phonemes?.correct || 0) / 6) * 100)}%`
+    ]
+  })
+
+  doc.autoTable({
+    startY: 30,
+    head: [['Prénom', 'Niveau', 'Points', 'Sessions', 'Écoute', 'Phonèmes']],
+    body: tableData,
+    headStyles: { fillColor: [13, 148, 136] },
+  })
+
+  doc.save('Rapport_Classe_Hurufi.pdf')
+}
 
 // --- HELPER COMPONENTS ---
 
@@ -216,7 +294,13 @@ export default function DashboardMaitresse() {
             </h2>
             <p className="text-slate-400 font-medium text-sm">Contrôle pédagogique avancé</p>
           </div>
-          {activeTab === 'students' && (
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button 
+              onClick={() => generateClassReport(profiles, getStats)}
+              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white border border-slate-100 text-slate-700 font-bold text-sm card-shadow hover:bg-slate-50 transition-all"
+            >
+              <Download className="h-4 w-4 text-brand-600" /> Export PDF Rapport
+            </button>
             <div className="relative group">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-brand-500 transition-colors" />
               <input 
@@ -226,7 +310,7 @@ export default function DashboardMaitresse() {
                 aria-label="Rechercher un élève"
               />
             </div>
-          )}
+          </div>
         </header>
 
         <AnimatePresence mode="wait">
@@ -261,7 +345,17 @@ export default function DashboardMaitresse() {
                                 )}
                               </div>
                               <div>
-                                <h3 className="text-2xl font-black text-slate-800 tracking-tight">{p.prenom}</h3>
+                                <div className="flex items-center gap-3">
+                                  <h3 className="text-2xl font-black text-slate-800 tracking-tight">{p.prenom}</h3>
+                                  <button 
+                                    onClick={() => generateDiploma(p, stats)}
+                                    title="Générer un diplôme"
+                                    className="p-2 rounded-lg bg-brand-50 text-brand-600 hover:bg-brand-600 hover:text-white transition-all shadow-sm flex items-center gap-1.5"
+                                  >
+                                    <Trophy className="h-3.5 w-3.5" />
+                                    <span className="text-[10px] font-black uppercase">Diplôme</span>
+                                  </button>
+                                </div>
                                 <div className="flex items-center gap-2 mt-1">
                                   <span className="px-2 py-0.5 rounded-lg bg-gold-500 text-white font-black text-[9px] uppercase shadow-sm">Niveau {p.niveau}</span>
                                   <span className="text-slate-400 font-bold text-xs">⭐ {p.pointsTotal} points</span>
