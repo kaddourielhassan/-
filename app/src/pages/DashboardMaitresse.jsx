@@ -329,31 +329,45 @@ export default function DashboardMaitresse() {
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 min-w-0">
-  {/* Hero Metrics Top */}
-  <div className="bg-white rounded-[2.5rem] p-6 border border-slate-50 shadow-sm mb-6 text-center">
-    <h2 className="text-2xl font-black text-slate-800 mb-2">Tableau de bord avancé</h2>
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-      <ProgressCard label="Élèves" value={42} colorClass="text-blue-600" bgClass="bg-blue-50" toolTip="Total profils enregistrés" />
-      <ProgressCard label="Médias OK" value={28} colorClass="text-emerald-600" bgClass="bg-green-50" toolTip="Ressources valides" />
-      <ProgressCard label="Sessions" value={127} colorClass="text-purple-600" bgClass="bg-purple-50" toolTip="Activités réalisées" />
-      <ProgressCard label="Streak" value={7} colorClass="text-pink-600" bgClass="bg-pink-50" toolTip="Séquences réussies" />
-    </div>
-  </div>
-</main>
-        <header className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+      <main className="flex-1 min-w-0 p-4 md:p-8">
+        {/* Hero Metrics Top */}
+        <div className="bg-white rounded-[2.5rem] p-8 border border-slate-50 shadow-sm mb-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-left">
+            <h2 className="text-3xl font-black text-slate-800 mb-2 tracking-tight">Tableau de bord Pro</h2>
+            <p className="text-slate-400 font-medium">Contrôle pédagogique avancé et certification</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full md:w-auto">
+            <div className="bg-blue-50 px-5 py-3 rounded-2xl border border-blue-100 flex flex-col items-center">
+              <span className="text-[10px] font-black text-blue-400 uppercase">Élèves</span>
+              <span className="text-xl font-black text-blue-700">{profiles.length}</span>
+            </div>
+            <div className="bg-emerald-50 px-5 py-3 rounded-2xl border border-emerald-100 flex flex-col items-center">
+              <span className="text-[10px] font-black text-emerald-400 uppercase">Médias</span>
+              <span className="text-xl font-black text-emerald-700">OK</span>
+            </div>
+            <div className="bg-purple-50 px-5 py-3 rounded-2xl border border-purple-100 flex flex-col items-center">
+              <span className="text-[10px] font-black text-purple-400 uppercase">Stats</span>
+              <span className="text-xl font-black text-purple-700">Live</span>
+            </div>
+            <div className="bg-pink-50 px-5 py-3 rounded-2xl border border-pink-100 flex flex-col items-center">
+              <span className="text-[10px] font-black text-pink-400 uppercase">Actif</span>
+              <span className="text-xl font-black text-pink-700">Oui</span>
+            </div>
+          </div>
+        </div>
+
+        <header className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 px-2">
           <div>
-            <h2 className="text-3xl font-black text-slate-800 tracking-tight">
+            <h2 className="text-2xl font-black text-slate-700 uppercase tracking-tighter">
               {menuItems.find(i => i.id === activeTab)?.label}
             </h2>
-            <p className="text-slate-400 font-medium text-sm">Contrôle pédagogique avancé</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
             <button 
               onClick={() => generateClassReport(profiles, getStats)}
-              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white border border-slate-100 text-slate-700 font-bold text-sm card-shadow hover:bg-slate-50 transition-all"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-brand-600 text-white font-bold text-sm shadow-xl shadow-brand-100 hover:bg-brand-700 transition-all hover:scale-[1.02] active:scale-95"
             >
-              <Download className="h-4 w-4 text-brand-600" /> Export PDF Rapport
+              <Download className="h-4 w-4" /> Export PDF Rapport
             </button>
             <div className="relative group">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-brand-500 transition-colors" />
@@ -370,7 +384,7 @@ export default function DashboardMaitresse() {
         <AnimatePresence mode="wait">
           <motion.div 
             key={activeTab}
-            initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}
+            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
             className="pb-10"
           >
             {activeTab === 'students' && (
