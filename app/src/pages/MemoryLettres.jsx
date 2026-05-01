@@ -26,8 +26,8 @@ export default function MemoryLettres() {
   const initGame = useCallback(() => {
     const selected = shuffle(lettresPrioritaires).slice(0, 6)
     const pairs = selected.flatMap(l => [
-      { uid: crypto.randomUUID(), lettreId: l.id, display: l.lettre, color: l.color, type: 'lettre' },
-      { uid: crypto.randomUUID(), lettreId: l.id, display: l.nom, color: l.color, type: 'nom' },
+      { uid: `${l.id}-a-${Math.random()}`, lettreId: l.id, display: l.lettre, color: l.color, type: 'lettre' },
+      { uid: `${l.id}-b-${Math.random()}`, lettreId: l.id, display: l.lettre, color: l.color, type: 'lettre' },
     ])
     setCards(shuffle(pairs))
     setFlipped([])

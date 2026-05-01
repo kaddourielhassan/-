@@ -128,8 +128,8 @@ export const categories = rawCategories.map((cat) => ({
   mots: cat.mots.map((mot, index) => ({
     ...mot,
     // Every vocabulary entry exposes both image and audio paths.
-    image: mot.image || `/resources/images/vocabulaire/${cat.id}-${index + 1}.webp`,
-    audio: mot.audio || `/resources/audio/vocabulaire/${cat.id}-${index + 1}.mp3`,
+    image: mot.image || `resources/images/vocabulaire/${cat.id}-${index + 1}.webp`,
+    audio: mot.audio || `resources/audio/vocabulaire/${cat.id}-${index + 1}.mp3`,
   })),
 }))
 
