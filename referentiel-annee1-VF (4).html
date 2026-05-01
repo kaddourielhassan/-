@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referentiel Annee 1 — Enseignement de l'Arabe Fusha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-deep: #1a4d5c; --primary-medium: #2d7d8a; --primary-light: #4fa8b8;
+            --accent-gold: #d4a853; --accent-gold-light: #e8c97a; --accent-coral: #e07a5f;
+            --neutral-dark: #2c3e50; --neutral-medium: #5d6d7e; --neutral-light: #ecf0f1;
+            --white: #ffffff; --bg-cream: #faf8f5;
+            --shadow-soft: 0 4px 20px rgba(26, 77, 92, 0.08);
+            --shadow-medium: 0 8px 30px rgba(26, 77, 92, 0.12);
+            --radius-sm: 8px; --radius-md: 16px; --radius-lg: 24px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-cream); color: var(--neutral-dark); line-height: 1.7; font-size: 16px; }
+        .pattern-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.4; background-image: radial-gradient(circle at 20% 80%, var(--primary-light) 1px, transparent 1px), radial-gradient(circle at 80% 20%, var(--accent-gold) 1px, transparent 1px); background-size: 60px 60px, 80px 80px; }
+        .hero { background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-medium) 50%, var(--primary-light) 100%); color: var(--white); padding: 60px 40px; position: relative; overflow: hidden; }
+        .hero::after { content: 'السنة الأولى'; position: absolute; top: 50%; right: 60px; transform: translateY(-50%); font-family: 'Amiri', serif; font-size: 5rem; opacity: 0.15; direction: rtl; }
+        .hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.2); }
+        .hero-badge-dot { width: 8px; height: 8px; background: var(--accent-gold); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.2); } }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 700; margin-bottom: 15px; line-height: 1.2; }
+        .hero h1 .arabic-title { font-family: 'Amiri', serif; display: block; font-size: 2rem; opacity: 0.9; margin-top: 10px; direction: rtl; }
+        .hero-subtitle { font-size: 1.3rem; font-weight: 300; opacity: 0.95; max-width: 600px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); }
+        .hero-meta-item { display: flex; flex-direction: column; gap: 5px; }
+        .hero-meta-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
+        .hero-meta-value { font-size: 1.1rem; font-weight: 600; }
+        .nav-sticky { position: sticky; top: 0; background: var(--white); box-shadow: var(--shadow-soft); z-index: 100; padding: 0 40px; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 5px; overflow-x: auto; padding: 15px 0; scrollbar-width: none; }
+        .nav-inner::-webkit-scrollbar { display: none; }
+        .nav-link { padding: 10px 20px; border-radius: 50px; text-decoration: none; color: var(--neutral-medium); font-weight: 500; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease; }
+        .nav-link:hover { background: var(--neutral-light); color: var(--primary-deep); }
+        .nav-link.active { background: var(--primary-deep); color: var(--white); }
+        .main-content { max-width: 1200px; margin: 0 auto; padding: 50px 40px; }
+        .section { margin-bottom: 60px; }
+        .section-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .section-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-medium), var(--primary-light)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: var(--shadow-medium); }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary-deep); }
+        .section-title-arabic { font-family: 'Amiri', serif; font-size: 1rem; color: var(--neutral-medium); direction: rtl; display: block; margin-top: 5px; }
+        .card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(26, 77, 92, 0.05); transition: all 0.3s ease; }
+        .card:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
+        .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid var(--neutral-light); }
+        .card-number { width: 40px; height: 40px; background: var(--accent-gold); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
+        .card-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--primary-deep); }
+        .competency-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .competency-box { background: linear-gradient(135deg, var(--bg-cream), var(--white)); border-radius: var(--radius-md); padding: 25px; border-left: 4px solid var(--primary-medium); }
+        .competency-box h4 { color: var(--primary-deep); font-size: 1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .competency-box h4::before { content: '✓'; width: 22px; height: 22px; background: var(--primary-medium); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+        .competency-box ul { list-style: none; padding-left: 32px; }
+        .competency-box li { position: relative; padding: 8px 0; font-size: 0.95rem; color: var(--neutral-medium); }
+        .competency-box li::before { content: '—'; position: absolute; left: -20px; color: var(--accent-gold); }
+        .arabic-box { background: linear-gradient(135deg, #fefcf9, #fff9f0); border: 2px solid var(--accent-gold-light); border-radius: var(--radius-md); padding: 25px; margin: 20px 0; direction: rtl; text-align: right; }
+        .arabic-box .arabic-text { font-family: 'Amiri', serif; font-size: 1.5rem; line-height: 2.2; color: var(--primary-deep); }
+        .arabic-box .translation { direction: ltr; text-align: left; font-size: 0.9rem; color: var(--neutral-medium); margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--accent-gold-light); font-style: italic; }
+        .vocab-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 20px 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-soft); }
+        .vocab-table thead { background: linear-gradient(135deg, var(--primary-deep), var(--primary-medium)); color: var(--white); }
+        .vocab-table th { padding: 15px 20px; text-align: left; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .vocab-table th:last-child { text-align: right; direction: rtl; }
+        .vocab-table td { padding: 15px 20px; border-bottom: 1px solid var(--neutral-light); background: var(--white); }
+        .vocab-table tr:last-child td { border-bottom: none; }
+        .vocab-table tr:hover td { background: var(--bg-cream); }
+        .vocab-table .arabic { font-family: 'Amiri', serif; font-size: 1.4rem; text-align: right; direction: rtl; color: var(--primary-deep); }
+        .vocab-table .phonetic { color: var(--neutral-medium); font-size: 0.9rem; font-style: italic; }
+        .dialogue-container { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-medium); margin: 25px 0; }
+        .dialogue-header { background: linear-gradient(135deg, var(--accent-coral), #e8927d); color: var(--white); padding: 20px 25px; display: flex; align-items: center; gap: 15px; }
+        .dialogue-header-icon { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+        .dialogue-header h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+        .dialogue-header span { font-size: 0.9rem; opacity: 0.9; }
+        .dialogue-content { padding: 25px; }
+        .dialogue-line { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
+        .dialogue-line:last-child { margin-bottom: 0; }
+        .dialogue-speaker { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; flex-shrink: 0; font-family: 'Amiri', serif; }
+        .dialogue-speaker.teacher { background: linear-gradient(135deg, var(--primary-medium), var(--primary-light)); color: var(--white); }
+        .dialogue-speaker.student { background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light)); color: var(--white); }
+        .dialogue-bubble { flex: 1; padding: 15px 20px; border-radius: var(--radius-md); }
+        .dialogue-line.teacher-line .dialogue-bubble { background: var(--neutral-light); }
+        .dialogue-line.student-line .dialogue-bubble { background: linear-gradient(135deg, #fff9f0, #fefcf9); border: 1px solid var(--accent-gold-light); }
+        .dialogue-arabic { font-family: 'Amiri', serif; font-size: 1.4rem; direction: rtl; text-align: right; color: var(--primary-deep); margin-bottom: 8px; }
+        .dialogue-translation { font-size: 0.9rem; color: var(--neutral-medium); font-style: italic; }
+        .info-box { display: flex; gap: 20px; padding: 25px; border-radius: var(--radius-md); margin: 20px 0; }
+        .info-box.tip { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-left: 4px solid #4caf50; }
+        .info-box.warning { background: linear-gradient(135deg, #fff3e0, #fff8e1); border-left: 4px solid var(--accent-gold); }
+        .info-box.note { background: linear-gradient(135deg, #e3f2fd, #e8f5fc); border-left: 4px solid var(--primary-light); }
+        .info-box-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .info-box.tip .info-box-icon { background: #4caf50; color: var(--white); }
+        .info-box.warning .info-box-icon { background: var(--accent-gold); color: var(--white); }
+        .info-box.note .info-box-icon { background: var(--primary-light); color: var(--white); }
+        .info-box-content h5 { font-weight: 600; margin-bottom: 8px; color: var(--neutral-dark); }
+        .info-box-content p { font-size: 0.95rem; color: var(--neutral-medium); }
+        .game-card { background: linear-gradient(135deg, var(--white), var(--bg-cream)); border-radius: var(--radius-lg); padding: 25px; margin-bottom: 20px; border: 2px dashed var(--primary-light); position: relative; }
+        .game-card::before { content: '🎮'; position: absolute; top: 15px; right: 15px; font-size: 2rem; opacity: 0.3; }
+        .game-card h4 { font-family: 'Playfair Display', serif; color: var(--primary-deep); margin-bottom: 15px; }
+        .game-card p { color: var(--neutral-medium); margin-bottom: 15px; }
+        .game-card .game-example { background: var(--white); padding: 15px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-gold); }
+        .eval-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0; }
+        .eval-card { background: var(--white); border-radius: var(--radius-md); padding: 25px; text-align: center; box-shadow: var(--shadow-soft); border-top: 4px solid var(--primary-medium); }
+        .eval-card h5 { color: var(--primary-deep); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .eval-card p { font-size: 0.9rem; color: var(--neutral-medium); }
+        .moodle-section { background: linear-gradient(135deg, #7c4dff, #651fff); border-radius: var(--radius-lg); padding: 30px; color: var(--white); margin: 30px 0; }
+        .moodle-section h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 20px; }
+        .moodle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .moodle-item { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: var(--radius-md); padding: 20px; border: 1px solid rgba(255,255,255,0.2); }
+        .moodle-item h5 { font-weight: 600; margin-bottom: 10px; }
+        .moodle-item p { font-size: 0.9rem; opacity: 0.9; }
+        .timeline { position: relative; padding-left: 40px; }
+        .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--primary-medium), var(--accent-gold)); border-radius: 3px; }
+        .timeline-item { position: relative; margin-bottom: 30px; padding: 20px; background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); }
+        .timeline-item::before { content: ''; position: absolute; left: -33px; top: 25px; width: 15px; height: 15px; background: var(--white); border: 3px solid var(--primary-medium); border-radius: 50%; }
+        .timeline-period { display: inline-block; background: var(--primary-light); color: var(--white); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; }
+        .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--primary-deep); margin-bottom: 10px; }
+        .timeline-content { font-size: 0.95rem; color: var(--neutral-medium); }
+        .lexique-summary { background: linear-gradient(135deg, var(--primary-deep), var(--primary-medium)); border-radius: var(--radius-lg); padding: 30px; color: var(--white); margin: 30px 0; }
+        .lexique-summary h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .lexique-summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        .lexique-summary-item { background: rgba(255,255,255,0.15); padding: 15px; border-radius: var(--radius-sm); text-align: center; }
+        .lexique-summary-item .count { font-size: 2rem; font-weight: 700; display: block; }
+        .lexique-summary-item .label { font-size: 0.85rem; opacity: 0.9; }
+        .lexique-total { background: var(--accent-gold); color: var(--primary-deep); padding: 20px; border-radius: var(--radius-md); text-align: center; margin-top: 20px; }
+        .lexique-total .count { font-size: 3rem; font-weight: 700; display: block; }
+        .lexique-total .label { font-size: 1rem; font-weight: 600; }
+        .footer { background: var(--primary-deep); color: var(--white); padding: 40px; text-align: center; margin-top: 60px; }
+        .footer p { opacity: 0.8; font-size: 0.9rem; }
+        .footer .arabic-footer { font-family: 'Amiri', serif; font-size: 1.3rem; margin-bottom: 15px; direction: rtl; }
+        @media print { .nav-sticky { display: none; } .hero { padding: 30px; } .card { box-shadow: none; border: 1px solid #ddd; } }
+        @media (max-width: 768px) { .hero { padding: 40px 20px; } .hero h1 { font-size: 2rem; } .hero::after { display: none; } .main-content { padding: 30px 20px; } .competency-grid, .eval-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="pattern-bg"></div>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><span class="hero-badge-dot"></span>Cycle 1 — Eveil · 6-8 ans</div>
+            <h1>Annee 1 : L'oreille et l'oeil<span class="arabic-title">السَّنَةُ الأُولَى: الأُذُنُ وَالعَيْن</span></h1>
+            <p class="hero-subtitle">Familiariser l'eleve avec le systeme phonologique arabe et le sens de lecture/ecriture, tout en construisant un premier capital lexical oral.</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item"><span class="hero-meta-label">Volume horaire</span><span class="hero-meta-value">75 heures / an</span></div>
+                <div class="hero-meta-item"><span class="hero-meta-label">Repartition</span><span class="hero-meta-value">2h30 × 30 semaines</span></div>
+                <div class="hero-meta-item"><span class="hero-meta-label">Dominante</span><span class="hero-meta-value">Oral 70% / Ecrit 30%</span></div>
+                <div class="hero-meta-item"><span class="hero-meta-label">Niveau vise</span><span class="hero-meta-value">pre-A1</span></div>
+                <div class="hero-meta-item"><span class="hero-meta-label">Lexique actif</span><span class="hero-meta-value">≈ 100 mots</span></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-sticky">
+        <div class="nav-inner">
+            <a href="#objectifs" class="nav-link active">Objectifs</a>
+            <a href="#competences" class="nav-link">Competences</a>
+            <a href="#contenus" class="nav-link">Contenus linguistiques</a>
+            <a href="#lexique" class="nav-link">Lexique complet</a>
+            <a href="#conversation" class="nav-link">Module conversationnel</a>
+            <a href="#culture" class="nav-link">Culture</a>
+            <a href="#moodle" class="nav-link">Moodle</a>
+            <a href="#evaluation" class="nav-link">Evaluation</a>
+            <a href="#lexique-enseignant" class="nav-link">Lexique enseignant</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <!-- Section: Objectifs -->
+        <section id="objectifs" class="section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div>
+                    <h2 class="section-title">Objectif global de l'annee</h2>
+                    <span class="section-title-arabic">الهَدَفُ العَامُّ لِلسَّنَة</span>
+                </div>
+            </div>
+            <div class="card">
+                <p style="font-size: 1.1rem; color: var(--neutral-dark); line-height: 1.9;">
+                    <strong>Apprivoiser l'oreille aux sonorites de l'arabe</strong> et <strong>le corps a l'ecriture de droite a gauche</strong>. 
+                    L'Annee 1 est une annee d'<em>immersion sonore</em> et de <em>decouverte du geste graphique</em>. 
+                    L'eleve apprend a reconnaitre les sons specifiques de l'arabe, a identifier les lettres, et a acquerir 
+                    un premier vocabulaire fonctionnel a travers des rituels et des comptines.
+                </p>
+            </div>
+            <div class="info-box note">
+                <div class="info-box-icon">💡</div>
+                <div class="info-box-content">
+                    <h5>Philosophie pedagogique</h5>
+                    <p>A cet age, l'apprentissage passe par le plaisir, le jeu et la repetition. L'objectif n'est pas la perfection mais la familiarisation. L'eleve doit <strong>aimer venir en cours d'arabe</strong> avant tout.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Competences -->
+        <section id="competences" class="section">
+            <div class="section-header">
+                <div class="section-icon">📋</div>
+                <div>
+                    <h2 class="section-title">Competences visees</h2>
+                    <span class="section-title-arabic">الكَفَاءَاتُ المُسْتَهْدَفَة</span>
+                </div>
+            </div>
+            <p style="margin-bottom: 25px; color: var(--neutral-medium);">En fin d'Annee 1, l'eleve est capable de :</p>
+            <div class="competency-grid">
+                <div class="competency-box">
+                    <h4>Comprehension orale</h4>
+                    <ul>
+                        <li>Reconnaitre les 28 lettres de l'alphabet a l'ecoute</li>
+                        <li>Distinguer les phonemes specifiques : ح/هـ, ع/أ, ص/س, ض/د, ط/ت, ق/ك</li>
+                        <li>Comprendre 5 consignes de classe</li>
+                        <li>Identifier le theme d'une comptine simple</li>
+                    </ul>
+                </div>
+                <div class="competency-box">
+                    <h4>Production orale</h4>
+                    <ul>
+                        <li>Reciter l'alphabet en chanson</li>
+                        <li>Se presenter : nom et age</li>
+                        <li>Saluer correctement</li>
+                        <li>Nommer les couleurs (8) et les chiffres (1-10)</li>
+                        <li>Utiliser 3 formules rituelles</li>
+                    </ul>
+                </div>
+                <div class="competency-box">
+                    <h4>Lecture</h4>
+                    <ul>
+                        <li>Identifier toutes les lettres en position isolee</li>
+                        <li>Associer lettre et son correspondant</li>
+                        <li>Lire des syllabes simples : consonne + voyelle courte (بَ، بِ، بُ)</li>
+                    </ul>
+                </div>
+                <div class="competency-box">
+                    <h4>Ecriture (initiation)</h4>
+                    <ul>
+                        <li>Tenir correctement l'outil scripteur (droite → gauche)</li>
+                        <li>Tracer les 12 lettres sans point</li>
+                        <li>Recopier son prenom en arabe</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 25px;">
+                <div class="card-header">
+                    <div class="card-number">✏️</div>
+                    <h3 class="card-title">Les 12 lettres prioritaires (sans point)</h3>
+                </div>
+                <div class="arabic-box">
+                    <div class="arabic-text" style="font-size: 2rem; letter-spacing: 15px;">ا &nbsp; ح &nbsp; د &nbsp; ر &nbsp; س &nbsp; ص &nbsp; ط &nbsp; ع &nbsp; ل &nbsp; م &nbsp; و &nbsp; ه</div>
+                    <div class="translation">Alif • Haa • Daal • Raa • Siin • Saad • Taa • 'Ayn • Laam • Miim • Waaw • Haa</div>
+                </div>
+                <div class="info-box tip">
+                    <div class="info-box-icon">✓</div>
+                    <div class="info-box-content">
+                        <h5>Pourquoi ces lettres en premier ?</h5>
+                        <p>Ces lettres permettent d'apprendre le geste graphique de base sans la complication des points. L'eleve se concentre sur le trace et le sens d'ecriture avant d'ajouter les points.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Contenus linguistiques -->
+        <section id="contenus" class="section">
+            <div class="section-header">
+                <div class="section-icon">📚</div>
+                <div>
+                    <h2 class="section-title">Contenus linguistiques</h2>
+                    <span class="section-title-arabic">المُحْتَوَيَاتُ اللُّغَوِيَّة</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-number">1</div>
+                    <h3 class="card-title">Phonetique — Sons specifiques</h3>
+                </div>
+                <p style="margin-bottom: 20px;">Les sons de l'arabe qui necessitent une attention particuliere :</p>
+                <table class="vocab-table">
+                    <thead><tr><th>Paire de sons</th><th>Type de son</th><th style="text-align: right;">الحُرُوف</th></tr></thead>
+                    <tbody>
+                        <tr><td>ح (Haa) vs هـ (Ha)</td><td class="phonetic">Pharyngal vs Glottal</td><td class="arabic">حَ / هَـ</td></tr>
+                        <tr><td>ع ('Ayn) vs أ (Alif)</td><td class="phonetic">Pharyngal vs Coup de glotte</td><td class="arabic">عَ / أَ</td></tr>
+                        <tr><td>ص (Saad) vs س (Siin)</td><td class="phonetic">Emphatique vs Simple</td><td class="arabic">صَ / سَ</td></tr>
+                        <tr><td>ض (Daad) vs د (Daal)</td><td class="phonetic">Emphatique vs Simple</td><td class="arabic">ضَ / دَ</td></tr>
+                        <tr><td>ط (Taa) vs ت (Ta)</td><td class="phonetic">Emphatique vs Simple</td><td class="arabic">طَ / تَ</td></tr>
+                        <tr><td>ق (Qaaf) vs ك (Kaaf)</td><td class="phonetic">Uvulaire vs Velaire</td><td class="arabic">قَ / كَ</td></tr>
+                    </tbody>
+                </table>
+                <div class="info-box tip">
+                    <div class="info-box-icon">✓</div>
+                    <div class="info-box-content">
+                        <h5>Conseil pedagogique</h5>
+                        <p>Utilisez des paires minimales en jeu : l'enseignant prononce, l'eleve leve la carte correspondante. Repetez regulierement ces exercices de discrimination auditive tout au long de l'annee.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-number">2</div>
+                    <h3 class="card-title">Voyelles courtes (الحَرَكَات)</h3>
+                </div>
+                <div class="arabic-box">
+                    <div class="arabic-text">بَ بِ بُ &nbsp;•&nbsp; تَ تِ تُ &nbsp;•&nbsp; ثَ ثِ ثُ</div>
+                    <div class="translation"><strong>Fatḥa</strong> (a) — <strong>Kasra</strong> (i) — <strong>Ḍamma</strong> (ou)</div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Voyelle</th><th>Nom arabe</th><th>Son</th><th style="text-align: right;">الرَّمْز</th></tr></thead>
+                    <tbody>
+                        <tr><td>Fatḥa</td><td class="phonetic">فَتْحَة</td><td>« a » bref</td><td class="arabic">ـَ</td></tr>
+                        <tr><td>Kasra</td><td class="phonetic">كَسْرَة</td><td>« i » bref</td><td class="arabic">ـِ</td></tr>
+                        <tr><td>Ḍamma</td><td class="phonetic">ضَمَّة</td><td>« ou » bref</td><td class="arabic">ـُ</td></tr>
+                        <tr><td>Sukūn</td><td class="phonetic">سُكُون</td><td>Absence de voyelle</td><td class="arabic">ـْ</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section: Lexique Complet -->
+        <section id="lexique" class="section">
+            <div class="section-header">
+                <div class="section-icon">📖</div>
+                <div>
+                    <h2 class="section-title">Lexique complet — Annee 1</h2>
+                    <span class="section-title-arabic">المُفْرَدَاتُ الكَامِلَة — السَّنَةُ الأُولَى</span>
+                </div>
+            </div>
+            <div class="lexique-summary">
+                <h3>📊 Recapitulatif du lexique</h3>
+                <div class="lexique-summary-grid">
+                    <div class="lexique-summary-item"><span class="count">8</span><span class="label">Couleurs</span></div>
+                    <div class="lexique-summary-item"><span class="count">10</span><span class="label">Nombres</span></div>
+                    <div class="lexique-summary-item"><span class="count">8</span><span class="label">Salutations</span></div>
+                    <div class="lexique-summary-item"><span class="count">6</span><span class="label">Vocabulaire religieux</span></div>
+                    <div class="lexique-summary-item"><span class="count">5</span><span class="label">Consignes</span></div>
+                    <div class="lexique-summary-item"><span class="count">3</span><span class="label">Emotions</span></div>
+                    <div class="lexique-summary-item"><span class="count">5</span><span class="label">Corps humain</span></div>
+                    <div class="lexique-summary-item"><span class="count">6</span><span class="label">Animaux</span></div>
+                    <div class="lexique-summary-item"><span class="count">10</span><span class="label">Objets classe</span></div>
+                    <div class="lexique-summary-item"><span class="count">8</span><span class="label">Nourriture</span></div>
+                    <div class="lexique-summary-item"><span class="count">6</span><span class="label">Famille</span></div>
+                    <div class="lexique-summary-item"><span class="count">10</span><span class="label">Mots outils</span></div>
+                </div>
+                <div class="lexique-total"><span class="count">≈ 100</span><span class="label">Mots actifs en fin d'Annee 1</span></div>
+            </div>
+
+            <!-- Les couleurs -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">🎨</div><h3 class="card-title">Les couleurs (الأَلْوَان) — 8 mots</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Rouge</td><td class="phonetic">Aḥmar</td><td class="arabic">أَحْمَر</td></tr>
+                        <tr><td>Bleu</td><td class="phonetic">Azraq</td><td class="arabic">أَزْرَق</td></tr>
+                        <tr><td>Vert</td><td class="phonetic">Akhḍar</td><td class="arabic">أَخْضَر</td></tr>
+                        <tr><td>Jaune</td><td class="phonetic">Aṣfar</td><td class="arabic">أَصْفَر</td></tr>
+                        <tr><td>Blanc</td><td class="phonetic">Abyaḍ</td><td class="arabic">أَبْيَض</td></tr>
+                        <tr><td>Noir</td><td class="phonetic">Aswad</td><td class="arabic">أَسْوَد</td></tr>
+                        <tr><td>Orange</td><td class="phonetic">Burtuqālī</td><td class="arabic">بُرْتُقَالِي</td></tr>
+                        <tr><td>Rose</td><td class="phonetic">Wardī</td><td class="arabic">وَرْدِي</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Les nombres -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">🔢</div><h3 class="card-title">Les nombres 1-10 (الأَرْقَام) — 10 mots</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Chiffre</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td class="phonetic">Wāḥid</td><td class="arabic">وَاحِد</td></tr>
+                        <tr><td>2</td><td class="phonetic">Ithnān</td><td class="arabic">اِثْنَان</td></tr>
+                        <tr><td>3</td><td class="phonetic">Thalātha</td><td class="arabic">ثَلَاثَة</td></tr>
+                        <tr><td>4</td><td class="phonetic">Arba'a</td><td class="arabic">أَرْبَعَة</td></tr>
+                        <tr><td>5</td><td class="phonetic">Khamsa</td><td class="arabic">خَمْسَة</td></tr>
+                        <tr><td>6</td><td class="phonetic">Sitta</td><td class="arabic">سِتَّة</td></tr>
+                        <tr><td>7</td><td class="phonetic">Sab'a</td><td class="arabic">سَبْعَة</td></tr>
+                        <tr><td>8</td><td class="phonetic">Thamāniya</td><td class="arabic">ثَمَانِيَة</td></tr>
+                        <tr><td>9</td><td class="phonetic">Tis'a</td><td class="arabic">تِسْعَة</td></tr>
+                        <tr><td>10</td><td class="phonetic">'Ashara</td><td class="arabic">عَشَرَة</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Salutations -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">👋</div><h3 class="card-title">Salutations et formules (التَّحِيَّات) — 8 formules</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Contexte</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Que la paix soit sur vous</td><td class="phonetic">Salutation principale</td><td class="arabic">السَّلَامُ عَلَيْكُمْ</td></tr>
+                        <tr><td>Et sur vous la paix</td><td class="phonetic">Reponse</td><td class="arabic">وَعَلَيْكُمُ السَّلَام</td></tr>
+                        <tr><td>Bonjour (matin)</td><td class="phonetic">Le matin</td><td class="arabic">صَبَاحُ الخَيْر</td></tr>
+                        <tr><td>Bonjour (reponse)</td><td class="phonetic">Reponse matin</td><td class="arabic">صَبَاحُ النُّور</td></tr>
+                        <tr><td>Bonsoir</td><td class="phonetic">L'apres-midi/soir</td><td class="arabic">مَسَاءُ الخَيْر</td></tr>
+                        <tr><td>Au revoir</td><td class="phonetic">Quitter</td><td class="arabic">مَعَ السَّلَامَة</td></tr>
+                        <tr><td>Merci</td><td class="phonetic">Remercier</td><td class="arabic">شُكْرًا</td></tr>
+                        <tr><td>De rien</td><td class="phonetic">Reponse a merci</td><td class="arabic">عَفْوًا</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Vocabulaire religieux -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">🕌</div><h3 class="card-title">Vocabulaire religieux — 6 mots</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Usage</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Dieu</td><td class="phonetic">Nom divin</td><td class="arabic">الله</td></tr>
+                        <tr><td>Mosquee</td><td class="phonetic">Lieu de culte</td><td class="arabic">مَسْجِد</td></tr>
+                        <tr><td>Priere</td><td class="phonetic">Acte de culte</td><td class="arabic">صَلَاة</td></tr>
+                        <tr><td>Au nom de Dieu</td><td class="phonetic">Avant de commencer</td><td class="arabic">بِسْمِ الله</td></tr>
+                        <tr><td>Louange a Dieu</td><td class="phonetic">Gratitude</td><td class="arabic">الحَمْدُ لِله</td></tr>
+                        <tr><td>Si Dieu le veut</td><td class="phonetic">Projet futur</td><td class="arabic">إِنْ شَاءَ الله</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Consignes de classe -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">📣</div><h3 class="card-title">Consignes de classe — 5 mots</h3></div>
+                <div class="arabic-box">
+                    <div class="arabic-text">اِجْلِسْ &nbsp;•&nbsp; قِفْ &nbsp;•&nbsp; اُنْظُرْ &nbsp;•&nbsp; اِسْتَمِعْ &nbsp;•&nbsp; أَحْسَنْتَ</div>
+                    <div class="translation">Assieds-toi • Leve-toi • Regarde • Ecoute • Bravo / Tres bien</div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Assieds-toi</td><td class="phonetic">Ijlis</td><td class="arabic">اِجْلِسْ</td></tr>
+                        <tr><td>Leve-toi</td><td class="phonetic">Qif</td><td class="arabic">قِفْ</td></tr>
+                        <tr><td>Regarde</td><td class="phonetic">Unẓur</td><td class="arabic">اُنْظُرْ</td></tr>
+                        <tr><td>Ecoute</td><td class="phonetic">Istami'</td><td class="arabic">اِسْتَمِعْ</td></tr>
+                        <tr><td>Bravo / Tres bien</td><td class="phonetic">Aḥsanta</td><td class="arabic">أَحْسَنْتَ</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Emotions -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">😊</div><h3 class="card-title">Les emotions (المَشَاعِر) — 3 mots</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Content / Ca va</td><td class="phonetic">Sa'īd</td><td class="arabic">سَعِيد</td></tr>
+                        <tr><td>Triste</td><td class="phonetic">Ḥazīn</td><td class="arabic">حَزِين</td></tr>
+                        <tr><td>En colere</td><td class="phonetic">Ghāḍib</td><td class="arabic">غَاضِب</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Corps humain -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">🧍</div><h3 class="card-title">Le corps humain (جِسْمُ الإِنْسَان) — 5 mots</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Tete</td><td class="phonetic">Ra's</td><td class="arabic">رَأْس</td></tr>
+                        <tr><td>Main</td><td class="phonetic">Yad</td><td class="arabic">يَد</td></tr>
+                        <tr><td>Pied / Jambe</td><td class="phonetic">Rijl</td><td class="arabic">رِجْل</td></tr>
+                        <tr><td>Oeil</td><td class="phonetic">'Ayn</td><td class="arabic">عَيْن</td></tr>
+                        <tr><td>Bouche</td><td class="phonetic">Fam</td><td class="arabic">فَم</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Animaux domestiques -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">🐱</div><h3 class="card-title">Les animaux domestiques (الحَيَوَانَاتُ الأَلِيفَة) — 6 mots</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Chat</td><td class="phonetic">Qiṭṭ</td><td class="arabic">قِطّ</td></tr>
+                        <tr><td>Chien</td><td class="phonetic">Kalb</td><td class="arabic">كَلْب</td></tr>
+                        <tr><td>Oiseau</td><td class="phonetic">Ṭā'ir</td><td class="arabic">طَائِر</td></tr>
+                        <tr><td>Poisson</td><td class="phonetic">Samak</td><td class="arabic">سَمَك</td></tr>
+                        <tr><td>Lapin</td><td class="phonetic">Arnab</td><td class="arabic">أَرْنَب</td></tr>
+                        <tr><td>Poule</td><td class="phonetic">Dajāja</td><td class="arabic">دَجَاجَة</td></tr>
+                    </tbody>
+                </table>
+                <div class="info-box tip">
+                    <div class="info-box-icon">✓</div>
+                    <div class="info-box-content"><h5>Conseil pedagogique</h5><p>Utilisez des images d'animaux ou des peluches pour rendre l'apprentissage concret. Les enfants adorent parler de leurs animaux de compagnie !</p></div>
+                </div>
+            </div>
+
+            <!-- Objets de la classe -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">📚</div><h3 class="card-title">Les objets de la classe (أَدَوَاتُ الفَصْل) — 10 mots</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Livre</td><td class="phonetic">Kitāb</td><td class="arabic">كِتَاب</td></tr>
+                        <tr><td>Cahier</td><td class="phonetic">Daftar</td><td class="arabic">دَفْتَر</td></tr>
+                        <tr><td>Crayon</td><td class="phonetic">Qalam</td><td class="arabic">قَلَم</td></tr>
+                        <tr><td>Table</td><td class="phonetic">Ṭāwila</td><td class="arabic">طَاوِلَة</td></tr>
+                        <tr><td>Chaise</td><td class="phonetic">Kursī</td><td class="arabic">كُرْسِي</td></tr>
+                        <tr><td>Tableau</td><td class="phonetic">Sabbūra</td><td class="arabic">سَبُّورَة</td></tr>
+                        <tr><td>Sac</td><td class="phonetic">Ḥaqība</td><td class="arabic">حَقِيبَة</td></tr>
+                        <tr><td>Gomme</td><td class="phonetic">Mimḥāt</td><td class="arabic">مِمْحَاة</td></tr>
+                        <tr><td>Regle</td><td class="phonetic">Misṭara</td><td class="arabic">مِسْطَرَة</td></tr>
+                        <tr><td>Feuille</td><td class="phonetic">Waraqa</td><td class="arabic">وَرَقَة</td></tr>
+                    </tbody>
+                </table>
+                <div class="info-box note">
+                    <div class="info-box-icon">💡</div>
+                    <div class="info-box-content"><h5>Activite suggeree</h5><p>Etiquetez les objets de la classe en arabe ! Les eleves verront les mots tous les jours et les memoriseront naturellement.</p></div>
+                </div>
+            </div>
+
+            <!-- Nourriture -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">🍎</div><h3 class="card-title">La nourriture (الطَّعَام) — 8 mots</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Pain</td><td class="phonetic">Khubz</td><td class="arabic">خُبْز</td></tr>
+                        <tr><td>Eau</td><td class="phonetic">Mā'</td><td class="arabic">مَاء</td></tr>
+                        <tr><td>Lait</td><td class="phonetic">Ḥalīb</td><td class="arabic">حَلِيب</td></tr>
+                        <tr><td>Pomme</td><td class="phonetic">Tuffāḥa</td><td class="arabic">تُفَّاحَة</td></tr>
+                        <tr><td>Banane</td><td class="phonetic">Mawza</td><td class="arabic">مَوْزَة</td></tr>
+                        <tr><td>Jus</td><td class="phonetic">'Aṣīr</td><td class="arabic">عَصِير</td></tr>
+                        <tr><td>Gateau</td><td class="phonetic">Ka'ka</td><td class="arabic">كَعْكَة</td></tr>
+                        <tr><td>Bonbon</td><td class="phonetic">Ḥalwā</td><td class="arabic">حَلْوَى</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Famille -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">👨‍👩‍👧‍👦</div><h3 class="card-title">La famille proche (العَائِلَة) — 6 mots</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Papa</td><td class="phonetic">Bābā / Ab</td><td class="arabic">بَابَا / أَب</td></tr>
+                        <tr><td>Maman</td><td class="phonetic">Māmā / Umm</td><td class="arabic">مَامَا / أُمّ</td></tr>
+                        <tr><td>Frere</td><td class="phonetic">Akh</td><td class="arabic">أَخ</td></tr>
+                        <tr><td>Soeur</td><td class="phonetic">Ukht</td><td class="arabic">أُخْت</td></tr>
+                        <tr><td>Grand-pere</td><td class="phonetic">Jadd</td><td class="arabic">جَدّ</td></tr>
+                        <tr><td>Grand-mere</td><td class="phonetic">Jadda</td><td class="arabic">جَدَّة</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mots outils -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">🔧</div><h3 class="card-title">Mots outils essentiels (كَلِمَاتٌ أَسَاسِيَّة) — 10 mots</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
+                    <tbody>
+                        <tr><td>Oui</td><td class="phonetic">Na'am</td><td class="arabic">نَعَمْ</td></tr>
+                        <tr><td>Non</td><td class="phonetic">Lā</td><td class="arabic">لَا</td></tr>
+                        <tr><td>Et</td><td class="phonetic">Wa</td><td class="arabic">وَ</td></tr>
+                        <tr><td>Moi / Je</td><td class="phonetic">Anā</td><td class="arabic">أَنَا</td></tr>
+                        <tr><td>Toi (masculin)</td><td class="phonetic">Anta</td><td class="arabic">أَنْتَ</td></tr>
+                        <tr><td>Toi (feminin)</td><td class="phonetic">Anti</td><td class="arabic">أَنْتِ</td></tr>
+                        <tr><td>C'est / Voici (masc.)</td><td class="phonetic">Hādhā</td><td class="arabic">هَذَا</td></tr>
+                        <tr><td>C'est / Voici (fem.)</td><td class="phonetic">Hādhihi</td><td class="arabic">هَذِهِ</td></tr>
+                        <tr><td>Ou ?</td><td class="phonetic">Ayna</td><td class="arabic">أَيْنَ</td></tr>
+                        <tr><td>Quoi ?</td><td class="phonetic">Mā / Mādhā</td><td class="arabic">مَا / مَاذَا</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Expressions conversationnelles -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">💬</div><h3 class="card-title">Expressions conversationnelles — Questions/Reponses</h3></div>
+                <table class="vocab-table">
+                    <thead><tr><th>Question</th><th>Reponse type</th><th style="text-align: right;">السُّؤَال / الجَوَاب</th></tr></thead>
+                    <tbody>
+                        <tr><td>Comment t'appelles-tu ?</td><td class="phonetic">Je m'appelle...</td><td class="arabic">مَا اسْمُكَ؟ / اِسْمِي...</td></tr>
+                        <tr><td>Quel age as-tu ?</td><td class="phonetic">J'ai... ans</td><td class="arabic">كَمْ عُمْرُكَ؟ / عُمْرِي... سَنَوَات</td></tr>
+                        <tr><td>Comment vas-tu ?</td><td class="phonetic">Ca va, grace a Dieu</td><td class="arabic">كَيْفَ حَالُكَ؟ / بِخَيْر، الحَمْدُ لِله</td></tr>
+                        <tr><td>Es-tu content ? / Ca va ?</td><td class="phonetic">Oui / Non</td><td class="arabic">هَلْ أَنْتَ بِخَيْر؟ / نَعَمْ / لَا</td></tr>
+                        <tr><td>Qu'est-ce que c'est ?</td><td class="phonetic">C'est un/une...</td><td class="arabic">مَا هَذَا؟ / هَذَا...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section: Module Conversationnel -->
+        <section id="conversation" class="section">
+            <div class="section-header">
+                <div class="section-icon">💬</div>
+                <div>
+                    <h2 class="section-title">Module conversationnel</h2>
+                    <span class="section-title-arabic">وَحْدَةُ المُحَادَثَة</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-number">🎯</div>
+                    <h3 class="card-title">« Les premiers mots qui parlent »</h3>
+                </div>
+                <p style="font-size: 1.05rem; margin-bottom: 20px;">
+                    <strong>Objectif :</strong> Installer des rituels oraux quotidiens et des reponses reflexes.<br>
+                    <strong>Temps dedie :</strong> 5 minutes par cours (rituels d'accueil et de cloture)
+                </p>
+                <div class="info-box warning">
+                    <div class="info-box-icon">⏱️</div>
+                    <div class="info-box-content">
+                        <h5>Duree des echanges en Annee 1</h5>
+                        <p>Les echanges conversationnels durent <strong>10 a 15 secondes maximum</strong>. L'objectif est la memorisation par la repetition, pas la spontaneite.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rituels d'accueil -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">1</div><h3 class="card-title">Rituels d'accueil (2-3 min)</h3></div>
+                <h4 style="color: var(--primary-deep); margin: 20px 0 15px;">📅 Semaines 1-10 : Le cercle des salutations</h4>
+                <p style="margin-bottom: 15px; color: var(--neutral-medium);">L'enseignant entre et dit, les eleves repondent <strong>en choeur</strong> puis <strong>individuellement</strong> :</p>
+                <div class="dialogue-container">
+                    <div class="dialogue-header">
+                        <div class="dialogue-header-icon">🔄</div>
+                        <div><h4>Rituel quotidien — Salutations</h4><span>A repeter chaque debut de cours</span></div>
+                    </div>
+                    <div class="dialogue-content">
+                        <div class="dialogue-line teacher-line">
+                            <div class="dialogue-speaker teacher">م</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!السَّلَامُ عَلَيْكُمْ</div>
+                                <div class="dialogue-translation">Que la paix soit sur vous !</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">ت</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!وَعَلَيْكُمُ السَّلَام</div>
+                                <div class="dialogue-translation">Et sur vous la paix !</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line teacher-line">
+                            <div class="dialogue-speaker teacher">م</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">صَبَاحُ الخَيْر</div>
+                                <div class="dialogue-translation">Bonjour (le matin)</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">ت</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">صَبَاحُ النُّور</div>
+                                <div class="dialogue-translation">Bonjour (reponse)</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line teacher-line">
+                            <div class="dialogue-speaker teacher">م</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">كَيْفَ حَالُكُمْ؟</div>
+                                <div class="dialogue-translation">Comment allez-vous ?</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">ت</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!بِخَيْر، الحَمْدُ لِله</div>
+                                <div class="dialogue-translation">Ca va, louange a Dieu !</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--primary-deep); margin: 30px 0 15px;">📅 Semaines 11-20 : La ronde des prenoms</h4>
+                <div class="dialogue-container">
+                    <div class="dialogue-header">
+                        <div class="dialogue-header-icon">👋</div>
+                        <div><h4>Se presenter</h4><span>Question-reponse en chaine</span></div>
+                    </div>
+                    <div class="dialogue-content">
+                        <div class="dialogue-line teacher-line">
+                            <div class="dialogue-speaker teacher">م</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">مَا اسْمُكَ؟</div>
+                                <div class="dialogue-translation">Comment t'appelles-tu ?</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">ت</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">اِسْمِي يَاسِين</div>
+                                <div class="dialogue-translation">Je m'appelle Yassine</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line teacher-line">
+                            <div class="dialogue-speaker teacher">م</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">كَيْفَ حَالُكَ؟</div>
+                                <div class="dialogue-translation">Comment vas-tu ? / Ca va ?</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">ت</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!بِخَيْر، الحَمْدُ لِله</div>
+                                <div class="dialogue-translation">Ca va, louange a Dieu !</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--primary-deep); margin: 30px 0 15px;">📅 Semaines 21-30 : L'age et l'humeur</h4>
+                <div class="dialogue-container">
+                    <div class="dialogue-header">
+                        <div class="dialogue-header-icon">🎂</div>
+                        <div><h4>Dire son age et son humeur</h4><span>Extension de la presentation</span></div>
+                    </div>
+                    <div class="dialogue-content">
+                        <div class="dialogue-line teacher-line">
+                            <div class="dialogue-speaker teacher">م</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">كَمْ عُمْرُكَ؟</div>
+                                <div class="dialogue-translation">Quel age as-tu ?</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">ت</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">عُمْرِي سِتُّ سَنَوَات</div>
+                                <div class="dialogue-translation">J'ai six ans</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line teacher-line">
+                            <div class="dialogue-speaker teacher">م</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">هَلْ أَنْتَ بِخَيْر؟</div>
+                                <div class="dialogue-translation">Ca va ? / Es-tu bien ?</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">ت</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!نَعَمْ، أَنَا بِخَيْر</div>
+                                <div class="dialogue-translation">Oui, ca va !</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Micro-conversations -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">2</div><h3 class="card-title">Micro-conversations en binome (1-2 min)</h3></div>
+                <p style="margin-bottom: 20px; color: var(--neutral-medium);">A partir de la <strong>semaine 15</strong>, deux eleves face a face pratiquent ces dialogues courts :</p>
+                <div class="dialogue-container">
+                    <div class="dialogue-header">
+                        <div class="dialogue-header-icon">🅰️</div>
+                        <div><h4>Conversation type A — Se presenter</h4><span>Premier dialogue complet entre eleves</span></div>
+                    </div>
+                    <div class="dialogue-content">
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">أ</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!السَّلَامُ عَلَيْكُمْ</div>
+                                <div class="dialogue-translation">Que la paix soit sur vous !</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student" style="background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));">ب</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!وَعَلَيْكُمُ السَّلَام</div>
+                                <div class="dialogue-translation">Et sur vous la paix !</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">أ</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">مَا اسْمُكَ؟</div>
+                                <div class="dialogue-translation">Comment t'appelles-tu ?</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student" style="background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));">ب</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">اِسْمِي يَاسِين. وَأَنْتَ؟</div>
+                                <div class="dialogue-translation">Je m'appelle Yassine. Et toi ?</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">أ</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">اِسْمِي سَارَة</div>
+                                <div class="dialogue-translation">Je m'appelle Sara</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">أ</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!مَعَ السَّلَامَة</div>
+                                <div class="dialogue-translation">Au revoir !</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student" style="background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));">ب</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!مَعَ السَّلَامَة</div>
+                                <div class="dialogue-translation">Au revoir !</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dialogue-container" style="margin-top: 25px;">
+                    <div class="dialogue-header">
+                        <div class="dialogue-header-icon">🅱️</div>
+                        <div><h4>Conversation type B — L'humeur</h4><span>A partir de la semaine 25</span></div>
+                    </div>
+                    <div class="dialogue-content">
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">أ</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!صَبَاحُ الخَيْر</div>
+                                <div class="dialogue-translation">Bonjour !</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student" style="background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));">ب</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!صَبَاحُ النُّور</div>
+                                <div class="dialogue-translation">Bonjour ! (reponse)</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">أ</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">كَيْفَ حَالُكَ؟</div>
+                                <div class="dialogue-translation">Ca va ? / Comment vas-tu ?</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student" style="background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));">ب</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">أَنَا بِخَيْر! وَأَنْتَ؟</div>
+                                <div class="dialogue-translation">Ca va ! Et toi ?</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">أ</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">أَنَا بِخَيْر، الحَمْدُ لِله</div>
+                                <div class="dialogue-translation">Ca va, louange a Dieu</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rituels de cloture -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">3</div><h3 class="card-title">Rituels de cloture (1 min)</h3></div>
+                <div class="dialogue-container">
+                    <div class="dialogue-header">
+                        <div class="dialogue-header-icon">👋</div>
+                        <div><h4>Fin de cours</h4><span>A repeter chaque fin de cours</span></div>
+                    </div>
+                    <div class="dialogue-content">
+                        <div class="dialogue-line teacher-line">
+                            <div class="dialogue-speaker teacher">م</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!أَحْسَنْتُمْ</div>
+                                <div class="dialogue-translation">Bravo a tous !</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">ت</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!شُكْرًا</div>
+                                <div class="dialogue-translation">Merci !</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line teacher-line">
+                            <div class="dialogue-speaker teacher">م</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogue-arabic">!إِلَى اللِّقَاء</div>
+                                <div class="dialogue-translation">A bientot !</div>
+                            </div>
+                        </div>
+                        <div class="dialogue-line student-line">
+                            <div class="dialogue-speaker student">ت</div>
+                            <div class="dialogue-bubble">
+                                <div class="dialogic-arabic">!مَعَ السَّلَامَة</div>
+                                <div class="dialogue-translation">Au revoir !</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeux conversationnels -->
+            <div class="card">
+                <div class="card-header"><div class="card-number">4</div><h3 class="card-title">Jeux conversationnels</h3></div>
+                <div class="game-card">
+                    <h4>🎧 Le telephone arabe</h4>
+                    <p>Une phrase simple circule d'eleve en eleve. On verifie en fin de chaine si elle est restee intacte.</p>
+                    <div class="game-example"><strong>Exemple :</strong> « اِسْمِي أَحْمَد » circule → Verification a la fin</div>
+                </div>
+                <div class="game-card">
+                    <h4>🏐 La balle des salutations</h4>
+                    <p>L'enseignant lance une balle molle. Celui qui l'attrape doit saluer et se presenter.</p>
+                    <div class="game-example"><strong>Reponse attendue :</strong><br><span style="font-family: 'Amiri', serif; font-size: 1.2rem; direction: rtl;">!السَّلَامُ عَلَيْكُمْ! اِسْمِي فَاطِمَة</span></div>
+                </div>
+                <div class="game-card">
+                    <h4>🪞 Le miroir</h4>
+                    <p>Deux eleves face a face. L'un parle, l'autre repete exactement (travail phonetique).</p>
+                    <div class="game-example"><strong>Objectif :</strong> Ameliorer la prononciation par l'imitation precise</div>
+                </div>
+                <div class="game-card">
+                    <h4>🎯 Jacques a dit (سَمِيرٌ قَال)</h4>
+                    <p>L'enseignant donne des consignes. Les eleves n'obeissent que si la consigne est precedee de « سَمِيرٌ قَال ».</p>
+                    <div class="game-example"><strong>Exemple :</strong><br><span style="font-family: 'Amiri', serif; font-size: 1.2rem; direction: rtl;">سَمِيرٌ قَال: اِجْلِسْ! ← (les eleves s'assoient)<br>قِفْ! ← (ils ne bougent pas)</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Culture -->
+        <section id="culture" class="section">
+            <div class="section-header">
+                <div class="section-icon">🌍</div>
+                <div>
+                    <h2 class="section-title">Contenus culturels</h2>
+                    <span class="section-title-arabic">المُحْتَوَيَاتُ الثَّقَافِيَّة</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="competency-grid">
+                    <div class="competency-box">
+                        <h4>🎵 Chansons</h4>
+                        <ul>
+                            <li>Chansons de l'alphabet (Al-Habib Al-Ghaffas)</li>
+                            <li>Comptines sur les couleurs</li>
+                            <li>Comptines sur les nombres</li>
+                            <li>Comptines sur les animaux</li>
+                        </ul>
+                    </div>
+                    <div class="competency-box">
+                        <h4>🗺️ Geographie</h4>
+                        <ul>
+                            <li>Decouverte des pays arabes sur une carte</li>
+                            <li>Localisation visuelle simple</li>
+                            <li>Les drapeaux (reconnaissance)</li>
+                            <li>Le Maghreb : Maroc, Algerie, Tunisie</li>
+                        </ul>
+                    </div>
+                    <div class="competency-box">
+                        <h4>🎉 Fetes religieuses</h4>
+                        <ul>
+                            <li>عِيد الفِطْر — Fete de fin de Ramadan</li>
+                            <li>عِيد الأَضْحَى — Fete du sacrifice</li>
+                            <li>رَمَضَان — Le mois du jeune</li>
+                            <li>Vocabulaire associe (de base)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Moodle -->
+        <section id="moodle" class="section">
+            <div class="moodle-section">
+                <h3>💻 Organisation Moodle</h3>
+                <div class="moodle-grid">
+                    <div class="moodle-item">
+                        <h5>📚 En classe (2h30)</h5>
+                        <p>Ecoute collective et repetition chorale • Jeux phonetiques (reconnaissance de sons) • Initiation aux activites Moodle (manipulation guidee) • Trace des lettres au tableau puis sur ardoise</p>
+                    </div>
+                    <div class="moodle-item">
+                        <h5>🏠 A la maison (20-30 min/semaine)</h5>
+                        <p>Capsules audio : ecoute des lettres et comptines (2-3 min) • Jeux de reconnaissance lettre-son (glisser-deposer) • Coloriage interactif de « l'arbre de l'alphabet »</p>
+                    </div>
+                    <div class="moodle-item">
+                        <h5>🎤 Activite conversationnelle</h5>
+                        <p><strong>« Mon premier dialogue »</strong><br>Ecouter un dialogue modele (30 secondes) • S'enregistrer en repetant phrase par phrase • Badge « Premiere conversation » debloque</p>
+                    </div>
+                    <div class="moodle-item">
+                        <h5>🌳 Gamification</h5>
+                        <p><strong>L'arbre de l'alphabet</strong> : Un arbre virtuel qui se colorie au fur et a mesure de la progression. Chaque lettre maitrisee = une feuille coloree.</p>
+                    </div>
+                    <div class="moodle-item">
+                        <h5>📦 Quiz vocabulaire</h5>
+                        <p>Quiz thematiques sur les nouveaux themes : animaux, objets de classe, nourriture, famille. Activites H5P : glisser-deposer, associations image-mot.</p>
+                    </div>
+                    <div class="moodle-item">
+                        <h5>👨‍👩‍👧 Espace parents</h5>
+                        <p>Guide de prononciation pour les parents (meme non-arabophones). Videos explicatives pour accompagner l'enfant a la maison.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Evaluation -->
+        <section id="evaluation" class="section">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <div>
+                    <h2 class="section-title">Evaluation trimestrielle</h2>
+                    <span class="section-title-arabic">التَّقْيِيمُ الفَصْلِي</span>
+                </div>
+            </div>
+            <div class="eval-grid">
+                <div class="eval-card">
+                    <h5>Trimestre 1</h5>
+                    <p><strong>Reconnaissance orale</strong> des lettres أ → ك<br><br><strong>Trace</strong> de 6 lettres sans point<br><br><strong>Vocabulaire</strong> : couleurs, nombres 1-5</p>
+                </div>
+                <div class="eval-card">
+                    <h5>Trimestre 2</h5>
+                    <p><strong>Reconnaissance orale</strong> des lettres ل → ي<br><br><strong>Lecture</strong> de syllabes CV (بَ، بِ، بُ)<br><br><strong>Vocabulaire</strong> : famille, objets classe</p>
+                </div>
+                <div class="eval-card">
+                    <h5>Trimestre 3</h5>
+                    <p><strong>Alphabet complet</strong> oral + ecrit<br><br><strong>Se presenter</strong> oralement (nom, age)<br><br><strong>Vocabulaire</strong> : animaux, nourriture</p>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 30px;">
+                <h4 style="color: var(--primary-deep); margin-bottom: 20px;">Grille d'evaluation conversationnelle</h4>
+                <table class="vocab-table">
+                    <thead><tr><th>Competence</th><th>Non acquis</th><th>En cours</th><th>Acquis</th></tr></thead>
+                    <tbody>
+                        <tr><td>Saluer correctement</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
+                        <tr><td>Dire son prenom</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
+                        <tr><td>Dire son age</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
+                        <tr><td>Utiliser les formules rituelles</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
+                        <tr><td>Prendre conge</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
+                        <tr><td>Nommer un objet (هَذَا/هَذِهِ)</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
+                        <tr><td>Nommer les couleurs (8)</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
+                        <tr><td>Compter de 1 a 10</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="timeline" style="margin-top: 40px;">
+                <h4 style="margin-bottom: 25px; color: var(--primary-deep);">Progression annuelle</h4>
+                <div class="timeline-item">
+                    <span class="timeline-period">Semaines 1-10</span>
+                    <h5 class="timeline-title">Phase d'immersion</h5>
+                    <p class="timeline-content">Decouverte de l'alphabet (أ → ك) • Rituels de salutation en choeur • Premiers sons specifiques • Comptines de l'alphabet • <strong>Lexique :</strong> couleurs, nombres 1-5, salutations</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-period">Semaines 11-20</span>
+                    <h5 class="timeline-title">Phase de consolidation</h5>
+                    <p class="timeline-content">Alphabet complet (ل → ي) • Presentation individuelle • Micro-conversations en binome • <strong>Lexique :</strong> nombres 6-10, famille, objets de la classe, consignes</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-period">Semaines 21-30</span>
+                    <h5 class="timeline-title">Phase d'autonomie</h5>
+                    <p class="timeline-content">Lecture de syllabes CV • Dialogues complets • Expression de l'humeur et de l'age • <strong>Lexique :</strong> animaux, nourriture, corps humain, emotions • Preparation annee 2</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEXIQUE ENSEIGNANT -->
+        <section id="lexique-enseignant" class="section">
+            <div class="card" style="background: linear-gradient(135deg, #fff9f0, #fefcf9); border: 3px solid var(--accent-gold);">
+                <h2 style="font-family: 'Playfair Display', serif; color: var(--primary-deep); font-size: 2rem; margin-bottom: 10px; text-align: center;">📖 Lexique de reference pour les enseignants</h2>
+                <p style="text-align: center; color: var(--neutral-medium); margin-bottom: 30px; font-style: italic;">Vocabulaire technique et pedagogique du referentiel — Version definitive</p>
+
+                <!-- Termes pedagogiques -->
+                <div class="section-header" style="margin-top: 40px;">
+                    <div class="section-icon">🎓</div>
+                    <div class="section-title">Termes pedagogiques</div>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
+                    <tbody>
+                        <tr><td>Comprehension orale</td><td class="phonetic">Revisé</td><td class="arabic">فَهْمُ المَسْمُوع</td><td class="phonetic">هل فهمت المسموع؟ — As-tu compris ce que tu as entendu ?</td></tr>
+                        <tr><td>Production orale</td><td class="phonetic">Valide</td><td class="arabic">الإِنْتَاجُ الشَّفَهِي</td><td class="phonetic">نشاط الإنتاج الشفهي — Activite de production orale</td></tr>
+                        <tr><td>Lecture</td><td class="phonetic">Valide</td><td class="arabic">القِرَاءَة</td><td class="phonetic">القراءة الجهرية / القراءة الصامتة</td></tr>
+                        <tr><td>Ecriture</td><td class="phonetic">Valide</td><td class="arabic">الكِتَابَة</td><td class="phonetic">تدريب على الكتابة — Exercice d'ecriture</td></tr>
+                        <tr><td>Lexique actif</td><td class="phonetic">Valide</td><td class="arabic">المُفْرَدَاتُ النَّشِطَة</td><td class="phonetic">يستخدم المفردات النشطة في الحوار — Il utilise le vocabulaire actif dans le dialogue</td></tr>
+                        <tr><td>Immersion sonore</td><td class="phonetic">Valide</td><td class="arabic">الغَمْسُ الصَّوْتِي</td><td class="phonetic">جلسة الغمس الصوتي — Seance d'immersion sonore</td></tr>
+                        <tr><td>Rituel de classe</td><td class="phonetic">Revisé</td><td class="arabic">الأَنْشِطَةُ الاِعْتِيَادِيَّة</td><td class="phonetic">التحية، التاريخ، الأنشودة — Salutation, date, comptine</td></tr>
+                        <tr><td>Comptine</td><td class="phonetic">Revisé</td><td class="arabic">أُنْشُودَةٌ تَعْلِيمِيَّة</td><td class="phonetic">أنشودة الحروف — Comptine de l'alphabet</td></tr>
+                        <tr><td>Geste graphique</td><td class="phonetic">Valide</td><td class="arabic">الحَرَكَةُ الكِتَابِيَّة</td><td class="phonetic">يقلد الحركة الكتابية للحرف — Il imite le geste graphique de la lettre</td></tr>
+                        <tr><td>Discrimination auditive</td><td class="phonetic">Valide</td><td class="arabic">التَّمْيِيزُ السَّمْعِي</td><td class="phonetic">هل تسمع ص أم س ؟ — Entends-tu ص ou س ?</td></tr>
+                        <tr><td>Consigne</td><td class="phonetic">Ajout</td><td class="arabic">تَعْلِيمَة</td><td class="phonetic">اقرأ الكلمة واشر إلى الصورة — Lis le mot et montre l'image</td></tr>
+                        <tr><td>Etayage (scaffolding)</td><td class="phonetic">Ajout</td><td class="arabic">سَقَالَةٌ تَعْلِيمِيَّة</td><td class="phonetic">يقدم المعلم سقالة لمساعدة الطالب — L'enseignant apporte un etayage pour aider l'eleve</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- Morphologie arabe -->
+                <div class="section-header" style="margin-top: 40px;">
+                    <div class="section-icon">🔤</div>
+                    <div class="section-title">Morphologie arabe — section indispensable</div>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
+                    <tbody>
+                        <tr><td>Racine</td><td class="phonetic">Ajout</td><td class="arabic">جِذْر</td><td class="phonetic">ك – ت – ب → كَتَبَ، كِتَاب، كَاتِب، مَكْتَبَة</td></tr>
+                        <tr><td>Schema / Patron</td><td class="phonetic">Ajout</td><td class="arabic">وَزْن / قَالَب</td><td class="phonetic">وزن فاعل → كاتب، قارئ، لاعب</td></tr>
+                        <tr><td>Tanwin (Nunation)</td><td class="phonetic">Ajout</td><td class="arabic">تَنْوِين</td><td class="phonetic">كِتَابٌ (un livre) ≠ الكِتَابُ (le livre)</td></tr>
+                        <tr><td>Duel</td><td class="phonetic">Ajout</td><td class="arabic">مُثَنَّى</td><td class="phonetic">كِتَاب → كِتَابَانِ / كِتَابَيْنِ</td></tr>
+                        <tr><td>Pluriel brise</td><td class="phonetic">Ajout</td><td class="arabic">جَمْعُ التَّكْسِير</td><td class="phonetic">كِتَاب → كُتُب | بَيْت → بُيُوت | رَجُل → رِجَال</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- Termes grammaticaux -->
+                <div class="section-header" style="margin-top: 40px;">
+                    <div class="section-icon">📚</div>
+                    <div class="section-title">Termes grammaticaux</div>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
+                    <tbody>
+                        <tr><td>Alphabet</td><td class="phonetic">Valide</td><td class="arabic">الأَبْجَدِيَّة</td><td class="phonetic">أبجدية مكونة من ٢٨ حرفاً</td></tr>
+                        <tr><td>Lettre</td><td class="phonetic">Valide</td><td class="arabic">حَرْف</td><td class="phonetic">حرف الألف، حرف الباء</td></tr>
+                        <tr><td>Voyelle courte</td><td class="phonetic">Valide</td><td class="arabic">حَرَكَة</td><td class="phonetic">فتحة ـَ / ضمة ـُ / كسرة ـِ</td></tr>
+                        <tr><td>Fatḥa</td><td class="phonetic">Valide</td><td class="arabic">فَتْحَة</td><td class="phonetic">كَتَبَ — chaque ـَ est une fatḥa</td></tr>
+                        <tr><td>Kasra</td><td class="phonetic">Valide</td><td class="arabic">كَسْرَة</td><td class="phonetic">بِسْمِ اللهِ — le ـِ sous الباء est une kasra</td></tr>
+                        <tr><td>Ḍamma</td><td class="phonetic">Valide</td><td class="arabic">ضَمَّة</td><td class="phonetic">يَكْتُبُ — le ـُ sur الباء est une ḍamma</td></tr>
+                        <tr><td>Sukūn</td><td class="phonetic">Valide</td><td class="arabic">سُكُون</td><td class="phonetic">كَتْبٌ — le ـْ sur الباء indique l'absence de voyelle</td></tr>
+                        <tr><td>Syllabe</td><td class="phonetic">Valide</td><td class="arabic">مَقْطَع</td><td class="phonetic">كَ-تَ-بَ = 3 maqāṭiʿ ouverts CV</td></tr>
+                        <tr><td>Masculin / Feminin</td><td class="phonetic">Valide</td><td class="arabic">مُذَكَّر / مُؤَنَّث</td><td class="phonetic">كِتَابٌ (m.) — مَدْرَسَةٌ (f.) — شَمْسٌ (f. sans ة)</td></tr>
+                        <tr><td>Pronom</td><td class="phonetic">Valide</td><td class="arabic">ضَمِير</td><td class="phonetic">هُوَ، هِيَ، أَنَا، نَحْنُ — pronoms independants</td></tr>
+                        <tr><td>Question</td><td class="phonetic">Valide</td><td class="arabic">سُؤَال</td><td class="phonetic">مَا هٰذَا؟ / أَيْنَ الكِتَاب؟ / مَنْ أَنْتَ؟</td></tr>
+                        <tr><td>Solaire / Lunaire</td><td class="phonetic">Ajout</td><td class="arabic">شَمْسِي / قَمَرِي</td><td class="phonetic">الشَّمْس (al-shams) — الكِتَاب (al-kitāb)</td></tr>
+                        <tr><td>Geminee / Gemination</td><td class="phonetic">Ajout</td><td class="arabic">تَشْدِيد / شَدَّة</td><td class="phonetic">دَرَّسَ (enseigner) ≠ دَرَسَ (etudier)</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- Phonetique -->
+                <div class="section-header" style="margin-top: 40px;">
+                    <div class="section-icon">🔊</div>
+                    <div class="section-title">Phonetique — مخارج الحروف</div>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>API / IPA</th><th>Exemples & Commentaires</th></tr></thead>
+                    <tbody>
+                        <tr><td>Son / Phoneme</td><td class="phonetic">Valide</td><td class="arabic">صَوْت / صَوْتِيَّة</td><td class="phonetic">[sˤawt]</td><td class="phonetic">صوت الضاد — le phoneme ض</td></tr>
+                        <tr><td>Point d'articulation</td><td class="phonetic">Ajout</td><td class="arabic">مَخْرَج</td><td class="phonetic">[maχradʒ]</td><td class="phonetic">مخرج الضاد من حافة اللسان</td></tr>
+                        <tr><td>Mode d'articulation</td><td class="phonetic">Ajout</td><td class="arabic">صِفَة</td><td class="phonetic">[sˤifa]</td><td class="phonetic">صفة الجهر (sonore) / الهمس (sourd)</td></tr>
+                        <tr><td>Pharyngal</td><td class="phonetic">Valide</td><td class="arabic">حَلْقِي</td><td class="phonetic">[ħ] [ʕ] [χ] [ʁ]</td><td class="phonetic">حَ / عَ / خَ / غَ — les 4 lettres de الإظهار الحلقي</td></tr>
+                        <tr><td>Glottal</td><td class="phonetic">Valide</td><td class="arabic">حَنْجَرِي</td><td class="phonetic">[ʔ] [h]</td><td class="phonetic">أَكَلَ [ʔakala] / هَلْ [hal]</td></tr>
+                        <tr><td>Emphatique</td><td class="phonetic">Valide</td><td class="arabic">مُفَخَّم</td><td class="phonetic">[sˤ] [dˤ] [tˤ] [ðˤ]</td><td class="phonetic">سَبَّ / صَبَّ | دَلَّ / ضَلَّ | تَلَّ / طَلَّ</td></tr>
+                        <tr><td>Uvulaire</td><td class="phonetic">Revisé</td><td class="arabic">لَهَوِي</td><td class="phonetic">[q] [ʁ]</td><td class="phonetic">قَلْب [ʔalb] / غَيْب [ʁayb]</td></tr>
+                        <tr><td>Velaire</td><td class="phonetic">Valide</td><td class="arabic">حَنَكِي</td><td class="phonetic">[k] [x]</td><td class="phonetic">كَلِمَة [kalima] / خَبَر [xabar]</td></tr>
+                        <tr><td>Interdentale</td><td class="phonetic">Ajout</td><td class="arabic">أَسْنَانِي بَيْنِي</td><td class="phonetic">[θ] [ð] [ðˤ]</td><td class="phonetic">ثَلَاثَة [θalaːθa] / ذَهَب [ðahab] / ظَلَم [ðˤalam]</td></tr>
+                        <tr><td>Paire minimale</td><td class="phonetic">Valide</td><td class="arabic">زَوْجٌ أَدْنَى</td><td class="phonetic">—</td><td class="phonetic">سَبَّ / صَبَّ | قَلْب / كَلْب | حَرَّ / خَرَّ</td></tr>
+                        <tr><td>Position isolee</td><td class="phonetic">Valide</td><td class="arabic">وَضْعٌ مُنْفَصِل</td><td class="phonetic">—</td><td class="phonetic">ع isolé / عَـ initiale / ـعَـ mediane / ـع finale</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- Sociolinguistique -->
+                <div class="section-header" style="margin-top: 40px;">
+                    <div class="section-icon">🌐</div>
+                    <div class="section-title">Sociolinguistique arabe — section indispensable</div>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
+                    <tbody>
+                        <tr><td>Diglossie</td><td class="phonetic">Ajout</td><td class="arabic">الاِزْدِوَاجِيَّةُ اللُّغَوِيَّة</td><td class="phonetic">الفُصْحَى في الكِتَابَة ↔ العَامِّيَّة في الكَلَام اليَوْمِي</td></tr>
+                        <tr><td>Arabe standard (Fuṣḥā)</td><td class="phonetic">Ajout</td><td class="arabic">الفُصْحَى العَصْرِيَّة</td><td class="phonetic">لغة القرآن، الصحافة، التعليم</td></tr>
+                        <tr><td>Arabe dialectal (ʿĀmmiyya)</td><td class="phonetic">Ajout</td><td class="arabic">العَامِّيَّة</td><td class="phonetic">المَغْرِبِيَّة / المِصْرِيَّة / الشَّامِيَّة — Maghrebin / Egyptien / Levantin</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- Evaluation -->
+                <div class="section-header" style="margin-top: 40px;">
+                    <div class="section-icon">📊</div>
+                    <div class="section-title">Termes d'evaluation</div>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
+                    <tbody>
+                        <tr><td>Evaluation</td><td class="phonetic">Valide</td><td class="arabic">تَقْيِيم</td><td class="phonetic">ورقة التقييم — Fiche d'evaluation</td></tr>
+                        <tr><td>Competence</td><td class="phonetic">Valide</td><td class="arabic">كَفَاءَة</td><td class="phonetic">كفاءة التواصل الشفهي — Competence de communication orale</td></tr>
+                        <tr><td>Acquis</td><td class="phonetic">Revisé</td><td class="arabic">مُكْتَسَب</td><td class="phonetic">مكتسبات نهاية المرحلة — Acquis de fin de cycle</td></tr>
+                        <tr><td>En cours d'acquisition</td><td class="phonetic">Revisé</td><td class="arabic">قَيْدَ الاِكْتِسَاب</td><td class="phonetic">الكفاءة قيد الاكتساب — La competence est en cours d'acquisition</td></tr>
+                        <tr><td>Non acquis</td><td class="phonetic">Revisé</td><td class="arabic">غَيْرُ مُكْتَسَب</td><td class="phonetic">الهدف غير مكتسب بعد — L'objectif n'est pas encore acquis</td></tr>
+                        <tr><td>Niveau</td><td class="phonetic">Valide</td><td class="arabic">مُسْتَوَى</td><td class="phonetic">مستوى أول / ثان / ثالث</td></tr>
+                        <tr><td>Objectif</td><td class="phonetic">Valide</td><td class="arabic">هَدَف</td><td class="phonetic">الهدف من الدرس: أن ينطق الطالب حرف الضاد صحيحاً</td></tr>
+                        <tr><td>Progression</td><td class="phonetic">Valide</td><td class="arabic">تَطَوُّر</td><td class="phonetic">تطور الطالب خلال الفصل — Progression de l'eleve au cours du trimestre</td></tr>
+                        <tr><td>Evaluation formative</td><td class="phonetic">Ajout</td><td class="arabic">تَقْيِيمٌ تَكْوِينِي</td><td class="phonetic">ملاحظة، سؤال شفهي، بطاقة خروج — Observation, question orale, ticket de sortie</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- Numerique -->
+                <div class="section-header" style="margin-top: 40px;">
+                    <div class="section-icon">💻</div>
+                    <div class="section-title">Termes numeriques</div>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
+                    <tbody>
+                        <tr><td>Capsule audio</td><td class="phonetic">Revisé</td><td class="arabic">مَقْطَعٌ صَوْتِي</td><td class="phonetic">استمع إلى المقطع الصوتي ثم أجب — Ecoute la capsule puis reponds</td></tr>
+                        <tr><td>Quiz</td><td class="phonetic">Valide</td><td class="arabic">اِخْتِبَار</td><td class="phonetic">اختبار قصير من ١٠ أسئلة — Quiz de 10 questions</td></tr>
+                        <tr><td>Badge</td><td class="phonetic">Valide</td><td class="arabic">شَارَة</td><td class="phonetic">نلت شارة القراءة — Tu as obtenu le badge Lecture</td></tr>
+                        <tr><td>Gamification</td><td class="phonetic">Valide</td><td class="arabic">تَلْعِيب</td><td class="phonetic">تلعيب الدرس بنقاط وشارات — Gamification de la lecon avec points et badges</td></tr>
+                        <tr><td>Glisser-deposer</td><td class="phonetic">Valide</td><td class="arabic">سَحْبٌ وَإِفْلاَت</td><td class="phonetic">اسحب الحرف وأفلته في المكان الصحيح — Glisse la lettre et depose-la au bon endroit</td></tr>
+                        <tr><td>Association</td><td class="phonetic">Valide</td><td class="arabic">رَبْط</td><td class="phonetic">اربط الكلمة بصورتها — Associe le mot a son image</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- Culturel -->
+                <div class="section-header" style="margin-top: 40px;">
+                    <div class="section-icon">🌍</div>
+                    <div class="section-title">Termes culturels</div>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
+                    <tbody>
+                        <tr><td>Fete religieuse</td><td class="phonetic">Valide</td><td class="arabic">عِيد دِينِي</td><td class="phonetic">عيد الفطر وعيد الأضحى — Les deux grandes fetes de l'islam</td></tr>
+                        <tr><td>Ramadan</td><td class="phonetic">Valide</td><td class="arabic">رَمَضَان</td><td class="phonetic">شهر رمضان — Le mois de ramadan</td></tr>
+                        <tr><td>Aïd al-Fitr</td><td class="phonetic">Valide</td><td class="arabic">عِيدُ الفِطْر</td><td class="phonetic">كل عام وأنتم بخير — Formule de voeux traditionnelle</td></tr>
+                        <tr><td>Aïd al-Adha</td><td class="phonetic">Valide</td><td class="arabic">عِيدُ الأَضْحَى</td><td class="phonetic">عيد الأضحى المبارك — Le beni Aïd al-Adha</td></tr>
+                        <tr><td>Mosquee</td><td class="phonetic">Valide</td><td class="arabic">مَسْجِد</td><td class="phonetic">المسجد الحرام / المسجد النبوي</td></tr>
+                        <tr><td>Priere</td><td class="phonetic">Valide</td><td class="arabic">صَلَاة</td><td class="phonetic">الصلوات الخمس — Les cinq prieres quotidiennes</td></tr>
+                        <tr><td>Pays arabe</td><td class="phonetic">Valide</td><td class="arabic">بَلَدٌ عَرَبِي</td><td class="phonetic">٢٢ بلداً عربياً — 22 pays membres de la Ligue arabe</td></tr>
+                        <tr><td>Drapeau</td><td class="phonetic">Valide</td><td class="arabic">عَلَم</td><td class="phonetic">علم المغرب، علم مصر، علم لبنان</td></tr>
+                        <tr><td>Litterature</td><td class="phonetic">Ajout</td><td class="arabic">أَدَب</td><td class="phonetic">ألف ليلة وليلة / شعر المتنبي</td></tr>
+                        <tr><td>Marche / Souk</td><td class="phonetic">Ajout</td><td class="arabic">سُوق</td><td class="phonetic">سوق المدينة / سوق الخضار — Marche de la medina / marche des legumes</td></tr>
+                        <tr><td>Fete nationale</td><td class="phonetic">Ajout</td><td class="arabic">عِيدٌ وَطَنِي</td><td class="phonetic">عيد الاستقلال / اليوم الوطني</td></tr>
+                        <tr><td>Gastronomie arabe</td><td class="phonetic">Ajout</td><td class="arabic">مَطْبَخٌ عَرَبِي</td><td class="phonetic">كسكس، طاجين، حمص، فلافل، بقلاوة</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- Jeux -->
+                <div class="section-header" style="margin-top: 40px;">
+                    <div class="section-icon">🎮</div>
+                    <div class="section-title">Jeux et activites</div>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
+                </div>
+                <table class="vocab-table">
+                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
+                    <tbody>
+                        <tr><td>Jeu de role</td><td class="phonetic">Valide</td><td class="arabic">لُعْبَةُ الأَدْوَار</td><td class="phonetic">دور البائع ودور المشتري — Le role du vendeur et de l'acheteur</td></tr>
+                        <tr><td>Binome</td><td class="phonetic">Valide</td><td class="arabic">زَوْج</td><td class="phonetic">اعمل مع زوجك — Travaille avec ton binome</td></tr>
+                        <tr><td>Choeur (repetition)</td><td class="phonetic">Revisé</td><td class="arabic">تَرْدِيدٌ جَمَاعِي</td><td class="phonetic">رددوا معي جميعاً: بسم الله — Repetez tous ensemble !</td></tr>
+                        <tr><td>En chaine</td><td class="phonetic">Valide</td><td class="arabic">عَلَى التَّسَلْسُل</td><td class="phonetic">كل تلميذ يقول كلمة على التسلسل — Chaque eleve dit un mot a la suite</td></tr>
+                        <tr><td>Miroir</td><td class="phonetic">Valide</td><td class="arabic">مِرْآة</td><td class="phonetic">قلد حركة فمي كالمرآة — Imite le mouvement de ma bouche comme un miroir</td></tr>
+                        <tr><td>Etiqueter</td><td class="phonetic">Valide</td><td class="arabic">تَسْمِيَة</td><td class="phonetic">سم الأشياء في الصورة — Nomme les objets dans l'image</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box note" style="margin-top: 30px;">
+                    <div class="info-box-icon">💡</div>
+                    <div class="info-box-content">
+                        <h5>Note pour les enseignants</h5>
+                        <p>Ce lexique couvre les termes essentiels utilises dans le referentiel. Les transcriptions phonetiques entre parentheses dans le document principal utilisent un systeme simplifie pour faciliter la lecture aux enseignants non-arabophones. La version IPA (International Phonetic Alphabet) est fournie pour les termes phonetiques.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p class="arabic-footer">أُحِبُّ اللُّغَةَ العَرَبِيَّة</p>
+        <p>Referentiel d'enseignement de l'arabe — Annee 1</p>
+        <p style="margin-top: 10px; opacity: 0.6;">Cycle 1 : Eveil (6-8 ans) • ≈100 mots actifs • Niveau pre-A1</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const navHeight = document.querySelector('.nav-sticky').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - navHeight - 20;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navHeight = document.querySelector('.nav-sticky').offsetHeight;
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navHeight - 100;
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

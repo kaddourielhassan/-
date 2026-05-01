@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bibliothèque d'images — Arabe Année 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1D9E75; --teal-light: #9FE1CB; --teal-pale: #E1F5EE;
+    --gold: #BA7517; --gold-light: #FAC775; --gold-pale: #FAEEDA;
+    --coral: #993C1D; --coral-light: #F0997B; --coral-pale: #FAECE7;
+    --blue: #185FA5; --blue-light: #85B7EB; --blue-pale: #E6F1FB;
+    --purple: #534AB7; --purple-light: #AFA9EC; --purple-pale: #EEEDFE;
+    --gray: #5F5E5A; --gray-light: #D3D1C7; --gray-pale: #F1EFE8;
+    --text: #2C2C2A; --text-mid: #5F5E5A; --text-light: #888780;
+    --bg: #FDFCF8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(135deg, #0a2e24 0%, #1D9E75 60%, #9FE1CB 100%);
+    padding: 48px 32px 36px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: 'أ ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن ه و ي';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    font-family: 'Amiri', serif; font-size: 28px;
+    color: rgba(255,255,255,0.06); line-height: 1.8;
+    word-break: break-all; padding: 8px;
+    pointer-events: none; letter-spacing: 12px;
+  }
+  .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+    padding: 5px 14px; border-radius: 999px;
+    font-size: 12px; color: rgba(255,255,255,0.9); font-weight: 600;
+    letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .hero h1 { font-size: 36px; font-weight: 800; color: white; line-height: 1.1; margin-bottom: 6px; }
+  .hero-ar { font-family: 'Amiri', serif; font-size: 22px; color: rgba(255,255,255,0.75); direction: rtl; margin-bottom: 12px; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.7); font-weight: 400; }
+  .hero-stats { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); }
+  .stat { display: flex; flex-direction: column; gap: 2px; }
+  .stat-n { font-size: 22px; font-weight: 800; color: var(--gold-light); }
+  .stat-l { font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* TABS */
+  .tabs-wrap { background: white; border-bottom: 1.5px solid var(--gray-pale); position: sticky; top: 0; z-index: 50; }
+  .tabs { max-width: 960px; margin: 0 auto; padding: 0 16px; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    padding: 14px 16px; border: none; background: none; cursor: pointer;
+    font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;
+    color: var(--text-light); white-space: nowrap;
+    border-bottom: 3px solid transparent; margin-bottom: -1.5px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+  /* MAIN */
+  .main { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .section-head { margin-bottom: 24px; }
+  .section-head h2 { font-size: 22px; font-weight: 800; color: var(--text); }
+  .section-head p { font-size: 14px; color: var(--text-mid); margin-top: 4px; }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
+
+  /* CARD */
+  .card {
+    background: white; border: 1.5px solid var(--gray-pale);
+    border-radius: 16px; padding: 16px 10px 12px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    cursor: pointer; transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+    user-select: none;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--teal-light); box-shadow: 0 6px 20px rgba(29,158,117,0.1); }
+  .card:active { transform: translateY(0); }
+  .card svg { width: 80px; height: 80px; }
+  .card-fr { font-size: 13px; font-weight: 700; color: var(--text); text-align: center; line-height: 1.3; }
+  .card-ar { font-family: 'Amiri', serif; font-size: 18px; color: var(--teal); direction: rtl; line-height: 1.2; }
+  .card-ph { font-size: 10px; color: var(--text-light); font-style: italic; text-align: center; }
+
+  /* MODAL */
+  .modal-bg {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45); z-index: 200;
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-bg.open { display: flex; }
+  .modal {
+    background: white; border-radius: 24px; padding: 36px 32px;
+    max-width: 320px; width: 100%; text-align: center;
+    position: relative; animation: popIn 0.2s ease;
+  }
+  @keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .modal-close {
+    position: absolute; top: 14px; right: 16px;
+    border: none; background: var(--gray-pale); color: var(--text-mid);
+    width: 30px; height: 30px; border-radius: 50%;
+    font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .modal svg { width: 130px; height: 130px; }
+  .modal-fr { font-size: 22px; font-weight: 800; color: var(--text); margin-top: 14px; }
+  .modal-ar { font-family: 'Amiri', serif; font-size: 32px; color: var(--teal); direction: rtl; margin-top: 4px; line-height: 1.3; }
+  .modal-ph { font-size: 14px; color: var(--text-light); font-style: italic; margin-top: 4px; }
+  .modal-theme { display: inline-block; margin-top: 14px; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; background: var(--teal-pale); color: var(--teal); }
+  .modal-nav { display: flex; gap: 10px; justify-content: center; margin-top: 18px; }
+  .modal-nav button {
+    border: 1.5px solid var(--gray-light); background: white; border-radius: 10px;
+    padding: 8px 18px; font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;
+    color: var(--text-mid); cursor: pointer; transition: background 0.1s;
+  }
+  .modal-nav button:hover { background: var(--teal-pale); border-color: var(--teal); color: var(--teal); }
+
+  /* PRINT */
+  @media print {
+    .tabs-wrap, .modal-bg { display: none !important; }
+    .section { display: block !important; page-break-after: always; }
+    .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📚 Cycle 1 · Éveil · 6-8 ans</div>
+    <h1>Bibliothèque d'images<br>Arabe — Année 1</h1>
+    <div class="hero-ar">مَكْتَبَةُ الصُّوَر — السَّنَةُ الأُولَى</div>
+    <div class="hero-sub">Référentiel pré-A1 · Immersion sonore et découverte graphique</div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-n">11</span><span class="stat-l">Thèmes</span></div>
+      <div class="stat"><span class="stat-n">76</span><span class="stat-l">Images</span></div>
+      <div class="stat"><span class="stat-n">≈100</span><span class="stat-l">Mots actifs</span></div>
+      <div class="stat"><span class="stat-n">pré-A1</span><span class="stat-l">Niveau visé</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<div class="main" id="main"></div>
+
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-svg"></div>
+    <div class="modal-fr" id="modal-fr"></div>
+    <div class="modal-ar" id="modal-ar"></div>
+    <div class="modal-ph" id="modal-ph"></div>
+    <div id="modal-theme"></div>
+    <div class="modal-nav">
+      <button onclick="navModal(-1)">← Préc.</button>
+      <button onclick="navModal(1)">Suiv. →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── SVG DRAWERS ───────────────────────────────────────────────────────────────
+
+function couleurSVG(fill, stroke, label) {
+  const s = stroke || fill;
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="36" r="24" fill="${fill}" stroke="${s}" stroke-width="1.5"/>
+    <rect x="22" y="60" width="36" height="8" rx="4" fill="${fill}" stroke="${s}" stroke-width="1"/>
+  </svg>`;
+}
+
+function nombreSVG(n) {
+  const dots = [];
+  const perRow = n <= 5 ? n : Math.ceil(n / 2);
+  const rows = n <= 5 ? 1 : 2;
+  const r = 6;
+  for (let i = 0; i < n; i++) {
+    const row = (rows === 2 && i >= Math.ceil(n / 2)) ? 1 : 0;
+    const idx = (rows === 2 && i >= Math.ceil(n / 2)) ? i - Math.ceil(n / 2) : i;
+    const rowCount = row === 0 ? Math.ceil(n / 2) : n - Math.ceil(n / 2);
+    const totalW = (rowCount - 1) * 16;
+    const x = 40 - totalW / 2 + idx * 16;
+    const y = rows === 1 ? 44 : (row === 0 ? 36 : 54);
+    dots.push(`<circle cx="${x}" cy="${y}" r="${r}" fill="#1D9E75"/>`);
+  }
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <text x="40" y="20" text-anchor="middle" font-size="15" fill="#2C2C2A" font-weight="700" font-family="Nunito,sans-serif">${n}</text>
+    ${dots.join('')}
+  </svg>`;
+}
+
+function animalSVG(type) {
+  const m = {
+    chat: `<ellipse cx="40" cy="50" rx="21" ry="17" fill="#D3D1C7"/>
+           <circle cx="40" cy="29" r="14" fill="#D3D1C7"/>
+           <polygon points="27,19 21,7 33,15" fill="#D3D1C7"/>
+           <polygon points="53,19 59,7 47,15" fill="#D3D1C7"/>
+           <circle cx="34" cy="27" r="3.5" fill="#2C2C2A"/><circle cx="46" cy="27" r="3.5" fill="#2C2C2A"/>
+           <ellipse cx="40" cy="33" rx="3" ry="2" fill="#ED93B1"/>
+           <line x1="28" y1="32" x2="14" y2="29" stroke="#888780" stroke-width="1.2"/>
+           <line x1="28" y1="34" x2="14" y2="35" stroke="#888780" stroke-width="1.2"/>
+           <line x1="52" y1="32" x2="66" y2="29" stroke="#888780" stroke-width="1.2"/>
+           <line x1="52" y1="34" x2="66" y2="35" stroke="#888780" stroke-width="1.2"/>`,
+    chien: `<ellipse cx="40" cy="50" rx="22" ry="16" fill="#FAC775"/>
+            <circle cx="40" cy="29" r="14" fill="#FAC775"/>
+            <ellipse cx="27" cy="21" rx="6" ry="11" fill="#EF9F27"/>
+            <ellipse cx="53" cy="21" rx="6" ry="11" fill="#EF9F27"/>
+            <circle cx="34" cy="27" r="3.5" fill="#2C2C2A"/><circle cx="46" cy="27" r="3.5" fill="#2C2C2A"/>
+            <ellipse cx="40" cy="36" rx="6" ry="4" fill="#F5C4B3"/>`,
+    oiseau: `<ellipse cx="40" cy="50" rx="17" ry="13" fill="#85B7EB"/>
+             <circle cx="40" cy="29" r="13" fill="#85B7EB"/>
+             <polygon points="47,28 63,25 47,33" fill="#EF9F27"/>
+             <circle cx="36" cy="26" r="3.5" fill="#2C2C2A"/>
+             <path d="M24 65 Q40 74 56 65" stroke="#EF9F27" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    poisson: `<ellipse cx="36" cy="40" rx="24" ry="14" fill="#5DCAA5"/>
+              <polygon points="60,30 76,40 60,50" fill="#1D9E75"/>
+              <circle cx="23" cy="38" r="4" fill="#2C2C2A"/>
+              <path d="M30 33 Q37 27 44 33" stroke="#0F6E56" stroke-width="1.2" fill="none"/>
+              <path d="M30 40 Q37 47 44 40" stroke="#0F6E56" stroke-width="1.2" fill="none"/>`,
+    lapin: `<ellipse cx="40" cy="51" rx="18" ry="16" fill="#F1EFE8"/>
+            <circle cx="40" cy="31" r="13" fill="#F1EFE8"/>
+            <ellipse cx="33" cy="14" rx="4" ry="10" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="1.5"/>
+            <ellipse cx="47" cy="14" rx="4" ry="10" fill="#F1EFE8" stroke="#D3D1C7" stroke-width="1.5"/>
+            <circle cx="35" cy="29" r="3.5" fill="#2C2C2A"/><circle cx="45" cy="29" r="3.5" fill="#2C2C2A"/>
+            <circle cx="40" cy="35" r="3" fill="#ED93B1"/>`,
+    poule: `<ellipse cx="40" cy="51" rx="20" ry="15" fill="#EF9F27"/>
+            <circle cx="40" cy="29" r="13" fill="#EF9F27"/>
+            <polygon points="35,18 40,9 45,18" fill="#D85A30"/>
+            <circle cx="36" cy="26" r="3.5" fill="#2C2C2A"/>
+            <polygon points="46,30 58,27 46,35" fill="#D85A30"/>
+            <path d="M20 66 L26 56 M38 68 L40 58 M54 67 L52 57" stroke="#EF9F27" stroke-width="3" stroke-linecap="round"/>`,
+  };
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">${m[type]||''}</svg>`;
+}
+
+function classeSVG(type) {
+  const m = {
+    livre: `<rect x="18" y="15" width="44" height="52" rx="4" fill="#85B7EB"/>
+            <rect x="18" y="15" width="7" height="52" rx="4" fill="#378ADD"/>
+            <line x1="32" y1="28" x2="54" y2="28" stroke="white" stroke-width="1.8"/>
+            <line x1="32" y1="36" x2="54" y2="36" stroke="white" stroke-width="1.8"/>
+            <line x1="32" y1="44" x2="54" y2="44" stroke="white" stroke-width="1.8"/>`,
+    cahier: `<rect x="16" y="14" width="48" height="56" rx="3" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="1.2"/>
+             <line x1="28" y1="14" x2="28" y2="70" stroke="#D3D1C7" stroke-width="1.5"/>
+             <line x1="23" y1="26" x2="58" y2="26" stroke="#B5D4F4" stroke-width="1.2"/>
+             <line x1="23" y1="34" x2="58" y2="34" stroke="#B5D4F4" stroke-width="1.2"/>
+             <line x1="23" y1="42" x2="58" y2="42" stroke="#B5D4F4" stroke-width="1.2"/>
+             <line x1="23" y1="50" x2="58" y2="50" stroke="#B5D4F4" stroke-width="1.2"/>`,
+    crayon: `<rect x="34" y="8" width="12" height="52" rx="3" fill="#EF9F27"/>
+             <polygon points="34,60 46,60 40,74" fill="#FAC775"/>
+             <rect x="34" y="8" width="12" height="9" fill="#ED93B1"/>
+             <rect x="34" y="17" width="12" height="5" fill="#888780"/>`,
+    table: `<rect x="10" y="34" width="60" height="9" rx="4" fill="#FAC775"/>
+            <rect x="16" y="43" width="7" height="24" rx="3" fill="#EF9F27"/>
+            <rect x="57" y="43" width="7" height="24" rx="3" fill="#EF9F27"/>`,
+    chaise: `<rect x="20" y="28" width="40" height="7" rx="3" fill="#D85A30"/>
+             <rect x="20" y="35" width="7" height="28" rx="3" fill="#D85A30"/>
+             <rect x="53" y="35" width="7" height="28" rx="3" fill="#D85A30"/>
+             <rect x="20" y="12" width="7" height="22" rx="3" fill="#993C1D"/>
+             <rect x="43" y="35" width="7" height="14" rx="3" fill="#993C1D"/>`,
+    tableau: `<rect x="6" y="14" width="68" height="46" rx="4" fill="#1D9E75"/>
+              <rect x="6" y="60" width="68" height="5" rx="3" fill="#0F6E56"/>
+              <line x1="35" y1="65" x2="35" y2="74" stroke="#0F6E56" stroke-width="2.5"/>
+              <line x1="45" y1="65" x2="45" y2="74" stroke="#0F6E56" stroke-width="2.5"/>
+              <text x="20" y="46" font-size="20" fill="white" font-family="serif">أ ب ت</text>`,
+    sac: `<path d="M18 36 Q18 27 28 27 L52 27 Q62 27 62 36 L62 63 Q62 67 58 67 L22 67 Q18 67 18 63 Z" fill="#85B7EB"/>
+          <path d="M31 27 Q31 16 40 16 Q49 16 49 27" fill="none" stroke="#378ADD" stroke-width="3"/>
+          <rect x="34" y="42" width="12" height="10" rx="3" fill="#378ADD"/>`,
+    gomme: `<rect x="18" y="32" width="44" height="22" rx="5" fill="#ED93B1"/>
+            <rect x="18" y="32" width="16" height="22" rx="5" fill="#B5D4F4"/>
+            <line x1="34" y1="32" x2="34" y2="54" stroke="white" stroke-width="2"/>`,
+    regle: `<rect x="8" y="33" width="64" height="17" rx="3" fill="#EF9F27"/>
+            <line x1="18" y1="33" x2="18" y2="41" stroke="#BA7517" stroke-width="1.2"/>
+            <line x1="28" y1="33" x2="28" y2="41" stroke="#BA7517" stroke-width="1.2"/>
+            <line x1="38" y1="33" x2="38" y2="41" stroke="#BA7517" stroke-width="1.2"/>
+            <line x1="48" y1="33" x2="48" y2="41" stroke="#BA7517" stroke-width="1.2"/>
+            <line x1="58" y1="33" x2="58" y2="41" stroke="#BA7517" stroke-width="1.2"/>`,
+    feuille: `<rect x="18" y="10" width="44" height="60" rx="3" fill="white" stroke="#B4B2A9" stroke-width="1.5"/>
+              <line x1="27" y1="22" x2="53" y2="22" stroke="#D3D1C7" stroke-width="1.2"/>
+              <line x1="27" y1="31" x2="53" y2="31" stroke="#D3D1C7" stroke-width="1.2"/>
+              <line x1="27" y1="40" x2="53" y2="40" stroke="#D3D1C7" stroke-width="1.2"/>
+              <line x1="27" y1="49" x2="53" y2="49" stroke="#D3D1C7" stroke-width="1.2"/>`,
+  };
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">${m[type]||''}</svg>`;
+}
+
+function nourritureSVG(type) {
+  const m = {
+    pain: `<ellipse cx="40" cy="46" rx="28" ry="18" fill="#FAC775"/>
+           <ellipse cx="40" cy="38" rx="22" ry="13" fill="#EF9F27"/>
+           <path d="M18 40 Q40 30 62 40" stroke="#BA7517" stroke-width="1.2" fill="none"/>`,
+    eau: `<rect x="26" y="18" width="28" height="46" rx="9" fill="#B5D4F4"/>
+          <rect x="28" y="14" width="24" height="8" rx="3" fill="#85B7EB"/>
+          <path d="M33 30 Q35 40 33 50" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>`,
+    lait: `<rect x="26" y="18" width="28" height="46" rx="4" fill="white" stroke="#D3D1C7" stroke-width="1.5"/>
+           <rect x="26" y="18" width="28" height="14" rx="4" fill="#B5D4F4"/>
+           <text x="40" y="52" text-anchor="middle" font-size="9" fill="#888780" font-family="Nunito,sans-serif" font-weight="700">LAIT</text>`,
+    pomme: `<circle cx="40" cy="46" r="23" fill="#D85A30"/>
+            <path d="M40 22 Q45 13 52 18" stroke="#639922" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="43" cy="22" rx="5" ry="9" fill="#639922" transform="rotate(-20,43,22)"/>`,
+    banane: `<path d="M16 58 Q28 18 64 26 Q66 33 58 38 Q36 28 22 64 Z" fill="#EF9F27"/>
+             <path d="M16 58 Q28 18 64 26" stroke="#BA7517" stroke-width="1.5" fill="none"/>`,
+    jus: `<rect x="24" y="20" width="32" height="44" rx="7" fill="#EF9F27"/>
+          <rect x="24" y="20" width="32" height="12" rx="7" fill="#BA7517"/>
+          <line x1="40" y1="15" x2="40" y2="20" stroke="#BA7517" stroke-width="3"/>
+          <circle cx="40" cy="13" r="4" fill="#BA7517"/>`,
+    gateau: `<ellipse cx="40" cy="58" rx="26" ry="11" fill="#FAC775"/>
+             <ellipse cx="40" cy="46" rx="22" ry="14" fill="#F5C4B3"/>
+             <path d="M22 46 Q40 36 58 46" stroke="white" stroke-width="1.5" fill="none"/>
+             <line x1="40" y1="32" x2="40" y2="24" stroke="#D85A30" stroke-width="2.5"/>
+             <circle cx="40" cy="20" r="5" fill="#EF9F27"/>`,
+    bonbon: `<circle cx="40" cy="40" r="20" fill="#ED93B1"/>
+             <path d="M24 32 Q40 22 56 32" stroke="#D4537E" stroke-width="1.5" fill="none"/>
+             <path d="M24 40 Q40 30 56 40" stroke="#D4537E" stroke-width="1.5" fill="none"/>
+             <path d="M24 48 Q40 38 56 48" stroke="#D4537E" stroke-width="1.5" fill="none"/>
+             <line x1="40" y1="20" x2="40" y2="8" stroke="#888780" stroke-width="2.5"/>`,
+  };
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">${m[type]||''}</svg>`;
+}
+
+function familleSVG(type) {
+  const cfg = {
+    papa:      { fill:'#378ADD', female:false, old:false, scale:1.0 },
+    maman:     { fill:'#ED93B1', female:true,  old:false, scale:1.0 },
+    frere:     { fill:'#85B7EB', female:false, old:false, scale:0.85 },
+    soeur:     { fill:'#F4C0D1', female:true,  old:false, scale:0.85 },
+    grandpere: { fill:'#B4B2A9', female:false, old:true,  scale:1.0 },
+    grandmere: { fill:'#D3D1C7', female:true,  old:true,  scale:1.0 },
+  };
+  const c = cfg[type] || cfg.papa;
+  const { fill, female, old, scale } = c;
+  const headY = 22; const headR = 13 * scale;
+  const bodyTop = headY + headR + 3;
+  const bodyH = 28 * scale;
+  const hairColor = old ? '#D3D1C7' : (female ? '#2C2C2A' : '#444441');
+  const hair = female
+    ? `<path d="M${40-headR} ${headY-headR} Q40 ${headY-headR-8} ${40+headR} ${headY-headR}" fill="${hairColor}"/>
+       <path d="M${40-headR} ${headY-headR} Q${40-headR-5} ${headY+headR*0.5} ${40-headR} ${headY+headR}" fill="${hairColor}"/>
+       <path d="M${40+headR} ${headY-headR} Q${40+headR+5} ${headY+headR*0.5} ${40+headR} ${headY+headR}" fill="${hairColor}"/>`
+    : `<path d="M${40-headR} ${headY-headR+3} Q40 ${headY-headR-6} ${40+headR} ${headY-headR+3} L${40+headR} ${headY-5} Q40 ${headY-2} ${40-headR} ${headY-5} Z" fill="${hairColor}"/>`;
+  const wrinkles = old ? `<line x1="30" y1="${headY+1}" x2="34" y2="${headY+4}" stroke="#B4B2A9" stroke-width="0.8"/>
+                          <line x1="50" y1="${headY+1}" x2="46" y2="${headY+4}" stroke="#B4B2A9" stroke-width="0.8"/>` : '';
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="${headY}" r="${headR}" fill="#FAC775"/>
+    ${hair}${wrinkles}
+    <rect x="${40-10*scale}" y="${bodyTop}" width="${20*scale}" height="${bodyH}" rx="${5*scale}" fill="${fill}"/>
+    <line x1="${40-10*scale}" y1="${bodyTop+8*scale}" x2="${40-20*scale}" y2="${bodyTop+bodyH*0.55}" stroke="${fill}" stroke-width="${5*scale}" stroke-linecap="round"/>
+    <line x1="${40+10*scale}" y1="${bodyTop+8*scale}" x2="${40+20*scale}" y2="${bodyTop+bodyH*0.55}" stroke="${fill}" stroke-width="${5*scale}" stroke-linecap="round"/>
+    <line x1="${40-6*scale}" y1="${bodyTop+bodyH}" x2="${40-9*scale}" y2="76" stroke="#FAC775" stroke-width="${5*scale}" stroke-linecap="round"/>
+    <line x1="${40+6*scale}" y1="${bodyTop+bodyH}" x2="${40+9*scale}" y2="76" stroke="#FAC775" stroke-width="${5*scale}" stroke-linecap="round"/>
+  </svg>`;
+}
+
+function corpsSVG(type) {
+  const m = {
+    tete: `<circle cx="40" cy="38" r="26" fill="#FAC775"/>
+           <circle cx="31" cy="33" r="4.5" fill="#2C2C2A"/><circle cx="49" cy="33" r="4.5" fill="#2C2C2A"/>
+           <circle cx="32" cy="32" r="1.5" fill="white"/><circle cx="50" cy="32" r="1.5" fill="white"/>
+           <path d="M30 47 Q40 54 50 47" stroke="#D85A30" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+           <ellipse cx="40" cy="40" rx="3" ry="2" fill="#ED93B1"/>`,
+    main: `<ellipse cx="40" cy="50" rx="16" ry="19" fill="#FAC775"/>
+           <rect x="27" y="28" width="7" height="25" rx="3.5" fill="#FAC775"/>
+           <rect x="36" y="21" width="7" height="31" rx="3.5" fill="#FAC775"/>
+           <rect x="45" y="23" width="7" height="29" rx="3.5" fill="#FAC775"/>
+           <rect x="53" y="30" width="6" height="21" rx="3" fill="#FAC775"/>`,
+    pied: `<ellipse cx="40" cy="54" rx="20" ry="13" fill="#FAC775"/>
+           <rect x="30" y="30" width="15" height="30" rx="5" fill="#FAC775"/>
+           <circle cx="24" cy="56" r="4.5" fill="#FAC775"/>
+           <circle cx="30" cy="60" r="4.5" fill="#FAC775"/>
+           <circle cx="38" cy="62" r="4.5" fill="#FAC775"/>
+           <circle cx="46" cy="61" r="4.5" fill="#FAC775"/>
+           <circle cx="54" cy="58" r="4.5" fill="#FAC775"/>`,
+    oeil: `<ellipse cx="40" cy="40" rx="28" ry="18" fill="white" stroke="#B4B2A9" stroke-width="1.5"/>
+           <circle cx="40" cy="40" r="11" fill="#378ADD"/>
+           <circle cx="40" cy="40" r="7" fill="#2C2C2A"/>
+           <circle cx="44" cy="36" r="2.5" fill="white"/>
+           <path d="M12 35 Q40 15 68 35" stroke="#2C2C2A" stroke-width="2" fill="none"/>`,
+    bouche: `<ellipse cx="40" cy="44" rx="26" ry="16" fill="#FAC775"/>
+             <path d="M18 44 Q40 64 62 44" fill="#D85A30"/>
+             <path d="M22 46 Q40 58 58 46" fill="#ED93B1"/>
+             <rect x="32" y="42" width="7" height="9" rx="2" fill="white"/>
+             <rect x="41" y="42" width="7" height="9" rx="2" fill="white"/>`,
+  };
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">${m[type]||''}</svg>`;
+}
+
+function emotionSVG(type) {
+  const fills = { content:'#EF9F27', triste:'#85B7EB', colere:'#D85A30' };
+  const f = fills[type];
+  const brows = type==='colere'
+    ? `<line x1="26" y1="23" x2="36" y2="28" stroke="#2C2C2A" stroke-width="2.5"/>
+       <line x1="54" y1="23" x2="44" y2="28" stroke="#2C2C2A" stroke-width="2.5"/>`
+    : type==='triste'
+    ? `<path d="M26 26 Q31 31 36 26" stroke="#2C2C2A" stroke-width="2" fill="none"/>
+       <path d="M44 26 Q49 31 54 26" stroke="#2C2C2A" stroke-width="2" fill="none"/>` : '';
+  const tears = type==='triste'
+    ? `<ellipse cx="29" cy="49" rx="2.5" ry="5" fill="#B5D4F4"/>
+       <ellipse cx="51" cy="49" rx="2.5" ry="5" fill="#B5D4F4"/>` : '';
+  const mouth = type==='content'
+    ? `<path d="M27 47 Q40 60 53 47" stroke="#2C2C2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>`
+    : type==='triste'
+    ? `<path d="M27 55 Q40 44 53 55" stroke="#2C2C2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>`
+    : `<path d="M27 52 Q40 44 53 52" stroke="#2C2C2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>`;
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="40" r="32" fill="${f}"/>
+    ${brows}
+    <circle cx="31" cy="36" r="4.5" fill="#2C2C2A"/><circle cx="49" cy="36" r="4.5" fill="#2C2C2A"/>
+    <circle cx="32" cy="35" r="1.5" fill="white"/><circle cx="50" cy="35" r="1.5" fill="white"/>
+    ${tears}${mouth}
+  </svg>`;
+}
+
+function salutSVG(type) {
+  const m = {
+    salam: `<circle cx="40" cy="28" r="13" fill="#FAC775"/>
+            <path d="M20 66 Q28 50 52 50 Q62 50 62 58 L62 66" fill="#85B7EB"/>
+            <ellipse cx="30" cy="47" rx="9" ry="5.5" fill="#FAC775" transform="rotate(-30,30,47)"/>
+            <ellipse cx="50" cy="47" rx="9" ry="5.5" fill="#FAC775" transform="rotate(30,50,47)"/>`,
+    matin: `<circle cx="40" cy="38" r="16" fill="#EF9F27"/>
+            <line x1="40" y1="16" x2="40" y2="9" stroke="#EF9F27" stroke-width="3"/>
+            <line x1="60" y1="22" x2="65" y2="17" stroke="#EF9F27" stroke-width="3"/>
+            <line x1="66" y1="40" x2="73" y2="40" stroke="#EF9F27" stroke-width="3"/>
+            <line x1="60" y1="58" x2="65" y2="63" stroke="#EF9F27" stroke-width="3"/>
+            <line x1="14" y1="22" x2="8" y2="17" stroke="#EF9F27" stroke-width="3"/>
+            <rect x="8" y="54" width="64" height="18" rx="5" fill="#B5D4F4" opacity="0.45"/>`,
+    soir: `<rect x="6" y="52" width="68" height="22" rx="5" fill="#185FA5" opacity="0.5"/>
+           <circle cx="45" cy="34" r="20" fill="#444441"/>
+           <circle cx="52" cy="26" r="15" fill="#2C2C2A"/>
+           <circle cx="16" cy="20" r="3.5" fill="#EF9F27"/>
+           <circle cx="62" cy="14" r="2.5" fill="#EF9F27"/>
+           <circle cx="10" cy="40" r="2" fill="#EF9F27"/>`,
+    aurevoir: `<circle cx="40" cy="28" r="13" fill="#FAC775"/>
+               <path d="M20 62 Q30 46 60 46 L60 62" fill="#D85A30"/>
+               <path d="M50 36 Q68 26 70 14 Q62 20 56 22" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>`,
+    merci: `<circle cx="40" cy="28" r="13" fill="#FAC775"/>
+            <path d="M20 62 Q30 46 60 46 L60 62" fill="#639922"/>
+            <path d="M27 52 L36 42 L45 52 L57 34" stroke="#1D9E75" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    derien: `<circle cx="32" cy="30" r="11" fill="#FAC775"/>
+             <circle cx="52" cy="30" r="11" fill="#FAC775"/>
+             <path d="M20 62 Q28 50 42 50 Q56 50 64 62" fill="#7F77DD"/>
+             <path d="M37 50 Q42 50 43 44" stroke="#D3D1C7" stroke-width="1.5"/>`,
+    bismillah: `<rect x="10" y="22" width="60" height="40" rx="10" fill="#1D9E75"/>
+                <text x="40" y="48" text-anchor="middle" font-size="18" fill="white" font-family="serif">بسم الله</text>`,
+    hamdulillah: `<rect x="10" y="22" width="60" height="40" rx="10" fill="#534AB7"/>
+                  <text x="40" y="46" text-anchor="middle" font-size="12" fill="white" font-family="serif">الحمد لله</text>`,
+  };
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">${m[type]||''}</svg>`;
+}
+
+function consigneSVG(type) {
+  const m = {
+    assis: `<circle cx="40" cy="18" r="11" fill="#FAC775"/>
+            <path d="M30 30 L30 52 Q30 58 37 58 L52 58" stroke="#378ADD" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M30 42 L20 56" stroke="#378ADD" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+            <rect x="16" y="56" width="48" height="7" rx="3.5" fill="#185FA5"/>`,
+    leve: `<circle cx="40" cy="16" r="11" fill="#FAC775"/>
+           <line x1="40" y1="27" x2="40" y2="56" stroke="#D85A30" stroke-width="5.5" stroke-linecap="round"/>
+           <line x1="40" y1="38" x2="27" y2="50" stroke="#D85A30" stroke-width="5.5" stroke-linecap="round"/>
+           <line x1="40" y1="38" x2="53" y2="50" stroke="#D85A30" stroke-width="5.5" stroke-linecap="round"/>
+           <line x1="40" y1="56" x2="32" y2="74" stroke="#D85A30" stroke-width="5.5" stroke-linecap="round"/>
+           <line x1="40" y1="56" x2="48" y2="74" stroke="#D85A30" stroke-width="5.5" stroke-linecap="round"/>`,
+    regarde: `<circle cx="40" cy="18" r="11" fill="#FAC775"/>
+              <ellipse cx="40" cy="50" rx="24" ry="15" fill="white" stroke="#B4B2A9" stroke-width="1.5"/>
+              <circle cx="40" cy="50" r="9" fill="#378ADD"/>
+              <circle cx="40" cy="50" r="5.5" fill="#2C2C2A"/>
+              <circle cx="43" cy="47" r="2" fill="white"/>
+              <line x1="40" y1="29" x2="40" y2="35" stroke="#D85A30" stroke-width="3" stroke-linecap="round"/>`,
+    ecoute: `<circle cx="40" cy="20" r="11" fill="#FAC775"/>
+             <circle cx="57" cy="34" rx="15" r="14" fill="#85B7EB" opacity="0.25"/>
+             <circle cx="57" cy="34" r="10" fill="#85B7EB" opacity="0.35"/>
+             <circle cx="57" cy="34" r="6" fill="#85B7EB"/>
+             <path d="M30 34 Q28 28 28 34 Q28 40 33 42 L33 47 L38 47 L38 42 Q42 40 42 34 Q42 24 35 24 Q30 24 30 34" fill="#EF9F27"/>`,
+    bravo: `<polygon points="40,8 44,30 68,30 50,46 56,68 40,54 24,68 30,46 12,30 36,30" fill="#EF9F27"/>
+            <polygon points="40,18 43,30 54,30 46,38 49,50 40,44 31,50 34,38 26,30 37,30" fill="#FAC775"/>`,
+  };
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">${m[type]||''}</svg>`;
+}
+
+function lettreSVG(letter, color) {
+  return `<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="64" height="64" rx="16" fill="${color}22"/>
+    <rect x="8" y="8" width="64" height="64" rx="16" fill="none" stroke="${color}" stroke-width="1.8"/>
+    <text x="40" y="56" text-anchor="middle" font-size="38" fill="${color}" font-family="Amiri,serif">${letter}</text>
+  </svg>`;
+}
+
+// ─── DATA ──────────────────────────────────────────────────────────────────────
+
+const THEMES = [
+  { id:'couleurs',    label:'Couleurs',    icon:'🎨' },
+  { id:'nombres',     label:'Nombres',     icon:'🔢' },
+  { id:'animaux',     label:'Animaux',     icon:'🐾' },
+  { id:'classe',      label:'Classe',      icon:'📚' },
+  { id:'nourriture',  label:'Nourriture',  icon:'🍎' },
+  { id:'famille',     label:'Famille',     icon:'👨‍👩‍👧' },
+  { id:'corps',       label:'Corps',       icon:'🧍' },
+  { id:'emotions',    label:'Émotions',    icon:'😊' },
+  { id:'salutations', label:'Salutations', icon:'👋' },
+  { id:'consignes',   label:'Consignes',   icon:'📣' },
+  { id:'alphabet',    label:'Alphabet',    icon:'✏️' },
+];
+
+const DATA = {
+  couleurs: [
+    { fr:'Rouge',  ar:'أَحْمَر',    ph:'Aḥmar',     svg: couleurSVG('#D85A30') },
+    { fr:'Bleu',   ar:'أَزْرَق',    ph:'Azraq',     svg: couleurSVG('#378ADD') },
+    { fr:'Vert',   ar:'أَخْضَر',    ph:'Akhḍar',    svg: couleurSVG('#639922') },
+    { fr:'Jaune',  ar:'أَصْفَر',    ph:'Aṣfar',     svg: couleurSVG('#EF9F27') },
+    { fr:'Blanc',  ar:'أَبْيَض',    ph:'Abyaḍ',     svg: couleurSVG('#F1EFE8','#B4B2A9') },
+    { fr:'Noir',   ar:'أَسْوَد',    ph:'Aswad',     svg: couleurSVG('#2C2C2A') },
+    { fr:'Orange', ar:'بُرْتُقَالِي', ph:'Burtuqālī', svg: couleurSVG('#E86A2A') },
+    { fr:'Rose',   ar:'وَرْدِي',    ph:'Wardī',     svg: couleurSVG('#ED93B1') },
+  ],
+  nombres: Array.from({length:10},(_,i)=>{
+    const labels=['Un','Deux','Trois','Quatre','Cinq','Six','Sept','Huit','Neuf','Dix'];
+    const ars=['وَاحِد','اِثْنَان','ثَلَاثَة','أَرْبَعَة','خَمْسَة','سِتَّة','سَبْعَة','ثَمَانِيَة','تِسْعَة','عَشَرَة'];
+    const phs=["Wāḥid","Ithnān","Thalātha","Arba'a","Khamsa","Sitta","Sab'a","Thamāniya","Tis'a","'Ashara"];
+    return { fr:`${i+1} — ${labels[i]}`, ar:ars[i], ph:phs[i], svg:nombreSVG(i+1) };
+  }),
+  animaux: [
+    { fr:'Chat',   ar:'قِطّ',     ph:'Qiṭṭ',    svg: animalSVG('chat') },
+    { fr:'Chien',  ar:'كَلْب',    ph:'Kalb',    svg: animalSVG('chien') },
+    { fr:'Oiseau', ar:'طَائِر',   ph:"Ṭā'ir",  svg: animalSVG('oiseau') },
+    { fr:'Poisson',ar:'سَمَك',    ph:'Samak',   svg: animalSVG('poisson') },
+    { fr:'Lapin',  ar:'أَرْنَب',   ph:'Arnab',   svg: animalSVG('lapin') },
+    { fr:'Poule',  ar:'دَجَاجَة',  ph:'Dajāja',  svg: animalSVG('poule') },
+  ],
+  classe: [
+    { fr:'Livre',   ar:'كِتَاب',   ph:'Kitāb',   svg: classeSVG('livre') },
+    { fr:'Cahier',  ar:'دَفْتَر',   ph:'Daftar',  svg: classeSVG('cahier') },
+    { fr:'Crayon',  ar:'قَلَم',    ph:'Qalam',   svg: classeSVG('crayon') },
+    { fr:'Table',   ar:'طَاوِلَة',  ph:'Ṭāwila',  svg: classeSVG('table') },
+    { fr:'Chaise',  ar:'كُرْسِي',   ph:'Kursī',   svg: classeSVG('chaise') },
+    { fr:'Tableau', ar:'سَبُّورَة',  ph:'Sabbūra', svg: classeSVG('tableau') },
+    { fr:'Sac',     ar:'حَقِيبَة',  ph:'Ḥaqība',  svg: classeSVG('sac') },
+    { fr:'Gomme',   ar:'مِمْحَاة',  ph:'Mimḥāt',  svg: classeSVG('gomme') },
+    { fr:'Règle',   ar:'مِسْطَرَة', ph:'Misṭara', svg: classeSVG('regle') },
+    { fr:'Feuille', ar:'وَرَقَة',   ph:'Waraqa',  svg: classeSVG('feuille') },
+  ],
+  nourriture: [
+    { fr:'Pain',   ar:'خُبْز',    ph:'Khubz',    svg: nourritureSVG('pain') },
+    { fr:'Eau',    ar:'مَاء',     ph:"Mā'",      svg: nourritureSVG('eau') },
+    { fr:'Lait',   ar:'حَلِيب',   ph:'Ḥalīb',    svg: nourritureSVG('lait') },
+    { fr:'Pomme',  ar:'تُفَّاحَة', ph:'Tuffāḥa',  svg: nourritureSVG('pomme') },
+    { fr:'Banane', ar:'مَوْزَة',   ph:'Mawza',    svg: nourritureSVG('banane') },
+    { fr:'Jus',    ar:'عَصِير',   ph:"'Aṣīr",   svg: nourritureSVG('jus') },
+    { fr:'Gâteau', ar:'كَعْكَة',   ph:"Ka'ka",   svg: nourritureSVG('gateau') },
+    { fr:'Bonbon', ar:'حَلْوَى',   ph:'Ḥalwā',    svg: nourritureSVG('bonbon') },
+  ],
+  famille: [
+    { fr:'Papa',       ar:'أَب',   ph:'Bābā / Ab',   svg: familleSVG('papa') },
+    { fr:'Maman',      ar:'أُمّ',  ph:'Māmā / Umm',  svg: familleSVG('maman') },
+    { fr:'Frère',      ar:'أَخ',   ph:'Akh',          svg: familleSVG('frere') },
+    { fr:'Sœur',       ar:'أُخْت', ph:'Ukht',         svg: familleSVG('soeur') },
+    { fr:'Grand-père', ar:'جَدّ',  ph:'Jadd',         svg: familleSVG('grandpere') },
+    { fr:'Grand-mère', ar:'جَدَّة', ph:'Jadda',        svg: familleSVG('grandmere') },
+  ],
+  corps: [
+    { fr:'Tête',   ar:'رَأْس',  ph:"Ra's",  svg: corpsSVG('tete') },
+    { fr:'Main',   ar:'يَد',    ph:'Yad',   svg: corpsSVG('main') },
+    { fr:'Pied',   ar:'رِجْل',  ph:'Rijl',  svg: corpsSVG('pied') },
+    { fr:'Œil',    ar:'عَيْن',  ph:"'Ayn", svg: corpsSVG('oeil') },
+    { fr:'Bouche', ar:'فَم',    ph:'Fam',   svg: corpsSVG('bouche') },
+  ],
+  emotions: [
+    { fr:'Content',    ar:'سَعِيد',  ph:"Sa'īd",  svg: emotionSVG('content') },
+    { fr:'Triste',     ar:'حَزِين',  ph:'Ḥazīn',  svg: emotionSVG('triste') },
+    { fr:'En colère',  ar:'غَاضِب',  ph:'Ghāḍib', svg: emotionSVG('colere') },
+  ],
+  salutations: [
+    { fr:'Salam alaykum',     ar:'السَّلَامُ عَلَيْكُمْ', ph:'As-salāmu alaykum',   svg: salutSVG('salam') },
+    { fr:'Bonjour (matin)',   ar:'صَبَاحُ الخَيْر',        ph:'Ṣabāḥu l-khayr',     svg: salutSVG('matin') },
+    { fr:'Bonsoir',           ar:'مَسَاءُ الخَيْر',        ph:"Masā'u l-khayr",     svg: salutSVG('soir') },
+    { fr:'Au revoir',         ar:'مَعَ السَّلَامَة',        ph:"Ma'a s-salāma",      svg: salutSVG('aurevoir') },
+    { fr:'Merci',             ar:'شُكْرًا',                ph:'Shukran',             svg: salutSVG('merci') },
+    { fr:'De rien',           ar:'عَفْوًا',                ph:"'Afwan",              svg: salutSVG('derien') },
+    { fr:'Bism Allah',        ar:'بِسْمِ الله',             ph:'Bismi llāh',          svg: salutSVG('bismillah') },
+    { fr:'Al-hamdu lillah',   ar:'الحَمْدُ لِله',           ph:'Al-ḥamdu lillāh',     svg: salutSVG('hamdulillah') },
+  ],
+  consignes: [
+    { fr:'Assieds-toi', ar:'اِجْلِسْ',  ph:'Ijlis',     svg: consigneSVG('assis') },
+    { fr:'Lève-toi',    ar:'قِفْ',      ph:'Qif',       svg: consigneSVG('leve') },
+    { fr:'Regarde',     ar:'اُنْظُرْ',  ph:'Unẓur',     svg: consigneSVG('regarde') },
+    { fr:'Écoute',      ar:'اِسْتَمِعْ', ph:"Istami'",  svg: consigneSVG('ecoute') },
+    { fr:'Bravo !',     ar:'أَحْسَنْتَ', ph:'Aḥsanta',  svg: consigneSVG('bravo') },
+  ],
+  alphabet: [
+    { fr:'Alif',  ar:'ا', ph:'a / ā',        svg: lettreSVG('ا','#378ADD') },
+    { fr:'Haa',   ar:'ح', ph:'ḥ (pharyngal)', svg: lettreSVG('ح','#D85A30') },
+    { fr:'Daal',  ar:'د', ph:'d',             svg: lettreSVG('د','#639922') },
+    { fr:'Raa',   ar:'ر', ph:'r',             svg: lettreSVG('ر','#EF9F27') },
+    { fr:'Siin',  ar:'س', ph:'s',             svg: lettreSVG('س','#534AB7') },
+    { fr:'Saad',  ar:'ص', ph:'ṣ (emphatique)',svg: lettreSVG('ص','#D4537E') },
+    { fr:'Taa',   ar:'ط', ph:'ṭ (emphatique)',svg: lettreSVG('ط','#1D9E75') },
+    { fr:"'Ayn",  ar:'ع', ph:"' (pharyngal)", svg: lettreSVG('ع','#BA7517') },
+    { fr:'Laam',  ar:'ل', ph:'l',             svg: lettreSVG('ل','#185FA5') },
+    { fr:'Miim',  ar:'م', ph:'m',             svg: lettreSVG('م','#993C1D') },
+    { fr:'Waaw',  ar:'و', ph:'w / ū',         svg: lettreSVG('و','#639922') },
+    { fr:'Haa',   ar:'ه', ph:'h (glottal)',   svg: lettreSVG('ه','#534AB7') },
+  ],
+};
+
+// ─── APP ───────────────────────────────────────────────────────────────────────
+
+let currentTheme = 'couleurs';
+let currentIdx = 0;
+
+function renderTabs() {
+  document.getElementById('tabs').innerHTML = THEMES.map(t =>
+    `<button class="tab${t.id===currentTheme?' active':''}" onclick="switchTheme('${t.id}')">${t.icon} ${t.label}</button>`
+  ).join('');
+}
+
+function renderMain() {
+  const items = DATA[currentTheme];
+  const theme = THEMES.find(t=>t.id===currentTheme);
+  document.getElementById('main').innerHTML = `
+    <div class="section active">
+      <div class="section-head">
+        <h2>${theme.icon} ${theme.label}</h2>
+        <p>${items.length} image${items.length>1?'s':''} · cliquez pour agrandir</p>
+      </div>
+      <div class="grid">
+        ${items.map((item,i)=>`
+          <div class="card" onclick="openModal(${i})">
+            ${item.svg}
+            <div class="card-fr">${item.fr}</div>
+            <div class="card-ar">${item.ar}</div>
+            <div class="card-ph">${item.ph}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+}
+
+function switchTheme(id) {
+  currentTheme = id;
+  renderTabs();
+  renderMain();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function openModal(i) {
+  currentIdx = i;
+  updateModal();
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+function updateModal() {
+  const item = DATA[currentTheme][currentIdx];
+  const theme = THEMES.find(t=>t.id===currentTheme);
+  const svgEl = document.getElementById('modal-svg');
+  svgEl.innerHTML = item.svg;
+  const s = svgEl.querySelector('svg');
+  if (s) { s.style.width='130px'; s.style.height='130px'; }
+  document.getElementById('modal-fr').textContent = item.fr;
+  document.getElementById('modal-ar').textContent = item.ar;
+  document.getElementById('modal-ph').textContent = item.ph;
+  document.getElementById('modal-theme').innerHTML = `<span class="modal-theme">${theme.icon} ${theme.label}</span>`;
+}
+
+function navModal(dir) {
+  const items = DATA[currentTheme];
+  currentIdx = (currentIdx + dir + items.length) % items.length;
+  updateModal();
+}
+
+function closeModal() {
+  document.getElementById('modal-bg').classList.remove('open');
+}
+
+document.getElementById('modal-bg').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('modal-bg').classList.contains('open')) return;
+  if (e.key==='Escape') closeModal();
+  if (e.key==='ArrowRight') navModal(1);
+  if (e.key==='ArrowLeft') navModal(-1);
+});
+
+renderTabs();
+renderMain();
+</script>
+</body>
+</html>
