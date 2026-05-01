@@ -151,25 +151,54 @@ const generateClassReport = (profiles, getStats) => {
 // --- HELPER COMPONENTS ---
 
 function ResourceStatus({ url, type }) {
-  const [status, setStatus] = useState('checking')
+  const [status, setStatus] = useState('loading')
+
   useEffect(() => {
     if (!url) { setStatus('missing'); return }
-    if (type === 'audio') {
-      const a = new Audio(url)
-      a.oncanplaythrough = () => setStatus('ok')
-      a.onerror = () => setStatus('error')
-      a.load()
-    } else {
-      const img = new Image()
-      img.onload = () => setStatus('ok')
-      img.onerror = () => setStatus('error')
-      img.src = url
+    const check = async () => {
+      try {
+        const res = await fetch(url, { method: 'HEAD' })
+        setStatus(res.ok ? 'ok' : 'missing')
+      } catch {
+        setStatus('missing')
+      }
     }
-  }, [url, type])
+    check()
+  }, [url])
 
-  if (status === 'checking') return <div className="h-2 w-8 bg-slate-100 rounded-full animate-pulse" />
-  if (status === 'ok') return <CheckCircle2 className="h-4 w-4 text-emerald-500" aria-label="Disponible" />
-  return <AlertCircle className="h-4 w-4 text-rose-500" aria-label="Manquant" />
+  if (status === 'loading') return <div className="h-2 w-12 bg-slate-100 animate-pulse rounded-full" />
+
+  if (type === 'image') {
+    return (
+      <div className="flex items-center justify-center">
+        {status === 'ok' ? (
+          <div className="relative group">
+            <img 
+              src={url} alt="" 
+              className="w-10 h-10 object-contain rounded-lg border border-slate-200 bg-white shadow-sm transition-all group-hover:scale-[2.5] group-hover:z-50 group-hover:shadow-2xl" 
+            />
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white" />
+          </div>
+        ) : (
+          <div className="w-10 h-10 rounded-lg bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-500">
+            <AlertCircle className="h-5 w-5" />
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  return (
+    <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-tighter ${
+      status === 'ok' ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-rose-50 text-rose-600 border border-rose-100'
+    }`}>
+      {status === 'ok' ? (
+        <><CheckCircle2 className="h-3 w-3" /> OK</>
+      ) : (
+        <><X className="h-3 w-3" /> Absent</>
+      )}
+    </div>
+  )
 }
 
 function ProgressCard({ label, value, max = 20, colorClass, bgClass, toolTip }) {
@@ -572,7 +601,11 @@ export default function DashboardMaitresse() {
                               </td>
                               <td className="p-6 text-center"><ResourceStatus url={m.audio} type="audio" /></td>
                               <td className="p-6 text-center"><ResourceStatus url={m.image} type="image" /></td>
-                              <td className="p-6 text-[10px] text-slate-300 font-mono group-hover:text-slate-500 transition-colors break-all max-w-[250px]">{m.image}</td>
+                              <td className="p-6 text-[10px] text-slate-300 font-mono group-hover:text-brand-600 transition-colors">
+                                <span className="bg-slate-50 px-2 py-1 rounded border border-slate-100 break-all inline-block max-w-[250px]">
+                                  {m.image}
+                                </span>
+                              </td>
                             </tr>
                           ))}
                         </React.Fragment>
