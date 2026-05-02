@@ -1,22 +1,23 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-// Avatars personnages de dessins animés — Garçons & Filles
+// Avatars personnages — Garçons & Filles
+const BASE = import.meta.env.BASE_URL || '/'
 const CHILD_AVATARS = [
-  // Garçons
-  { name: 'Sindbad', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/sindbad.png`, color: 'bg-blue-100 text-blue-600', gender: 'garcon' },
-  { name: 'Aladin', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/aladin.png`, color: 'bg-purple-100 text-purple-600', gender: 'garcon' },
-  { name: 'Lion Boy', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/lion_boy.png`, color: 'bg-amber-100 text-amber-600', gender: 'garcon' },
-  { name: 'Sea Boy', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/sea_boy.png`, color: 'bg-orange-100 text-orange-600', gender: 'garcon' },
-  { name: 'Lightning Boy', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/lightning_boy.png`, color: 'bg-yellow-100 text-yellow-600', gender: 'garcon' },
-  { name: 'Speed Boy', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/speed_boy.png`, color: 'bg-sky-100 text-sky-600', gender: 'garcon' },
-  // Filles
-  { name: 'Jasmine', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/jasmine.png`, color: 'bg-teal-100 text-teal-600', gender: 'fille' },
-  { name: 'Ice Girl', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/ice_girl.png`, color: 'bg-cyan-100 text-cyan-600', gender: 'fille' },
-  { name: 'Ocean Girl', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/ocean_girl.png`, color: 'bg-blue-100 text-blue-600', gender: 'fille' },
-  { name: 'Butterfly Girl', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/butterfly_girl.png`, color: 'bg-emerald-100 text-emerald-600', gender: 'fille' },
-  { name: 'Long Hair Girl', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/long_hair_girl.png`, color: 'bg-pink-100 text-pink-600', gender: 'fille' },
-  { name: 'Warrior Girl', img: `${process.env.PUBLIC_URL || ''}/assets/avatars/warrior_girl.png`, color: 'bg-rose-100 text-rose-600', gender: 'fille' },
+  // أولاد
+  { name: 'سندباد', img: `${BASE}assets/avatars/sindbad.png`, color: 'bg-blue-100 text-blue-600', gender: 'garcon' },
+  { name: 'علاء الدين', img: `${BASE}assets/avatars/aladin.png`, color: 'bg-purple-100 text-purple-600', gender: 'garcon' },
+  { name: 'الأسد', img: `${BASE}assets/avatars/lion_boy.png`, color: 'bg-amber-100 text-amber-600', gender: 'garcon' },
+  { name: 'البحّار', img: `${BASE}assets/avatars/sea_boy.png`, color: 'bg-orange-100 text-orange-600', gender: 'garcon' },
+  { name: 'البرق', img: `${BASE}assets/avatars/lightning_boy.png`, color: 'bg-yellow-100 text-yellow-600', gender: 'garcon' },
+  { name: 'السريع', img: `${BASE}assets/avatars/speed_boy.png`, color: 'bg-sky-100 text-sky-600', gender: 'garcon' },
+  // بنات
+  { name: 'ياسمين', img: `${BASE}assets/avatars/jasmine.png`, color: 'bg-teal-100 text-teal-600', gender: 'fille' },
+  { name: 'الثلج', img: `${BASE}assets/avatars/ice_girl.png`, color: 'bg-cyan-100 text-cyan-600', gender: 'fille' },
+  { name: 'المحيط', img: `${BASE}assets/avatars/ocean_girl.png`, color: 'bg-blue-100 text-blue-600', gender: 'fille' },
+  { name: 'الفراشة', img: `${BASE}assets/avatars/butterfly_girl.png`, color: 'bg-emerald-100 text-emerald-600', gender: 'fille' },
+  { name: 'الأميرة', img: `${BASE}assets/avatars/long_hair_girl.png`, color: 'bg-pink-100 text-pink-600', gender: 'fille' },
+  { name: 'المحاربة', img: `${BASE}assets/avatars/warrior_girl.png`, color: 'bg-rose-100 text-rose-600', gender: 'fille' },
 ]
 
 export const useProfileStore = create(

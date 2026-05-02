@@ -45,32 +45,38 @@ const rawCategories = [
   {
     id: 'classe', nom: 'Objets de la classe', nomAr: 'أَدَوَاتُ الفَصْل', emoji: '📚',
     mots: [
-      { fr: 'Livre', ar: 'كِتَاب', translit: 'Kitāb', audio: 'audio/vocabulaire/mot_09_kitab.mp3' },
-      { fr: 'Crayon', ar: 'قَلَم', translit: 'Qalam', audio: 'audio/vocabulaire/mot_10_qalam.mp3' },
-      { fr: 'Table', ar: 'طَاوِلَة', translit: 'Ṭāwila', audio: 'audio/vocabulaire/mot_11_tawila.mp3' },
-      { fr: 'Chaise', ar: 'كُرْسِي', translit: 'Kursī', audio: 'audio/vocabulaire/mot_12_kursi.mp3' },
-      { fr: 'Cahier', ar: 'دَفْتَر', translit: 'Daftar' },
-      { fr: 'Tableau', ar: 'سَبُّورَة', translit: 'Sabbūra' },
-      { fr: 'Sac', ar: 'حَقِيبَة', translit: 'Ḥaqība' },
-      { fr: 'Gomme', ar: 'مِمْحَاة', translit: 'Mimḥāt' },
-      { fr: 'Règle', ar: 'مِسْطَرَة', translit: 'Misṭara' },
-      { fr: 'Feuille', ar: 'وَرَقَة', translit: 'Waraqa' },
+      { fr: 'Livre', ar: 'كِتَاب', translit: 'Kitāb', audio: 'audio/vocabulaire/mot_09_kitab.mp3', image: '/resources/images/vocabulaire/classe-1.webp' },
+      { fr: 'Crayon', ar: 'قَلَم', translit: 'Qalam', audio: 'audio/vocabulaire/mot_10_qalam.mp3', image: '/resources/images/vocabulaire/classe-2.webp' },
+      { fr: 'Table', ar: 'طَاوِلَة', translit: 'Ṭāwila', audio: 'audio/vocabulaire/mot_11_tawila.mp3', image: '/resources/images/vocabulaire/classe-3.webp' },
+      { fr: 'Chaise', ar: 'كُرْسِي', translit: 'Kursī', audio: 'audio/vocabulaire/mot_12_kursi.mp3', image: '/resources/images/vocabulaire/classe-4.webp' },
+      { fr: 'Cahier', ar: 'دَفْتَر', translit: 'Daftar', image: '/resources/images/vocabulaire/classe-5.webp' },
+      { fr: 'Tableau', ar: 'سَبُّورَة', translit: 'Sabbūra', image: '/resources/images/vocabulaire/classe-6.webp' },
+      { fr: 'Sac', ar: 'حَقِيبَة', translit: 'Ḥaqība', image: '/resources/images/vocabulaire/classe-7.webp' },
+      { fr: 'Gomme', ar: 'مِمْحَاة', translit: 'Mimḥāt', image: '/resources/images/vocabulaire/classe-8.webp' },
+      { fr: 'Règle', ar: 'مِسْطَرَة', translit: 'Misṭara', image: '/resources/images/vocabulaire/classe-9.webp' },
+      { fr: 'Feuille', ar: 'وَرَقَة', translit: 'Waraqa', image: '/resources/images/vocabulaire/classe-10.webp' },
     ]
   },
   {
     id: 'animaux', nom: 'Les animaux', nomAr: 'الحَيَوَانَات', emoji: '🐱',
     mots: [
-      { fr: 'Chat', ar: 'قِطّ', translit: 'Qiṭṭ' }, { fr: 'Chien', ar: 'كَلْب', translit: 'Kalb' },
-      { fr: 'Oiseau', ar: 'طَائِر', translit: "Ta'ir" }, { fr: 'Poisson', ar: 'سَمَك', translit: 'Samak' },
-      { fr: 'Lapin', ar: 'أَرْنَب', translit: 'Arnab' }, { fr: 'Poule', ar: 'دَجَاجَة', translit: 'Dajāja' },
+      { fr: 'Chat', ar: 'قِطّ', translit: 'Qiṭṭ', image: '/resources/images/vocabulaire/animaux-1.webp' },
+      { fr: 'Chien', ar: 'كَلْب', translit: 'Kalb', image: '/resources/images/vocabulaire/animaux-2.webp' },
+      { fr: 'Oiseau', ar: 'طَائِر', translit: "Ta'ir", image: '/resources/images/vocabulaire/animaux-3.webp' },
+      { fr: 'Poisson', ar: 'سَمَك', translit: 'Samak', image: '/resources/images/vocabulaire/animaux-4.webp' },
+      { fr: 'Lapin', ar: 'أَرْنَب', translit: 'Arnab', image: '/resources/images/vocabulaire/animaux-5.webp' },
+      { fr: 'Poule', ar: 'دَجَاجَة', translit: 'Dajāja', image: '/resources/images/vocabulaire/animaux-6.webp' },
     ]
   },
   {
     id: 'famille', nom: 'La famille', nomAr: 'العَائِلَة', emoji: '👨‍👩‍👧‍👦',
     mots: [
-      { fr: 'Papa', ar: 'بَابَا / أَب', translit: 'Bābā' }, { fr: 'Maman', ar: 'مَامَا / أُمّ', translit: 'Māmā' },
-      { fr: 'Frère', ar: 'أَخ', translit: 'Akh' }, { fr: 'Sœur', ar: 'أُخْت', translit: 'Ukht' },
-      { fr: 'Grand-père', ar: 'جَدّ', translit: 'Jadd' }, { fr: 'Grand-mère', ar: 'جَدَّة', translit: 'Jadda' },
+      { fr: 'Papa', ar: 'بَابَا / أَب', translit: 'Bābā', image: '/resources/images/vocabulaire/famille-1.webp' },
+      { fr: 'Maman', ar: 'مَامَا / أُمّ', translit: 'Māmā', image: '/resources/images/vocabulaire/famille-2.webp' },
+      { fr: 'Frère', ar: 'أَخ', translit: 'Akh', image: '/resources/images/vocabulaire/famille-3.webp' },
+      { fr: 'Sœur', ar: 'أُخْت', translit: 'Ukht', image: '/resources/images/vocabulaire/famille-4.webp' },
+      { fr: 'Grand-père', ar: 'جَدّ', translit: 'Jadd', image: '/resources/images/vocabulaire/famille-5.webp' },
+      { fr: 'Grand-mère', ar: 'جَدَّة', translit: 'Jadda', image: '/resources/images/vocabulaire/famille-6.webp' },
     ]
   },
   {
@@ -92,11 +98,11 @@ const rawCategories = [
   {
     id: 'nourriture', nom: 'La nourriture', nomAr: 'الطَّعَام', emoji: '🍎',
     mots: [
-      { fr: 'Pain', ar: 'خُبْز', translit: 'Khubz', image: 'resources/images/vocabulaire/nourriture-1.png' }, 
-      { fr: 'Eau', ar: 'مَاء', translit: "Mā'", image: 'resources/images/vocabulaire/nourriture-2.png' },
-      { fr: 'Lait', ar: 'حَلِيب', translit: 'Ḥalīb', image: 'resources/images/vocabulaire/nourriture-3.png' }, 
-      { fr: 'Pomme', ar: 'تُفَّاحَة', translit: 'Tuffāḥa', image: 'resources/images/vocabulaire/nourriture-4.png' },
-      { fr: 'Banane', ar: 'مَوْزَة', translit: 'Mawza', image: 'resources/images/vocabulaire/nourriture-5.png' }, 
+      { fr: 'Pain', ar: 'خُبْز', translit: 'Khubz', image: '/resources/images/vocabulaire/nourriture-1.png' }, 
+      { fr: 'Eau', ar: 'مَاء', translit: "Mā'", image: '/resources/images/vocabulaire/nourriture-2.png' },
+      { fr: 'Lait', ar: 'حَلِيب', translit: 'Ḥalīb', image: '/resources/images/vocabulaire/nourriture-3.png' }, 
+      { fr: 'Pomme', ar: 'تُفَّاحَة', translit: 'Tuffāḥa', image: '/resources/images/vocabulaire/nourriture-4.png' },
+      { fr: 'Banane', ar: 'مَوْزَة', translit: 'Mawza', image: '/resources/images/vocabulaire/nourriture-5.png' }, 
       { fr: 'Jus', ar: 'عَصِير', translit: "'Aṣīr" },
       { fr: 'Gâteau', ar: 'كَعْكَة', translit: "Ka'ka" }, { fr: 'Bonbon', ar: 'حَلْوَى', translit: 'Ḥalwā' },
     ]
@@ -135,9 +141,8 @@ export const categories = rawCategories.map((cat) => ({
   ...cat,
   mots: cat.mots.map((mot, index) => ({
     ...mot,
-    // Every vocabulary entry exposes both image and audio paths.
-    image: mot.image || `resources/images/vocabulaire/${cat.id}-${index + 1}.webp`,
-    audio: mot.audio || `resources/audio/vocabulaire/${cat.id}-${index + 1}.mp3`,
+    image: mot.image || '/resources/images/placeholder-word.svg',
+    audio: mot.audio || `/resources/audio/vocabulaire/${cat.id}-${index + 1}.mp3`,
   })),
 }))
 

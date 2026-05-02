@@ -143,6 +143,7 @@ export default function Accueil() {
             {profiles.map(p => (
 <button
                   key={p.id}
+                  data-profile-id={p.id}
                   onClick={() => handleSelect(p.id)}
                   className={`w-full flex items-center gap-3 p-3.5 rounded-2xl border transition-all text-left group ${
                     activeProfile?.id === p.id
@@ -150,7 +151,7 @@ export default function Accueil() {
                       : 'border-slate-200 hover:border-brand-300 hover:shadow-md bg-white'
                   }`}
               >
-                <div className="h-12 w-12 rounded-xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform ${p.avatarColor || 'bg-brand-50 text-brand-600'}">
+                <div className={`h-12 w-12 rounded-xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform ${p.avatarColor || 'bg-brand-50 text-brand-600'}`}>
                   {p.avatar?.startsWith('/') || p.avatar?.startsWith('http') || p.avatar?.startsWith(process.env.PUBLIC_URL || '') ? (
                     <img 
                       src={p.avatar} 
@@ -180,7 +181,7 @@ export default function Accueil() {
                   )}
                   <div className="mt-2">
                     <div className="flex justify-between text-xs text-slate-500 mb-1">
-                      <span>Progression</span>
+                      <span>التقدم</span>
                       <span>{Math.round(p.progress || 0)}%</span>
                     </div>
                     <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
@@ -220,7 +221,7 @@ export default function Accueil() {
               />
               {/* Objectif hebdomadaire */}
               <div>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 ml-1">🎯 Objectif de la semaine</p>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 ml-1">🎯 هَدَفُ الأُسْبُوع</p>
                 <div className="grid grid-cols-3 gap-2">
                   {[100, 200, 500].map(pts => (
                     <button
@@ -235,9 +236,9 @@ export default function Accueil() {
               </div>
               {/* Niveau de difficulté */}
               <div>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 ml-1">⚡ Difficulté</p>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 ml-1">⚡ المُسْتَوَى</p>
                 <div className="flex gap-2">
-                  {['Facile', 'Normal', 'Difficile'].map((diff, i) => (
+                  {['سَهْل', 'عَادِي', 'صَعْب'].map((diff, i) => (
                     <button
                       key={diff}
                       onClick={() => setDifficulty(['easy', 'normal', 'hard'][i])}

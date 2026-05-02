@@ -200,7 +200,7 @@ export default function DistinctionPhonemes() {
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
               className={`mt-6 p-3 rounded-xl font-bold text-sm ${isCorrect ? 'bg-emerald-50 text-emerald-600' : 'bg-coral-50 text-coral-600'}`}
             >
-              {isCorrect ? '✅ Excellent !' : `❌ C'était : ${target.nom} (${target.caractere})`}
+              {isCorrect ? '✅ مُمْتَاز!' : `❌ الإجابة: ${target.nom} (${target.caractere})`}
             </motion.div>
           )}
 

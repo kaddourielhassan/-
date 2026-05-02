@@ -572,10 +572,10 @@ export default function DashboardMaitresse() {
             <Lock className="h-10 w-10 text-brand-600" />
           </div>
           <h2 className="text-3xl font-black text-slate-800 mb-2">فضاء المعلمة</h2>
-          <p className="text-slate-500 font-medium mb-8 uppercase text-xs tracking-widest">Espace Sécurisé</p>
+          <p className="text-slate-500 font-medium mb-8 uppercase text-xs tracking-widest">فضاء محمي</p>
           
           <div className="space-y-4 text-left" dir="ltr">
-            <label className="text-xs font-bold text-slate-400 ml-1">CODE PIN</label>
+            <label className="text-xs font-bold text-slate-400 ml-1">الرمز السري</label>
             <input
               type="password" value={pin} onChange={e => setPin(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handlePin()}
@@ -583,12 +583,12 @@ export default function DashboardMaitresse() {
               className="w-full p-5 rounded-2xl border-2 border-slate-50 focus:border-brand-400 focus:ring-4 focus:ring-brand-50 outline-none font-black text-center text-4xl tracking-[0.5em] bg-slate-50 transition-all"
             />
             <button onClick={handlePin} className="w-full p-5 rounded-2xl bg-brand-600 text-white font-black text-lg hover:bg-brand-700 shadow-lg shadow-brand-100 transition-all active:scale-95">
-              DÉVERROUILLER
+              فتح القفل
             </button>
-            <p className="text-center text-xs text-slate-300 mt-4 italic">Code d'accès requis pour protéger les données élèves.</p>
+            <p className="text-center text-xs text-slate-300 mt-4 italic">رمز الدخول مطلوب لحماية بيانات التلاميذ.</p>
           </div>
           <Link to="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-brand-600 font-bold text-sm mt-8 transition-colors">
-            <ArrowLeft className="h-4 w-4" /> Retour au menu
+            <ArrowLeft className="h-4 w-4" /> العودة للقائمة
           </Link>
         </motion.div>
       </div>
@@ -596,11 +596,11 @@ export default function DashboardMaitresse() {
   }
 
   const menuItems = [
-    { id: 'students', label: 'Suivi des élèves', icon: Users, color: 'text-blue-500' },
-    { id: 'analytics', label: 'Analytique', icon: Activity, color: 'text-amber-500' },
-    { id: 'audio', label: 'Audit des sons', icon: Volume2, color: 'text-purple-500' },
-    { id: 'assets', label: 'État des médias', icon: FileText, color: 'text-emerald-500' },
-    { id: 'settings', label: 'Paramètres', icon: Settings, color: 'text-slate-500' },
+    { id: 'students', label: 'متابعة التلاميذ', icon: Users, color: 'text-blue-500' },
+    { id: 'analytics', label: 'التحليلات', icon: Activity, color: 'text-amber-500' },
+    { id: 'audio', label: 'تدقيق الأصوات', icon: Volume2, color: 'text-purple-500' },
+    { id: 'assets', label: 'حالة الوسائط', icon: FileText, color: 'text-emerald-500' },
+    { id: 'settings', label: 'الإعدادات', icon: Settings, color: 'text-slate-500' },
   ]
 
   return (
@@ -641,7 +641,7 @@ export default function DashboardMaitresse() {
           </nav>
           <div className="mt-8 pt-6 border-t border-slate-50">
             <Link to="/" className="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-400 hover:text-brand-600 font-bold text-sm transition-colors">
-              <ArrowLeft className="h-4 w-4" /> Quitter
+              <ArrowLeft className="h-4 w-4" /> خروج
             </Link>
           </div>
         </div>
@@ -686,15 +686,15 @@ export default function DashboardMaitresse() {
               onClick={() => generateClassReport(profiles, getStats)}
               className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-brand-600 text-white font-bold text-sm shadow-xl shadow-brand-100 hover:bg-brand-700 transition-all hover:scale-[1.02] active:scale-95"
             >
-              <Download className="h-4 w-4" /> Export PDF Rapport
+              <Download className="h-4 w-4" /> تصدير التقرير PDF
             </button>
             <div className="relative group">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-brand-500 transition-colors" />
               <input 
-                type="text" placeholder="Chercher un prénom..." 
+                type="text" placeholder="ابحث عن اسم..." 
                 value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
                 className="pl-11 pr-6 py-3.5 rounded-2xl bg-white border border-slate-100 card-shadow outline-none focus:border-brand-400 focus:ring-4 focus:ring-brand-50 w-full sm:w-64 font-bold text-sm transition-all"
-                aria-label="Rechercher un élève"
+                aria-label="البحث عن تلميذ"
               />
             </div>
           </div>
@@ -714,8 +714,8 @@ export default function DashboardMaitresse() {
                       <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4">
                         <Users className="h-8 w-8 text-slate-200" />
                       </div>
-                      <p className="text-slate-400 font-bold">Aucun élève trouvé.</p>
-                      <button onClick={() => setSearchTerm('')} className="text-brand-600 font-black text-xs mt-2 uppercase tracking-tighter hover:underline">Voir tout le monde</button>
+                      <p className="text-slate-400 font-bold">لم يُعثر على تلميذ.</p>
+                      <button onClick={() => setSearchTerm('')} className="text-brand-600 font-black text-xs mt-2 uppercase tracking-tighter hover:underline">عرض الكل</button>
                     </div>
                   ) : (
                     filteredProfiles.map((p) => {
@@ -740,7 +740,7 @@ export default function DashboardMaitresse() {
                                     className="p-2 rounded-lg bg-amber-50 text-amber-600 hover:bg-amber-600 hover:text-white transition-all shadow-sm flex items-center gap-1.5"
                                   >
                                     <FileText className="h-3.5 w-3.5" />
-                                    <span className="text-[10px] font-black uppercase">Rapport</span>
+                                    <span className="text-[10px] font-black uppercase">تقرير</span>
                                   </button>
                                   <button 
                                     onClick={() => generateDiploma(p, stats)}
@@ -748,37 +748,37 @@ export default function DashboardMaitresse() {
                                     className="p-2 rounded-lg bg-brand-50 text-brand-600 hover:bg-brand-600 hover:text-white transition-all shadow-sm flex items-center gap-1.5"
                                   >
                                     <Trophy className="h-3.5 w-3.5" />
-                                    <span className="text-[10px] font-black uppercase">Diplôme</span>
+                                    <span className="text-[10px] font-black uppercase">شهادة</span>
                                   </button>
                                 </div>
                                 <div className="flex items-center gap-2 mt-1">
-                                  <span className="px-2 py-0.5 rounded-lg bg-gold-500 text-white font-black text-[9px] uppercase shadow-sm">Niveau {p.niveau}</span>
-                                  <span className="text-slate-400 font-bold text-xs">⭐ {p.pointsTotal} points</span>
+                                  <span className="px-2 py-0.5 rounded-lg bg-gold-500 text-white font-black text-[9px] uppercase shadow-sm">المستوى {p.niveau}</span>
+                                  <span className="text-slate-400 font-bold text-xs">⭐ {p.pointsTotal} نقطة</span>
                                 </div>
                               </div>
                             </div>
-                            <button onClick={() => { if(confirm(`Réinitialiser ${p.prenom} ?`)) resetProfile(p.id) }} 
-                              aria-label={`Réinitialiser le profil de ${p.prenom}`}
+                            <button onClick={() => { if(confirm(`هل تريد إعادة تعيين ${p.prenom} ؟`)) resetProfile(p.id) }} 
+                              aria-label={`إعادة تعيين ${p.prenom}`}
                               className="p-3 rounded-xl text-slate-300 hover:text-coral-500 hover:bg-coral-50 transition-all opacity-0 group-hover:opacity-100">
                               <Trash2 className="h-5 w-5" />
                             </button>
                           </div>
 
                           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-                            <ProgressCard label="Écoute" value={stats.ecoute?.correct || 0} colorClass="text-blue-600" bgClass="bg-blue-50" toolTip="Module reconnaissance" />
-                            <ProgressCard label="Mémoire" value={stats.memory?.completed || 0} max={10} colorClass="text-purple-600" bgClass="bg-purple-50" toolTip="Jeux de mémoire" />
-                            <ProgressCard label="Phonèmes" value={stats.phonemes?.correct || 0} max={6} colorClass="text-emerald-600" bgClass="bg-emerald-50" toolTip="Distinction phonétique" />
-                            <ProgressCard label="Tracé" value={stats.tracage?.completed || 0} max={12} colorClass="text-orange-600" bgClass="bg-orange-50" toolTip="Geste graphique" />
-                            <ProgressCard label="Flash" value={stats.flashcards?.vus || 0} max={50} colorClass="text-pink-600" bgClass="bg-pink-50" toolTip="Vocabulaire vu" />
+                            <ProgressCard label="استماع" value={stats.ecoute?.correct || 0} colorClass="text-blue-600" bgClass="bg-blue-50" toolTip="التعرف على الحروف" />
+                            <ProgressCard label="ذاكرة" value={stats.memory?.completed || 0} max={10} colorClass="text-purple-600" bgClass="bg-purple-50" toolTip="لعبة الذاكرة" />
+                            <ProgressCard label="أصوات" value={stats.phonemes?.correct || 0} max={6} colorClass="text-emerald-600" bgClass="bg-emerald-50" toolTip="تمييز الأصوات" />
+                            <ProgressCard label="تتبع" value={stats.tracage?.completed || 0} max={12} colorClass="text-orange-600" bgClass="bg-orange-50" toolTip="كتابة الحروف" />
+                            <ProgressCard label="كلمات" value={stats.flashcards?.vus || 0} max={50} colorClass="text-pink-600" bgClass="bg-pink-50" toolTip="المفردات" />
                             <div className="bg-brand-50 rounded-2xl p-3 flex flex-col justify-center items-center text-center border border-brand-100">
-                              <span className="text-[10px] font-black text-brand-400 uppercase">Streak</span>
+                              <span className="text-[10px] font-black text-brand-400 uppercase">سلسلة</span>
                               <span className="text-xl font-black text-brand-700">🔥 {stats.streak}</span>
                             </div>
                           </div>
                           
                           <div className="flex items-center justify-between text-[11px] font-black text-slate-400 border-t border-slate-50 pt-5">
-                            <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-emerald-500" /> Profil Actif</span>
-                            <span className="uppercase tracking-widest">Sessions : {stats.totalSessions}</span>
+                            <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-emerald-500" /> نشط</span>
+                            <span className="uppercase tracking-widest">الجلسات: {stats.totalSessions}</span>
                           </div>
                         </div>
                       )
@@ -793,10 +793,10 @@ export default function DashboardMaitresse() {
                 <section className="bg-white rounded-[2.5rem] card-shadow p-8 border border-slate-50">
                   <header className="flex items-center justify-between mb-8">
                     <div>
-                       <h3 className="text-xl font-black text-slate-800">Audit Vocal : Alphabet</h3>
-                       <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Vérification de la clarté</p>
+                       <h3 className="text-xl font-black text-slate-800">تدقيق صوتي: الحروف</h3>
+                       <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">فحص وضوح النطق</p>
                     </div>
-                    <span className="px-4 py-1.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-tighter">28 Fichiers</span>
+                    <span className="px-4 py-1.5 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-tighter">28 ملف</span>
                   </header>
                   <div className="grid grid-cols-4 sm:grid-cols-7 lg:grid-cols-10 gap-3">
                     {alphabet.map(l => {
@@ -821,7 +821,7 @@ export default function DashboardMaitresse() {
 
                 <section className="bg-white rounded-[2.5rem] card-shadow p-8 border border-slate-50">
                   <header className="flex items-center justify-between mb-8">
-                    <h3 className="text-xl font-black text-slate-800">Phonèmes & Vocabulaire</h3>
+                    <h3 className="text-xl font-black text-slate-800">الأصوات والمفردات</h3>
                     <div className="flex gap-2">
                        <span className="px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-[9px] font-black uppercase">Contrastes</span>
                        <span className="px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[9px] font-black uppercase">Capital Image</span>
@@ -856,7 +856,7 @@ export default function DashboardMaitresse() {
                    </div>
                    <div className="text-right">
                       <h3 className="text-2xl font-black text-slate-800 mb-1">بيان حالة الوسائط</h3>
-                      <p className="text-slate-400 text-sm font-bold">Vérification de l'intégrité des fichiers serveurs.</p>
+                      <p className="text-slate-400 text-sm font-bold">فحص سلامة ملفات الوسائط.</p>
                    </div>
                 </div>
 <div className="overflow-x-auto">
@@ -871,7 +871,7 @@ export default function DashboardMaitresse() {
                        </tr>
                      </thead>
                      <tbody className="divide-y divide-slate-50">
-                       <tr className="bg-brand-50/50"><td colSpan="5" className="p-4 font-black text-brand-700 text-xs uppercase tracking-widest px-8">Section Alphabet</td></tr>
+                       <tr className="bg-brand-50/50"><td colSpan="5" className="p-4 font-black text-brand-700 text-xs uppercase tracking-widest px-8">قسم الحروف</td></tr>
                        {alphabet.slice(0, 28).map(l => (
                          <tr key={l.id} className="hover:bg-slate-50/50 transition-colors group">
                            <td className="p-6 px-8">
@@ -939,12 +939,12 @@ export default function DashboardMaitresse() {
               const struggling = AuditingMetrics.getStrugglingProfiles()
 
               const MODULE_LABELS = {
-                ecoute: { name: 'Écoute', emoji: '🎧' },
-                memory: { name: 'Mémoire', emoji: '🧠' },
-                phonemes: { name: 'Phonèmes', emoji: '👂' },
-                tracage: { name: 'Tracé', emoji: '✏️' },
-                flashcards: { name: 'Flashcards', emoji: '📷' },
-                conversation: { name: 'Conversation', emoji: '💬' },
+                ecoute: { name: 'استماع', emoji: '🎧' },
+                memory: { name: 'ذاكرة', emoji: '🧠' },
+                phonemes: { name: 'أصوات', emoji: '👂' },
+                tracage: { name: 'تتبع', emoji: '✏️' },
+                flashcards: { name: 'كلمات', emoji: '📷' },
+                conversation: { name: 'محادثة', emoji: '💬' },
               }
 
               const formatMs = (ms) => ms ? `${(ms / 1000).toFixed(1)}s` : '—'
@@ -954,7 +954,7 @@ export default function DashboardMaitresse() {
                   {/* KPIs */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     <div className="bg-white rounded-[2rem] p-6 border border-slate-100 card-shadow text-center">
-                      <p className="text-[10px] font-black text-slate-400 uppercase mb-1">Total Événements</p>
+                      <p className="text-[10px] font-black text-slate-400 uppercase mb-1">إجمالي الأحداث</p>
                       <p className="text-3xl font-black text-slate-800">{classSummary.totalEvents}</p>
                     </div>
                     <div className="bg-white rounded-[2rem] p-6 border border-slate-100 card-shadow text-center">
@@ -962,11 +962,11 @@ export default function DashboardMaitresse() {
                       <p className="text-3xl font-black text-blue-600">{classSummary.totalProfiles}</p>
                     </div>
                     <div className="bg-white rounded-[2rem] p-6 border border-slate-100 card-shadow text-center">
-                      <p className="text-[10px] font-black text-slate-400 uppercase mb-1">Temps Moyen</p>
+                      <p className="text-[10px] font-black text-slate-400 uppercase mb-1">متوسط الوقت</p>
                       <p className="text-3xl font-black text-amber-600">{formatMs(classSummary.avgResponseTime)}</p>
                     </div>
                     <div className="bg-white rounded-[2rem] p-6 border border-slate-100 card-shadow text-center">
-                      <p className="text-[10px] font-black text-slate-400 uppercase mb-1">Alertes</p>
+                      <p className="text-[10px] font-black text-slate-400 uppercase mb-1">تنبيهات</p>
                       <p className={`text-3xl font-black ${struggling.length > 0 ? 'text-rose-500' : 'text-emerald-500'}`}>
                         {struggling.length > 0 ? `⚠️ ${struggling.length}` : '✅ 0'}
                       </p>
@@ -979,7 +979,7 @@ export default function DashboardMaitresse() {
                       <h3 className="text-lg font-black text-rose-700 mb-3 flex items-center gap-2">
                         <AlertCircle className="h-5 w-5" /> Élèves en difficulté
                       </h3>
-                      <p className="text-sm text-rose-600 font-medium mb-4">Ces élèves ont un taux de réussite inférieur à 40% :</p>
+                      <p className="text-sm text-rose-600 font-medium mb-4">هؤلاء التلاميذ لديهم نسبة نجاح أقل من 40% :</p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {struggling.map(p => (
                           <div key={p.profileId} className="bg-white rounded-2xl p-4 border border-rose-100 flex items-center justify-between">
@@ -1007,11 +1007,11 @@ export default function DashboardMaitresse() {
                         <thead>
                           <tr className="bg-slate-50">
                             <th className="text-left px-6 py-3 font-black text-slate-500 uppercase text-xs">Module</th>
-                            <th className="text-center px-4 py-3 font-black text-slate-500 uppercase text-xs">Interactions</th>
-                            <th className="text-center px-4 py-3 font-black text-emerald-500 uppercase text-xs">✅ Correct</th>
-                            <th className="text-center px-4 py-3 font-black text-rose-500 uppercase text-xs">❌ Erreurs</th>
-                            <th className="text-center px-4 py-3 font-black text-blue-500 uppercase text-xs">Taux</th>
-                            <th className="text-center px-4 py-3 font-black text-amber-500 uppercase text-xs">⏱ Temps Moy.</th>
+                            <th className="text-center px-4 py-3 font-black text-slate-500 uppercase text-xs">تفاعلات</th>
+                            <th className="text-center px-4 py-3 font-black text-emerald-500 uppercase text-xs">✅ صحيح</th>
+                            <th className="text-center px-4 py-3 font-black text-rose-500 uppercase text-xs">❌ أخطاء</th>
+                            <th className="text-center px-4 py-3 font-black text-blue-500 uppercase text-xs">النسبة</th>
+                            <th className="text-center px-4 py-3 font-black text-amber-500 uppercase text-xs">⏱ م. الوقت</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -1054,8 +1054,8 @@ export default function DashboardMaitresse() {
                             <tr className="bg-slate-50">
                               <th className="text-left px-6 py-3 font-black text-slate-500 uppercase text-xs">Élève</th>
                               <th className="text-center px-4 py-3 font-black text-slate-500 uppercase text-xs">Events</th>
-                              <th className="text-center px-4 py-3 font-black text-blue-500 uppercase text-xs">Taux</th>
-                              <th className="text-center px-4 py-3 font-black text-amber-500 uppercase text-xs">⏱ Temps Moy.</th>
+                              <th className="text-center px-4 py-3 font-black text-blue-500 uppercase text-xs">النسبة</th>
+                              <th className="text-center px-4 py-3 font-black text-amber-500 uppercase text-xs">⏱ م. الوقت</th>
                               <th className="text-center px-4 py-3 font-black text-purple-500 uppercase text-xs">Module Favori</th>
                               <th className="text-center px-4 py-3 font-black text-slate-500 uppercase text-xs">Dernière Activité</th>
                             </tr>
@@ -1106,18 +1106,18 @@ export default function DashboardMaitresse() {
                       }}
                       className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-amber-500 text-white font-bold text-sm hover:bg-amber-600 shadow-lg shadow-amber-100 transition-all"
                     >
-                      <Download className="h-4 w-4" /> Exporter JSON
+                      <Download className="h-4 w-4" /> تصدير JSON
                     </button>
                     <button
                       onClick={() => {
-                        if (confirm('Effacer toutes les métriques analytiques ?')) {
+                        if (confirm('مسح جميع البيانات التحليلية ؟')) {
                           AuditingMetrics.clear()
                           location.reload()
                         }
                       }}
                       className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-300 transition-all"
                     >
-                      <Trash2 className="h-4 w-4" /> Réinitialiser
+                      <Trash2 className="h-4 w-4" /> إعادة تعيين
                     </button>
                   </div>
                 </div>
@@ -1130,17 +1130,17 @@ export default function DashboardMaitresse() {
                   <div className="w-20 h-20 bg-rose-50 text-rose-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
                     <Trash2 className="h-10 w-10" />
                   </div>
-                  <h3 className="text-3xl font-black text-slate-800 mb-3">Zone de Maintenance</h3>
-                  <p className="text-slate-500 font-medium mb-10 max-w-sm mx-auto">Attention, la suppression des données est irréversible et affectera tous les profils élèves.</p>
+                  <h3 className="text-3xl font-black text-slate-800 mb-3">منطقة الصيانة</h3>
+                  <p className="text-slate-500 font-medium mb-10 max-w-sm mx-auto">تنبيه: حذف البيانات لا رجعة فيه ويشمل جميع ملفات التلاميذ.</p>
                   <div className="flex flex-col gap-3">
                     <button 
-                      onClick={() => { if(confirm('Supprimer TOUS les profils ?')) deleteAllProfiles() }}
+                      onClick={() => { if(confirm('حذف جميع الملفات الشخصية ؟')) deleteAllProfiles() }}
                       className="w-full p-6 rounded-2xl bg-rose-500 text-white font-black text-lg hover:bg-rose-600 shadow-xl shadow-rose-100 transition-all active:scale-95"
                     >
-                      Supprimer tous les profils élèves
+                      حذف جميع ملفات التلاميذ
                     </button>
                     <button className="w-full p-4 rounded-2xl bg-slate-100 text-slate-500 font-black text-sm hover:bg-slate-200 transition-all">
-                      Sauvegarder les résultats (Backup)
+                      حفظ النتائج (نسخة احتياطية)
                     </button>
                   </div>
                 </div>

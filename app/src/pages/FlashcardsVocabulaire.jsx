@@ -116,7 +116,7 @@ export default function FlashcardsVocabulaire() {
           className="bg-white rounded-3xl card-shadow-lg border border-slate-100 p-8 text-center mb-6 min-h-[280px] flex flex-col items-center justify-center"
         >
           <img
-            src={mot.image}
+            src={mot.image || fallbackImage}
             alt={mot.ar}
             className="w-full max-w-xs h-44 object-cover rounded-2xl border border-slate-100 mb-6"
             onError={(e) => {

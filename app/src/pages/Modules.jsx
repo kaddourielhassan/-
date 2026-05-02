@@ -49,7 +49,7 @@ export default function Modules() {
           </span>
           {stats.streak > 0 && (
             <span className="bg-coral-50 text-coral-500 px-4 py-1.5 rounded-full font-bold text-sm">
-              🔥 {stats.streak} jours
+              🔥 {stats.streak} يوم
             </span>
           )}
         </div>
@@ -85,7 +85,7 @@ export default function Modules() {
                   <p className="text-sm text-slate-500 font-medium mb-3">{exo.desc}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">
-                      +{exo.pts} pts
+                      +{exo.pts} نقطة
                     </span>
                     {sessions > 0 && (
                       <span className="text-xs font-bold text-slate-400">

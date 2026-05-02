@@ -1,5 +1,13 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
+const normalizeAudioPath = (path) => {
+  if (!path || typeof path !== 'string') return path
+  if (path.startsWith('http') || path.startsWith('blob:') || path.startsWith('/')) {
+    return path
+  }
+  return `/${path.replace(/^\/+/, '')}`
+}
+
 /**
  * Hook pour la gestion robuste de l'audio pédagogique
  * Gère le chargement, les erreurs et la synchronisation
@@ -55,13 +63,15 @@ export const useRobustAudio = (url, fallbackText = '') => {
   useEffect(() => {
     if (!url) return
 
+    const normalizedUrl = normalizeAudioPath(url)
     setStatus('loading')
-    const audio = new Audio(url)
+    const audio = new Audio(normalizedUrl)
+    audio.preload = 'auto'
     audioRef.current = audio
 
     const handleCanPlay = () => setStatus('ready')
     const handleError = (e) => {
-      console.warn(`Erreur de chargement audio (${url}):`, e)
+      console.warn(`Erreur de chargement audio (${normalizedUrl}):`, e)
       setStatus('error')
       setError(e)
     }

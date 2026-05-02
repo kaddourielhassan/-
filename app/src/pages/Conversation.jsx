@@ -112,16 +112,6 @@ export default function Conversation() {
     }
   }
 
-const nextScenario = () => {
-    if (currentScenario + 1 < conversations.length) {
-      setCurrentScenario(s => s + 1)
-      setCurrentRound(0)
-      setSelectedOption(null)
-      setIsCompleted(false)
-    }
-  }
-  }
-
   return (
     <div className="max-w-xl mx-auto px-4">
       <ConfettiOverlay show={showConfetti} onDone={() => setShowConfetti(false)} />

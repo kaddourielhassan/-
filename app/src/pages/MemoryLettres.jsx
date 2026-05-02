@@ -119,7 +119,7 @@ export default function MemoryLettres() {
           <ArrowLeft className="h-4 w-4" /> رجوع
         </Link>
         <span className="font-bold text-sm text-slate-500">⏱️ {formatTime(timer)}</span>
-        <span className="font-bold text-sm text-slate-500">🎯 {moves} coups</span>
+        <span className="font-bold text-sm text-slate-500">🎯 {moves} محاولة</span>
       </div>
 
       <h2 className="text-center text-xl font-bold text-slate-700 mb-1">اعثر على الأزواج!</h2>

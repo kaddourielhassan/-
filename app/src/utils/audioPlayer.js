@@ -3,6 +3,14 @@
 
 let currentAudio = null
 
+const normalizeAudioPath = (path) => {
+  if (!path || typeof path !== 'string') return path
+  if (path.startsWith('http') || path.startsWith('blob:') || path.startsWith('/')) {
+    return path
+  }
+  return `/${path.replace(/^\/+/, '')}`
+}
+
 function speakFallback(text) {
   if (!text || typeof window === 'undefined' || !('speechSynthesis' in window)) return
   
@@ -35,13 +43,15 @@ export function playAudio(path, fallbackText = '') {
       currentAudio = null
     }
 
-    if (!path) {
+    const normalizedPath = normalizeAudioPath(path)
+    if (!normalizedPath) {
       speakFallback(fallbackText)
       return
     }
 
     // 3. Create and play new audio
-    const audio = new Audio(path)
+    const audio = new Audio(normalizedPath)
+    audio.preload = 'auto'
     currentAudio = audio
 
     const playPromise = audio.play()
