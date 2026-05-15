@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import MainLayout from './components/layout/MainLayout'
 import Accueil from './pages/Accueil'
@@ -12,8 +12,18 @@ import DashboardEnfant from './pages/DashboardEnfant'
 import BadgesPage from './pages/BadgesPage'
 import DashboardMaitresse from './pages/DashboardMaitresse'
 import Conversation from './pages/Conversation'
+import { useAppStore } from './store/useAppStore'
 
 function App() {
+  const darkMode = useAppStore(state => state.darkMode)
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [darkMode])
   return (
     <Router>
       <Routes>
