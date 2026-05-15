@@ -9,13 +9,81 @@ const normalizeAudioPath = (path) => {
 }
 
 /**
+ * Optimise le texte arabe pour une prononciation claire par la synthèse vocale (TTS).
+ * Ajoute une "Fatha" (َ) sur les lettres uniques pour que l'enfant entende le son (ex: "ba") 
+ * plutôt que le nom de la lettre (ex: "baa").
+ */
+const enhanceArabicText = (text) => {
+  if (!text) return ''
+  return text.split(' ').map(word => {
+    // Retirer le Tatweel (ـ) pour l'analyse
+    const core = word.replace(/\u0640/g, '')
+    // Si c'est une lettre arabe seule (sans voyelle)
+    if (core.length === 1 && core >= '\u0621' && core <= '\u064A') {
+      return core + '\u064E' // Ajoute la Fatha
+    }
+    return word
+  }).join(' . ') // Ajoute une petite pause entre les mots/lettres
+}
+
+/**
+ * Recherche la meilleure voix arabe disponible dans le navigateur.
+ * Privilégie les voix d'Arabie Saoudite (ar-SA) ou des EAU (ar-AE) qui sont souvent de meilleure qualité.
+ */
+const getBestArabicVoice = () => {
+  if (!window.speechSynthesis) return null
+  const voices = window.speechSynthesis.getVoices()
+  const premium = voices.find(v => v.lang.includes('ar-SA') || v.lang.includes('ar-AE') || v.name.includes('Google') || v.name.includes('Maged') || v.name.includes('Tarik'))
+  if (premium) return premium
+  return voices.find(v => v.lang.startsWith('ar')) || null
+}
+
+/**
  * Hook pour la gestion robuste de l'audio pédagogique
- * Gère le chargement, les erreurs et la synchronisation
+ * Gère le chargement, les erreurs, la synchronisation et propose une synthèse vocale (TTS) Premium en fallback.
  */
 export const useRobustAudio = (url, fallbackText = '') => {
   const [status, setStatus] = useState('idle') // idle, loading, ready, error, playing
   const [error, setError] = useState(null)
   const audioRef = useRef(null)
+
+  // Pré-charger les voix pour éviter le délai au premier clic (spécificité de Chrome)
+  useEffect(() => {
+    if (window.speechSynthesis && window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices()
+    }
+  }, [])
+
+  const speakTTS = useCallback((text) => {
+    if (!window.speechSynthesis || !text) return false
+    
+    window.speechSynthesis.cancel() // Stop any current audio
+    
+    const enhancedText = enhanceArabicText(text)
+    const utterance = new SpeechSynthesisUtterance(enhancedText)
+    
+    const bestVoice = getBestArabicVoice()
+    if (bestVoice) {
+      utterance.voice = bestVoice
+      utterance.lang = bestVoice.lang
+    } else {
+      utterance.lang = 'ar-SA' // Fallback forcé
+    }
+    
+    // Réglages optimisés pour les enfants : plus lent et très clair
+    utterance.rate = 0.75 
+    utterance.pitch = 1.1 
+    
+    utterance.onstart = () => setStatus('playing')
+    utterance.onend = () => setStatus('ready')
+    utterance.onerror = (e) => {
+      console.warn('TTS Error:', e)
+      setStatus('ready')
+    }
+    
+    window.speechSynthesis.speak(utterance)
+    return true
+  }, [])
 
   const stop = useCallback(() => {
     if (audioRef.current) {
@@ -23,42 +91,26 @@ export const useRobustAudio = (url, fallbackText = '') => {
       audioRef.current.currentTime = 0
       setStatus('ready')
     }
-    // Arrêter aussi le TTS au cas où
     if (window.speechSynthesis) window.speechSynthesis.cancel()
   }, [])
 
   const play = useCallback(() => {
     if (status === 'error' || !url) {
-      // Fallback TTS si pas de fichier
-      if (window.speechSynthesis) {
-        window.speechSynthesis.cancel()
-        const u = new SpeechSynthesisUtterance(fallbackText)
-        u.lang = 'ar'
-        u.rate = 0.7
-        u.onstart = () => setStatus('playing')
-        u.onend = () => setStatus('ready')
-        window.speechSynthesis.speak(u)
-      }
+      speakTTS(fallbackText)
       return
     }
 
     if (audioRef.current) {
-      // Arrêter toute synthèse vocale avant de lancer le fichier
       if (window.speechSynthesis) window.speechSynthesis.cancel()
       
       setStatus('playing')
       audioRef.current.play().catch(err => {
-        console.error('Audio play error:', err)
+        console.warn('Audio play error, fallback to TTS:', err)
         setStatus('error')
-        // Tentative de fallback TTS en cas d'échec de lecture
-        if (window.speechSynthesis) {
-          const u = new SpeechSynthesisUtterance(fallbackText)
-          u.lang = 'ar'
-          window.speechSynthesis.speak(u)
-        }
+        speakTTS(fallbackText)
       })
     }
-  }, [status, url, fallbackText])
+  }, [status, url, fallbackText, speakTTS])
 
   useEffect(() => {
     if (!url) return
@@ -81,7 +133,6 @@ export const useRobustAudio = (url, fallbackText = '') => {
     audio.addEventListener('error', handleError)
     audio.addEventListener('ended', handleEnded)
 
-    // Charger explicitement
     audio.load()
 
     return () => {

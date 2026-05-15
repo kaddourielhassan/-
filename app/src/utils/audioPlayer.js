@@ -11,16 +11,44 @@ const normalizeAudioPath = (path) => {
   return `/${path.replace(/^\/+/, '')}`
 }
 
+const enhanceArabicText = (text) => {
+  if (!text) return ''
+  return text.split(' ').map(word => {
+    const core = word.replace(/\u0640/g, '')
+    if (core.length === 1 && core >= '\u0621' && core <= '\u064A') {
+      return core + '\u064E'
+    }
+    return word
+  }).join(' . ')
+}
+
+const getBestArabicVoice = () => {
+  if (typeof window === 'undefined' || !window.speechSynthesis) return null
+  const voices = window.speechSynthesis.getVoices()
+  const premium = voices.find(v => v.lang.includes('ar-SA') || v.lang.includes('ar-AE') || v.name.includes('Google') || v.name.includes('Maged') || v.name.includes('Tarik'))
+  if (premium) return premium
+  return voices.find(v => v.lang.startsWith('ar')) || null
+}
+
 function speakFallback(text) {
   if (!text || typeof window === 'undefined' || !('speechSynthesis' in window)) return
   
   // Ensure we are truly starting fresh
   window.speechSynthesis.cancel()
   
-  const utterance = new SpeechSynthesisUtterance(text)
-  utterance.lang = 'ar'
-  utterance.rate = 0.7 // Slower for better clarity
-  utterance.pitch = 1
+  const enhancedText = enhanceArabicText(text)
+  const utterance = new SpeechSynthesisUtterance(enhancedText)
+  
+  const bestVoice = getBestArabicVoice()
+  if (bestVoice) {
+    utterance.voice = bestVoice
+    utterance.lang = bestVoice.lang
+  } else {
+    utterance.lang = 'ar-SA'
+  }
+  
+  utterance.rate = 0.75 // Slower for better clarity
+  utterance.pitch = 1.1
   
   // Bug fix for some browsers: wait a tiny bit after cancel
   setTimeout(() => {
