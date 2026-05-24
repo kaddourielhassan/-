@@ -2,19 +2,26 @@ import React from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import { useProfileStore } from '../store/useProfileStore'
 import { useGameStore } from '../store/useGameStore'
+import { useSRSStore } from '../store/useSRSStore'
 import { badges } from '../data/badges'
+import { alphabet } from '../data/alphabet'
+import { getCurrentLevel, CURRICULUM_LEVELS, calculateLevelMastery } from '../data/curriculum'
+import { getMasteryLevel, getMasteryColor } from '../utils/srsAlgorithm'
 import ProgressBar from '../components/ui/ProgressBar'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Star, Flame, Trophy } from 'lucide-react'
+import { ArrowLeft, Star, Flame, Trophy, Map } from 'lucide-react'
 
 export default function DashboardEnfant() {
   const activeProfile = useProfileStore(s => s.getActiveProfile())
   const getStats = useGameStore(s => s.getStats)
   const getDailyQuest = useGameStore(s => s.getDailyQuest)
+  const srsItems = useSRSStore(s => s.getProfileItems(activeProfile?.id))
 
   if (!activeProfile) return <Navigate to="/" replace />
   const stats = getStats(activeProfile.id)
   const dailyQuest = getDailyQuest(activeProfile.id)
+  const currentLevel = getCurrentLevel(srsItems)
+  const levelInfo = CURRICULUM_LEVELS.find(l => l.id === currentLevel)
 
   const exercices = [
     { nom: 'الاستماع والتمييز', key: 'ecoute', max: 28, value: stats.ecoute?.correct || 0, color: 'brand', emoji: '🎧' },
@@ -82,6 +89,68 @@ export default function DashboardEnfant() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Letter Mastery Map */}
+      <div className="bg-white dark:bg-slate-800 rounded-3xl card-shadow p-6 mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="font-black text-lg text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <Map className="h-5 w-5 text-brand-500" /> خريطة الحروف
+          </h3>
+          <span className={`text-xs font-black px-3 py-1 rounded-full text-white bg-gradient-to-r ${levelInfo?.color || 'from-brand-400 to-brand-600'}`}>
+            {levelInfo?.emoji} {levelInfo?.name}
+          </span>
+        </div>
+        
+        {/* Curriculum levels progress */}
+        <div className="flex gap-2 mb-4">
+          {CURRICULUM_LEVELS.map(level => {
+            const mastery = calculateLevelMastery(srsItems, level)
+            const isUnlocked = level.id <= currentLevel
+            return (
+              <div key={level.id} className="flex-1">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[10px] font-black text-slate-400">{level.emoji}</span>
+                  <span className="text-[10px] font-bold text-slate-400">{Math.round(mastery * 100)}%</span>
+                </div>
+                <div className="h-1.5 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                  <div 
+                    className={`h-full rounded-full transition-all duration-700 ${isUnlocked ? `bg-gradient-to-r ${level.color}` : 'bg-slate-300'}`}
+                    style={{ width: `${Math.min(100, mastery * 100)}%` }}
+                  />
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
+        {/* 28 letters grid */}
+        <div className="grid grid-cols-7 sm:grid-cols-14 gap-1.5">
+          {alphabet.map(l => {
+            const item = srsItems[`letter_${l.id}`]
+            const mastery = getMasteryLevel(item)
+            const colors = getMasteryColor(mastery)
+            return (
+              <motion.div
+                key={l.id}
+                className={`aspect-square rounded-xl border flex items-center justify-center ${colors.bg} ${colors.border} transition-all`}
+                whileHover={{ scale: 1.15 }}
+                title={`${l.translit} — ${mastery}`}
+              >
+                <span className={`font-arabic text-lg ${colors.text}`}>{l.lettre}</span>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Legend */}
+        <div className="flex items-center justify-center gap-4 mt-3 text-[10px] font-bold text-slate-400">
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-emerald-400"></span> متقَن</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-blue-400"></span> مكتسب</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-amber-400"></span> جارٍ</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-rose-400"></span> جديد</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-slate-300"></span> غير مرئي</span>
         </div>
       </div>
 

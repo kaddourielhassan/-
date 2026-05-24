@@ -1,12 +1,15 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react'
+import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import { useProfileStore } from '../store/useProfileStore'
 import { useGameStore } from '../store/useGameStore'
+import { useSRSStore } from '../store/useSRSStore'
 import { phonemes } from '../data/phonemes'
+import { getAvailablePhonemes, getCurrentLevel, CURRICULUM_LEVELS } from '../data/curriculum'
+import { selectItemsForReview } from '../utils/srsAlgorithm'
 import PremiumAudioPlayer from '../components/ui/PremiumAudioPlayer'
 import ConfettiOverlay from '../components/ui/ConfettiOverlay'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, RotateCcw, Trophy } from 'lucide-react'
+import { ArrowLeft, RotateCcw, Trophy, Lock } from 'lucide-react'
 import { playSuccess, playError, playVictory, playPoints } from '../utils/soundEffects'
 import { AuditingMetrics, estimateConfidence } from '../utils/auditingMetrics'
 
@@ -14,6 +17,25 @@ export default function DistinctionPhonemes() {
   const activeProfile = useProfileStore(s => s.getActiveProfile())
   const addPoints = useProfileStore(s => s.addPoints)
   const addResult = useGameStore(s => s.addResult)
+  const srsItems = useSRSStore(s => s.getProfileItems(activeProfile?.id))
+  const srsRecordAnswer = useSRSStore(s => s.recordAnswer)
+  const srsIncrementSession = useSRSStore(s => s.incrementSession)
+  const srsSessionCount = useSRSStore(s => s.getSessionCount(activeProfile?.id))
+
+  // Curriculum level
+  const currentLevel = getCurrentLevel(srsItems)
+  const availablePhonemes = useMemo(() => getAvailablePhonemes(currentLevel), [currentLevel])
+
+  // Build ordered list using SRS priority
+  const orderedPhonemes = useMemo(() => {
+    if (availablePhonemes.length === 0) return []
+    const keys = availablePhonemes.map(p => `phoneme_${p.id}`)
+    const priorityKeys = selectItemsForReview(keys, srsItems, availablePhonemes.length, srsSessionCount)
+    return priorityKeys.map(key => {
+      const id = parseInt(key.replace('phoneme_', ''))
+      return availablePhonemes.find(p => p.id === id)
+    }).filter(Boolean)
+  }, [availablePhonemes, srsItems, srsSessionCount])
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [score, setScore] = useState(0)
@@ -32,6 +54,7 @@ export default function DistinctionPhonemes() {
     if (!activeProfile) return
     sessionIdRef.current = `phon_${Date.now()}`
     AuditingMetrics.startSession(sessionIdRef.current, activeProfile?.id, 'phonemes')
+    srsIncrementSession(activeProfile.id)
     return () => {
       AuditingMetrics.endSession(sessionIdRef.current)
     }
@@ -43,9 +66,22 @@ export default function DistinctionPhonemes() {
   }, [currentIndex])
 
   if (!activeProfile) return <Navigate to="/" replace />
+  if (orderedPhonemes.length === 0) {
+    return (
+      <div className="max-w-md mx-auto text-center py-20">
+        <div className="text-6xl mb-4"><Lock className="h-16 w-16 text-slate-300 mx-auto" /></div>
+        <h2 className="text-2xl font-black text-slate-700 dark:text-slate-200 mb-2">مقفل</h2>
+        <p className="text-slate-400 font-medium mb-6">أكمل المستوى الأول في تمرين الاستماع لفتح هذا التمرين</p>
+        <Link to="/modules" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-600 text-white font-bold">
+          <ArrowLeft className="h-4 w-4" /> رجوع
+        </Link>
+      </div>
+    )
+  }
 
-  const current = phonemes[currentIndex]
+  const current = orderedPhonemes[currentIndex]
   const target = targetIsFirst ? current.lettre1 : current.lettre2
+  const levelInfo = CURRICULUM_LEVELS.find(l => l.id === currentLevel)
 
   const handleAnswer = (isFirst) => {
     if (selected !== null) return
@@ -56,6 +92,9 @@ export default function DistinctionPhonemes() {
     const responseTime = Date.now() - questionStartRef.current
     const difficulty = current.difficulte || 2
     const confidence = estimateConfidence(responseTime, difficulty)
+
+    // Record in SRS
+    srsRecordAnswer(activeProfile.id, current.id, 'phoneme', correct)
 
     if (correct) {
       setScore(s => s + 30)
@@ -80,7 +119,7 @@ export default function DistinctionPhonemes() {
     }
 
     setTimeout(() => {
-      if (currentIndex + 1 >= phonemes.length) {
+      if (currentIndex + 1 >= orderedPhonemes.length) {
         setGameOver(true)
         playVictory()
         AuditingMetrics.endSession(sessionIdRef.current)
@@ -112,7 +151,7 @@ export default function DistinctionPhonemes() {
           <div className="flex items-center justify-center gap-2 text-4xl font-black text-gold-500 mb-2">
             <Trophy className="h-8 w-8" /> {score}
           </div>
-          <p className="text-slate-500 font-medium">نقطة من أصل {phonemes.length * 30}</p>
+          <p className="text-slate-500 font-medium">نقطة من أصل {orderedPhonemes.length * 30}</p>
         </div>
         <div className="flex gap-3 justify-center">
           <button onClick={restart} className="flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition-colors">
@@ -134,12 +173,17 @@ export default function DistinctionPhonemes() {
         <Link to="/modules" className="flex items-center gap-1.5 text-slate-400 hover:text-brand-600 font-bold text-sm">
           <ArrowLeft className="h-4 w-4" /> رجوع
         </Link>
-        <span className="font-bold text-sm text-slate-500">{currentIndex + 1}/{phonemes.length}</span>
+        <div className="flex items-center gap-2">
+          <span className={`text-xs font-black px-2 py-0.5 rounded-full bg-gradient-to-r ${levelInfo?.color || 'from-brand-400 to-brand-600'} text-white`}>
+            {levelInfo?.emoji} {levelInfo?.name}
+          </span>
+          <span className="font-bold text-sm text-slate-500">{currentIndex + 1}/{orderedPhonemes.length}</span>
+        </div>
         <span className="bg-gold-100 text-gold-600 px-3 py-1 rounded-full font-bold text-sm">⭐ {score}</span>
       </div>
 
       <div className="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full mb-8 overflow-hidden">
-        <div className="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full transition-all duration-500" style={{ width: `${(currentIndex / phonemes.length) * 100}%` }} />
+        <div className="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full transition-all duration-500" style={{ width: `${(currentIndex / orderedPhonemes.length) * 100}%` }} />
       </div>
 
       <AnimatePresence mode="wait">

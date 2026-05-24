@@ -2,8 +2,10 @@ import React from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { useProfileStore } from '../store/useProfileStore'
 import { useGameStore } from '../store/useGameStore'
+import { useSRSStore } from '../store/useSRSStore'
+import { getCurrentLevel, CURRICULUM_LEVELS, calculateLevelMastery } from '../data/curriculum'
 import { motion } from 'framer-motion'
-import { Headphones, Grid3X3, Ear, PenTool, Layers, Star, MessageCircle } from 'lucide-react'
+import { Headphones, Grid3X3, Ear, PenTool, Layers, Star, MessageCircle, Lock } from 'lucide-react'
 
 const EXERCICES = [
   { id: 'ecoute', path: '/ecoute', nom: 'استمع وتعرّف', nomAr: 'اِسْتَمِعْ', emoji: '🎧', icon: Headphones, desc: 'استمع إلى الحرف ثم اختر الإجابة الصحيحة', color: 'from-blue-400 to-blue-600', bg: 'bg-blue-50', pts: 25, statKey: 'ecoute' },
@@ -17,10 +19,13 @@ const EXERCICES = [
 export default function Modules() {
   const activeProfile = useProfileStore(s => s.getActiveProfile())
   const getStats = useGameStore(s => s.getStats)
+  const srsItems = useSRSStore(s => s.getProfileItems(activeProfile?.id))
 
   if (!activeProfile) return <Navigate to="/" replace />
 
   const stats = getStats(activeProfile.id)
+  const currentLevel = getCurrentLevel(srsItems)
+  const levelInfo = CURRICULUM_LEVELS.find(l => l.id === currentLevel)
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -52,6 +57,9 @@ export default function Modules() {
               🔥 {stats.streak} يوم
             </span>
           )}
+          <span className={`px-4 py-1.5 rounded-full font-bold text-sm text-white bg-gradient-to-r ${levelInfo?.color || 'from-brand-400 to-brand-600'}`}>
+            {levelInfo?.emoji} {levelInfo?.name}
+          </span>
         </div>
       </motion.div>
 

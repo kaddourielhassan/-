@@ -2,11 +2,14 @@ import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import { useProfileStore } from '../store/useProfileStore'
 import { useGameStore } from '../store/useGameStore'
+import { useSRSStore } from '../store/useSRSStore'
 import { alphabet } from '../data/alphabet'
+import { getAvailableLetters, getCurrentLevel, CURRICULUM_LEVELS, calculateLevelMastery } from '../data/curriculum'
+import { selectItemsForReview, getMasteryLevel, getMasteryColor } from '../utils/srsAlgorithm'
 import PremiumAudioPlayer from '../components/ui/PremiumAudioPlayer'
 import ConfettiOverlay from '../components/ui/ConfettiOverlay'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, RotateCcw, Trophy } from 'lucide-react'
+import { ArrowLeft, RotateCcw, Trophy, Lock, Sparkles } from 'lucide-react'
 import { playSuccess, playError, playVictory, playPoints } from '../utils/soundEffects'
 import { AuditingMetrics, estimateConfidence } from '../utils/auditingMetrics'
 
@@ -19,6 +22,10 @@ export default function EcouteReconnaissance() {
   const activeProfile = useProfileStore(s => s.getActiveProfile())
   const addPoints = useProfileStore(s => s.addPoints)
   const addResult = useGameStore(s => s.addResult)
+  const srsItems = useSRSStore(s => s.getProfileItems(activeProfile?.id))
+  const srsRecordAnswer = useSRSStore(s => s.recordAnswer)
+  const srsIncrementSession = useSRSStore(s => s.incrementSession)
+  const srsSessionCount = useSRSStore(s => s.getSessionCount(activeProfile?.id))
 
   const [questionIndex, setQuestionIndex] = useState(0)
   const [score, setScore] = useState(0)
@@ -32,16 +39,30 @@ export default function EcouteReconnaissance() {
   const sessionIdRef = useRef(`ecoute_${Date.now()}`)
   const questionStartRef = useRef(Date.now())
 
+  // Curriculum level
+  const currentLevel = getCurrentLevel(srsItems)
+  const availableLetters = getAvailableLetters(currentLevel)
+
   const generateQuestions = useCallback(() => {
+    if (availableLetters.length < 2) return []
+
+    // Use SRS to select priority letters
+    const letterKeys = availableLetters.map(l => `letter_${l.id}`)
+    const priorityKeys = selectItemsForReview(letterKeys, srsItems, Math.min(TOTAL_QUESTIONS, availableLetters.length), srsSessionCount)
+
     const qs = []
     for (let i = 0; i < TOTAL_QUESTIONS; i++) {
-      const shuffled = shuffle(alphabet)
-      const correct = shuffled[0]
-      const options = shuffle([correct, ...shuffled.slice(1, 4)])
+      const key = priorityKeys[i % priorityKeys.length]
+      const letterId = parseInt(key.replace('letter_', ''))
+      const correct = availableLetters.find(l => l.id === letterId) || availableLetters[0]
+
+      // Pick 3 distractors from available letters (excluding the correct one)
+      const distractors = shuffle(availableLetters.filter(l => l.id !== correct.id)).slice(0, 3)
+      const options = shuffle([correct, ...distractors])
       qs.push({ correct, options })
     }
     return qs
-  }, [])
+  }, [availableLetters, srsItems, srsSessionCount])
 
   useEffect(() => { setQuestions(generateQuestions()) }, [])
 
@@ -50,6 +71,7 @@ export default function EcouteReconnaissance() {
     if (!activeProfile) return
     sessionIdRef.current = `ecoute_${Date.now()}`
     AuditingMetrics.startSession(sessionIdRef.current, activeProfile.id, 'ecoute')
+    srsIncrementSession(activeProfile.id)
     return () => {
       AuditingMetrics.endSession(sessionIdRef.current)
     }
@@ -72,8 +94,11 @@ export default function EcouteReconnaissance() {
     setIsCorrect(correct)
 
     const responseTime = Date.now() - questionStartRef.current
-    const difficulty = 3 // Audio recognition is inherently moderate difficulty
+    const difficulty = 3
     const confidence = estimateConfidence(responseTime, difficulty)
+
+    // Record in SRS
+    srsRecordAnswer(activeProfile.id, current.correct.id, 'letter', correct)
 
     if (correct) {
       setScore(s => s + POINTS_PER_CORRECT)
@@ -117,10 +142,13 @@ export default function EcouteReconnaissance() {
     setSelected(null)
     setIsCorrect(null)
     setGameOver(false)
-    // New session for restart
     sessionIdRef.current = `ecoute_${Date.now()}`
+    srsIncrementSession(activeProfile.id)
     AuditingMetrics.startSession(sessionIdRef.current, activeProfile.id, 'ecoute')
   }
+
+  // Curriculum level info
+  const levelInfo = CURRICULUM_LEVELS.find(l => l.id === currentLevel)
 
   if (gameOver) {
     return (
@@ -133,6 +161,29 @@ export default function EcouteReconnaissance() {
             <Trophy className="h-8 w-8" /> {score}
           </div>
           <p className="text-slate-500 font-medium">نقاط مكتسبة من أصل {TOTAL_QUESTIONS * POINTS_PER_CORRECT}</p>
+
+          {/* SRS mini-recap */}
+          <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">مستوى الإتقان</p>
+            <div className="flex flex-wrap gap-1.5 justify-center">
+              {availableLetters.map(l => {
+                const item = srsItems[`letter_${l.id}`]
+                const mastery = getMasteryLevel(item)
+                const colors = getMasteryColor(mastery)
+                return (
+                  <span key={l.id} className={`font-arabic text-lg px-2 py-0.5 rounded-lg border ${colors.bg} ${colors.text} ${colors.border}`}>
+                    {l.lettre}
+                  </span>
+                )
+              })}
+            </div>
+            <div className="flex items-center justify-center gap-3 mt-3 text-[10px] font-bold text-slate-400">
+              <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-emerald-400"></span> مُتقَن</span>
+              <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-blue-400"></span> مكتسب</span>
+              <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-amber-400"></span> جارٍ</span>
+              <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-rose-400"></span> جديد</span>
+            </div>
+          </div>
         </div>
         <div className="flex gap-3 justify-center">
           <button onClick={restart} className="flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition-colors">
@@ -155,7 +206,12 @@ export default function EcouteReconnaissance() {
         <Link to="/modules" className="flex items-center gap-1.5 text-slate-400 hover:text-brand-600 font-bold text-sm">
           <ArrowLeft className="h-4 w-4" /> رجوع
         </Link>
-        <span className="font-bold text-sm text-slate-500">{questionIndex + 1}/{TOTAL_QUESTIONS}</span>
+        <div className="flex items-center gap-2">
+          <span className={`text-xs font-black px-2 py-0.5 rounded-full bg-gradient-to-r ${levelInfo?.color || 'from-brand-400 to-brand-600'} text-white`}>
+            {levelInfo?.emoji} {levelInfo?.name}
+          </span>
+          <span className="font-bold text-sm text-slate-500">{questionIndex + 1}/{TOTAL_QUESTIONS}</span>
+        </div>
         <span className="bg-gold-100 text-gold-600 px-3 py-1 rounded-full font-bold text-sm">⭐ {score}</span>
       </div>
 

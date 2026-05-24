@@ -152,7 +152,7 @@ export default function Accueil() {
                   }`}
               >
                 <div className={`h-12 w-12 rounded-xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform ${p.avatarColor || 'bg-brand-50 text-brand-600'}`}>
-                  {p.avatar?.startsWith('/') || p.avatar?.startsWith('http') || p.avatar?.startsWith(process.env.PUBLIC_URL || '') ? (
+                  {p.avatar?.startsWith('/') || p.avatar?.startsWith('http') || p.avatar?.startsWith(import.meta.env.BASE_URL || '') ? (
                     <img 
                       src={p.avatar} 
                       alt={p.prenom}
