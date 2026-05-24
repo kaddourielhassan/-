@@ -115,15 +115,28 @@ export default function FlashcardsVocabulaire() {
           transition={{ duration: 0.3 }}
           className="bg-white dark:bg-slate-800 rounded-3xl card-shadow-lg border border-slate-100 dark:border-slate-700 p-8 text-center mb-6 min-h-[280px] flex flex-col items-center justify-center"
         >
-          <img
-            src={mot.image || fallbackImage}
-            alt={mot.ar}
-            className="w-full max-w-xs h-44 object-cover rounded-2xl border border-slate-100 dark:border-slate-700 mb-6"
-            onError={(e) => {
-              e.currentTarget.onerror = null
-              e.currentTarget.src = fallbackImage
-            }}
-          />
+          {mot.image ? (
+            <img
+              src={mot.image}
+              alt={mot.ar}
+              className="w-full max-w-xs h-44 object-cover rounded-2xl border border-slate-100 dark:border-slate-700 mb-6"
+              onError={(e) => {
+                e.currentTarget.onerror = null
+                e.currentTarget.src = fallbackImage
+              }}
+            />
+          ) : selectedCat.id === 'couleurs' && mot.hex ? (
+            <div 
+              className="w-full max-w-xs h-44 rounded-2xl mb-6 shadow-inner border border-slate-200 dark:border-slate-700" 
+              style={{ backgroundColor: mot.hex }} 
+            />
+          ) : selectedCat.id !== 'nombres' && (
+            <img
+              src={fallbackImage}
+              alt={mot.ar}
+              className="w-full max-w-xs h-44 object-cover rounded-2xl border border-slate-100 dark:border-slate-700 mb-6"
+            />
+          )}
           {/* Digit display for numbers category */}
           {selectedCat.id === 'nombres' && (
             <div className="mb-4">

@@ -4,14 +4,14 @@ const rawCategories = [
   {
     id: 'couleurs', nom: 'Les couleurs', nomAr: 'الأَلْوَان', emoji: '🎨',
     mots: [
-      { fr: 'Rouge', ar: 'أَحْمَر', translit: 'Aḥmar', audio: 'audio/vocabulaire/mot_01_ahmar.mp3' },
-      { fr: 'Bleu', ar: 'أَزْرَق', translit: 'Azraq', audio: 'audio/vocabulaire/mot_02_azraq.mp3' },
-      { fr: 'Vert', ar: 'أَخْضَر', translit: 'Akhḍar', audio: 'audio/vocabulaire/mot_03_akhdar.mp3' },
-      { fr: 'Jaune', ar: 'أَصْفَر', translit: 'Aṣfar', audio: 'audio/vocabulaire/mot_04_asfar.mp3' },
-      { fr: 'Blanc', ar: 'أَبْيَض', translit: 'Abyaḍ', audio: 'audio/vocabulaire/mot_05_abyad.mp3' },
-      { fr: 'Noir', ar: 'أَسْوَد', translit: 'Aswad', audio: 'audio/vocabulaire/mot_06_aswad.mp3' },
-      { fr: 'Orange', ar: 'بُرْتُقَالِي', translit: 'Burtuqālī', audio: 'audio/vocabulaire/mot_07_burtuqali.mp3' },
-      { fr: 'Rose', ar: 'وَرْدِي', translit: 'Wardī', audio: 'audio/vocabulaire/mot_08_wardi.mp3' },
+      { fr: 'Rouge', ar: 'أَحْمَر', translit: 'Aḥmar', hex: '#ef4444', audio: 'audio/vocabulaire/mot_01_ahmar.mp3' },
+      { fr: 'Bleu', ar: 'أَزْرَق', translit: 'Azraq', hex: '#3b82f6', audio: 'audio/vocabulaire/mot_02_azraq.mp3' },
+      { fr: 'Vert', ar: 'أَخْضَر', translit: 'Akhḍar', hex: '#10b981', audio: 'audio/vocabulaire/mot_03_akhdar.mp3' },
+      { fr: 'Jaune', ar: 'أَصْفَر', translit: 'Aṣfar', hex: '#eab308', audio: 'audio/vocabulaire/mot_04_asfar.mp3' },
+      { fr: 'Blanc', ar: 'أَبْيَض', translit: 'Abyaḍ', hex: '#ffffff', audio: 'audio/vocabulaire/mot_05_abyad.mp3' },
+      { fr: 'Noir', ar: 'أَسْوَد', translit: 'Aswad', hex: '#1e293b', audio: 'audio/vocabulaire/mot_06_aswad.mp3' },
+      { fr: 'Orange', ar: 'بُرْتُقَالِي', translit: 'Burtuqālī', hex: '#f97316', audio: 'audio/vocabulaire/mot_07_burtuqali.mp3' },
+      { fr: 'Rose', ar: 'وَرْدِي', translit: 'Wardī', hex: '#ec4899', audio: 'audio/vocabulaire/mot_08_wardi.mp3' },
     ]
   },
   {
